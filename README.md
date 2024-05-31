@@ -251,7 +251,7 @@ bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step ensembluxing
 #### Contributing
 Any contributions or suggestions for improving the scRNAbox pipeline are welcomed and appreciated. 
 
-If you encounter any issues, please open an issue in the [GitHub repository](https://github.com/neurobioinfo/scrnabox).
+If you encounter any issues, please open an issue in the [GitHub repository](https://github.com/neurobioinfo/ensemblux).
 
 #### Changelog
 Every release is documented on the [GitHub Releases page](https://github.com/neurobioinfo/ensemblux/releases).
