@@ -2,26 +2,25 @@ site_name: Ensemblux
 site_url: https://neurobioinfo.github.io/
 nav:
     - Home: index.md
-    - The Ensemblux framework:
-        - 'Overview': overview.md
+    - The Ensemblux algorithm:
+        - 'Ensemblux algorithm overview': overview.md
     - The Ensemblux Pipeline:
-        - 'Overview' : overview_pipeline.md
+        - 'Ensemblux pipeline overview' : overview_pipeline.md
         - 'Installation' : installation.md
         - 'Step 1: Set up' : Step0.md
         - 'Step 2: Preparation of input files' : Step1.md
         - 'Step 3: Genetic demultiplexing by constituent tools' : Step2.md
         - 'Step 4: Application of Ensemblux' : Step3.md
     - Documentation:    
-        - 'Job configurations' : config.md
         - 'Execution parameters' : reference.md 
-        - 'Outputs': outputs.md  
+        - 'Ensemblux outputs': outputs.md  
     - Tutorial:
         - 'Downloading data' : midbrain_download.md
-        - 'Enemblux with prior genotype information' : Dataset1.md
-        - 'Enemblux without prior genotype information' : DEG.md  
+        - 'Ensemblux with prior genotype information' : Dataset1.md
+        - 'Ensemblux without prior genotype information' : Dataset2.md 
     - About:
-        - 'License': 'LICENSE.md'
         - 'Help and Feedback': contributing.md
         - 'Acknowledgement': Acknowledgement.md
+        - 'License': 'LICENSE.md'
 theme: readthedocs
 
