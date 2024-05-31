@@ -17,7 +17,6 @@ nav:
     - Tutorial:
         - 'Downloading data' : midbrain_download.md
         - 'Ensemblux with prior genotype information' : Dataset1.md
-        - 'Ensemblux without prior genotype information' : Dataset2.md 
     - About:
         - 'Help and Feedback': contributing.md
         - 'Acknowledgement': Acknowledgement.md
