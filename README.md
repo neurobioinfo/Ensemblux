@@ -61,12 +61,12 @@ Below we provide a quick-start guide for using Ensemblex. For comprehensive docu
 In the Ensemblex documentation, we outline each step of the Ensemblex pipeline, illustrate how to run the pipeline, define best practices, and provide a tutorial with pubicly available datasets. 
 
 ---
-#### Installation
+## Installation
 
 [To be completed.]
 
 ---
-#### Step 1: Set up
+## Step 1: Set up
 **Demultiplexing pooled cells _with_ prior genotype information**
 ```
 ## Create and navigate to the working directory
