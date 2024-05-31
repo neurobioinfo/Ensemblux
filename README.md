@@ -47,10 +47,10 @@ To facilitate the application of Ensemblex, we provide a pipeline that demultipl
 
 The pipelines comprise of four distinct steps:
 
-1. [Selection of Ensemblex pipeline and establishing the working directory (Set up)](Step0.md)
-2. [Prepare input files for constituent genetic demultiplexing tools](Step1.md)
-3. [Genetic demultiplexing by constituent demultiplexing tools](Step2.md)
-4. [Application of the Ensemblex framework](Step3.md)
+1. [Selection of Ensemblex pipeline and establishing the working directory (Set up)](#step-1-set-up)
+2. [Prepare input files for constituent genetic demultiplexing tools](#step-2-preparation-of-input-files)
+3. [Genetic demultiplexing by constituent demultiplexing tools](#step-3-genetic-demultiplexing-by-constituent-tools)
+4. [Application of the Ensemblex framework](#step-4-application-of-ensemblex)
 
  <p align="center">
  <img src="https://github.com/mfiorini9/Ensemblux/assets/97498007/c1ba33da-e5d6-4d2d-82a5-24f46d7e84e0" width="550" height="600">
@@ -66,13 +66,17 @@ In this documentation, we outline each step of the Ensemblex pipeline, illustrat
 [To be completed.]
 
 ---
-#### Contributing
+#### Step 1: Set up
 
 ---
-#### Contributing
+#### Step 2: Preparation of input files
 
 ---
-#### Contributing
+#### Step 3: Genetic demultiplexing by constituent tools
+
+---
+#### Step 4: Application of Ensemblex
+
 ---
 #### Contributing
 Any contributions or suggestions for improving the scRNAbox pipeline are welcomed and appreciated. 
