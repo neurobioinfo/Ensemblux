@@ -234,6 +234,7 @@ bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step demuxalot
 Ensemblux_HOME=/path/to/ensemblux.pip
 Ensemblux_PWD=/path/to/working_directory
 
+## Compute ensemble classification
 bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step ensembluxing
 ```
 ### Demultiplexing pooled cells _without_ prior genotype information
@@ -242,6 +243,7 @@ bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step ensembluxing
 Ensemblux_HOME=/path/to/ensemblux.pip
 Ensemblux_PWD=/path/to/working_directory
 
+## Compute ensemble classification
 bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step ensembluxing
 ```
 
