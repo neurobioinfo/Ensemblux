@@ -67,7 +67,7 @@ In the Ensemblex documentation, we outline each step of the Ensemblex pipeline, 
 
 ---
 ## Step 1: Set up
-**Demultiplexing pooled cells _with_ prior genotype information**
+#### **Demultiplexing pooled cells _with_ prior genotype information**
 
 Initiate the pipeline:
 ```
