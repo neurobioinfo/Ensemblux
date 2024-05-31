@@ -253,13 +253,15 @@ Any contributions or suggestions for improving the scRNAbox pipeline are welcome
 
 If you encounter any issues, please open an issue in the [GitHub repository](https://github.com/neurobioinfo/ensemblux).
 
+Alternatively, you are welcomed to email the developers directly; for any questions please contact Michael Fiorini: michael.fiorini@mail.mcgill.ca
+
 #### Changelog
 Every release is documented on the [GitHub Releases page](https://github.com/neurobioinfo/ensemblux/releases).
 
 #### License
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/neurobioinfo/ensemblux/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License.
 
 #### Acknowledgement
-The Ensemblex pipeline was produced for projects funded by Canadian Institute of Health Research and Michael J. Fox Foundation. The Ensemblex pipeline was produced as part Dark Genome Project. It is written by [Michael Fiorini](https://github.com/fiorini9), [Rhalena Thomas](https://github.com/RhalenaThomas), and [Saeid Amiri](https://github.com/saeidamiri1), with associate of Sali Farhan and Edward Fon at the Montreal Neurological Institute-Hospital. Copyright belongs [MNI BIOINFO CORE](https://github.com/neurobioinfo). 
+The Ensemblex pipeline was produced for projects funded by the Canadian Institute of Health Research and Michael J. Fox Foundation. It is written by [Michael Fiorini](https://github.com/fiorini9) and [Saeid Amiri](https://github.com/saeidamiri1) with supervision from [Rhalena Thomas](https://github.com/RhalenaThomas) and Sali Farhan at the Montreal Neurological Institute-Hospital. Copyright belongs [MNI BIOINFO CORE](https://github.com/neurobioinfo). 
 
 **[⬆ back to top](#contents)**
