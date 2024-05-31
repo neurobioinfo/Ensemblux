@@ -30,14 +30,28 @@ Upon demultiplexing pools with each of the four constituent genetic demultiplexi
 **Step 2**: Graph-based doublet detection <br />
 **Step 3**: Ensemble-independent doublet detection <br />
 
+ <p align="center">
+ <img src="https://github.com/mfiorini9/Ensemblux/assets/97498007/b3853b82-231d-43c5-9b00-9f44510a4e84" width="650" height="100">
+ </p>
+
+
 As output, Ensemblex returns its own cell-specific sample labels and corresponding assignment probabilities and singlet confidence score, as well as the sample labels and corresponding assignment probabilities for each of its constituents. The demultiplexed sample labels could then be used to perform downstream analyses.
 
 To facilitate the application of Ensemblex, we provide a pipeline that demultiplexes pooled cells by each of the individual constituent genetic demultiplexing tools and processes the outputs with the Ensemblex algorithm. 
 
+The pipelines comprise of four distinct steps:
+
+1. [Selection of Ensemblux pipeline and establishing the working directory (Set up)](Step0.md)
+2. [Prepare input files for constituent genetic demultiplexing tools](Step1.md)
+3. [Genetic demultiplexing by constituent demultiplexing tools](Step2.md)
+4. [Application of the Ensemblux framework](Step3.md)
+
+ <p align="center">
+ <img src="https://github.com/mfiorini9/Ensemblux/assets/97498007/c1ba33da-e5d6-4d2d-82a5-24f46d7e84e0" width="550" height="100">
+ </p>
 
 
-
-Below we provide a quick-start guide for using Ensemblex. For more detailed documentation, please see the [Ensemblex site]()
+Below we provide a quick-start guide for using Ensemblex. For more detailed documentation, please see the [Ensemblex site](https://neurobioinfo.github.io/ensemblux/site/).
 In this documentation, we outline each step of the Ensemblux pipeline, illustrate how to run the pipeline, define best practices, and provide a tutorial with pubicly available datasets. 
 
 ---
