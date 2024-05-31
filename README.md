@@ -85,7 +85,7 @@ Ensemblux_PWD=/path/to/working_directory
 bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step init-GT
 ```
 
-**Demultiplexing pooled cells _without_ prior genotype information**
+### Demultiplexing pooled cells _without_ prior genotype information
 
 Initiate the pipeline:
 ```
@@ -105,7 +105,7 @@ bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step init-noGT
 
 ---
 ## Step 2: Preparation of input files
-**Demultiplexing pooled cells _with_ prior genotype information**
+### Demultiplexing pooled cells _with_ prior genotype information
 
 The following files are required:
 
@@ -144,7 +144,7 @@ cp $REFERENCE_FASTA  $Ensemblux_PWD/input_files/reference.fa
 cp $REFERENCE_FASTA_INDEX  $Ensemblux_PWD/input_files/reference.fa.fai
 ```
 
-**Demultiplexing pooled cells _without_ prior genotype information**
+### Demultiplexing pooled cells _without_ prior genotype information
 
 The following files are required:
 
@@ -182,7 +182,7 @@ cp $REFERENCE_FASTA_INDEX  $Ensemblux_PWD/input_files/reference.fa.fai
 
 ---
 ## Step 3: Genetic demultiplexing by constituent tools
-**Demultiplexing pooled cells _with_ prior genotype information**
+### Demultiplexing pooled cells _with_ prior genotype information
 
 Demultiplex the pooled cells with each of Ensemblex's constituent tools:
 ```
@@ -204,7 +204,7 @@ bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step vireo
 
 ```
 
-**Demultiplexing pooled cells _without_ prior genotype information**
+### Demultiplexing pooled cells _without_ prior genotype information*
 
 Demultiplex the pooled cells with each of Ensemblex's constituent tools:
 ```
