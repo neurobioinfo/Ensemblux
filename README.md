@@ -68,6 +68,8 @@ In the Ensemblex documentation, we outline each step of the Ensemblex pipeline, 
 ---
 ## Step 1: Set up
 **Demultiplexing pooled cells _with_ prior genotype information**
+
+Initiate the pipeline:
 ```
 ## Create and navigate to the working directory
 mkdir working_directory
@@ -84,6 +86,8 @@ bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step init-GT
 ```
 
 **Demultiplexing pooled cells _without_ prior genotype information**
+
+Initiate the pipeline:
 ```
 ## Create and navigate to the working directory
 mkdir working_directory
@@ -114,6 +118,8 @@ The following files are required:
 |**genome_reference.fa**|Genome reference fasta file (e.g., 10X Genomics genome.fa)|
 |**genome_reference.fa.fai**|Genome reference fasta index file (e.g., 10X Genomics genome.fa.fai)|
 |**genotype_reference.vcf**|Population reference vcf file (e.g., 1000 Genomes Project)|
+
+Prepare the input files:
 
 ```
 ## Define all of the required files
@@ -150,6 +156,8 @@ The following files are required:
 |**genome_reference.fa**|Genome reference fasta file (e.g., 10X Genomics genome.fa)|
 |**genome_reference.fa.fai**|Genome reference fasta index file (e.g., 10X Genomics genome.fa.fai)|
 |**genotype_reference.vcf**|Population reference vcf file (e.g., 1000 Genomes Project)|
+
+Prepare the input files:
 
 ```
 ## Define all of the required files
@@ -197,6 +205,25 @@ bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step vireo
 ```
 
 **Demultiplexing pooled cells _without_ prior genotype information**
+
+Demultiplex the pooled cells with each of Ensemblex's constituent tools:
+```
+## Define the paths to Ensemblex and the working directory 
+Ensemblux_HOME=/path/to/ensemblux.pip
+Ensemblux_PWD=/path/to/working_directory
+
+## Freemuxlet
+bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step freemuxlet
+
+## Souporcell
+bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step souporcell
+
+## Vireo
+bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step vireo
+
+## Demuxalot
+bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step demuxalot
+```
 
 ---
 ## Step 4: Application of Ensemblex
