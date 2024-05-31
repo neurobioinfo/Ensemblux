@@ -47,7 +47,7 @@ The pipelines comprise of four distinct steps:
 4. [Application of the Ensemblex framework](Step3.md)
 
  <p align="center">
- <img src="https://github.com/mfiorini9/Ensemblux/assets/97498007/c1ba33da-e5d6-4d2d-82a5-24f46d7e84e0" width="350" height="600">
+ <img src="https://github.com/mfiorini9/Ensemblux/assets/97498007/c1ba33da-e5d6-4d2d-82a5-24f46d7e84e0" width="450" height="600">
  </p>
 
 
