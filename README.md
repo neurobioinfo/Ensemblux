@@ -47,13 +47,26 @@ The pipelines comprise of four distinct steps:
 4. [Application of the Ensemblex framework](Step3.md)
 
  <p align="center">
- <img src="https://github.com/mfiorini9/Ensemblux/assets/97498007/c1ba33da-e5d6-4d2d-82a5-24f46d7e84e0" width="550" height="100">
+ <img src="https://github.com/mfiorini9/Ensemblux/assets/97498007/c1ba33da-e5d6-4d2d-82a5-24f46d7e84e0" width="350" height="600">
  </p>
 
 
 Below we provide a quick-start guide for using Ensemblex. For more detailed documentation, please see the [Ensemblex site](https://neurobioinfo.github.io/ensemblux/site/).
 In this documentation, we outline each step of the Ensemblex pipeline, illustrate how to run the pipeline, define best practices, and provide a tutorial with pubicly available datasets. 
 
+---
+#### Installation
+
+[To be completed.]
+
+---
+#### Contributing
+
+---
+#### Contributing
+
+---
+#### Contributing
 ---
 #### Contributing
 Any contributions or suggestions for improving the scRNAbox pipeline are welcomed and appreciated. 
