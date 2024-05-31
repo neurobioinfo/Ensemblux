@@ -174,6 +174,29 @@ cp $REFERENCE_FASTA_INDEX  $Ensemblux_PWD/input_files/reference.fa.fai
 
 ---
 ## Step 3: Genetic demultiplexing by constituent tools
+**Demultiplexing pooled cells _with_ prior genotype information**
+
+Demultiplex the pooled cells with each of Ensemblex's constituent tools:
+```
+## Define the paths to Ensemblex and the working directory 
+Ensemblux_HOME=/path/to/ensemblux.pip
+Ensemblux_PWD=/path/to/working_directory
+
+## Demuxalot
+bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step demuxalot
+
+## Demuxlet
+bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step demuxlet
+
+## Souporcell
+bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step souporcell
+
+## Vireo
+bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step vireo
+
+```
+
+**Demultiplexing pooled cells _without_ prior genotype information**
 
 ---
 ## Step 4: Application of Ensemblex
