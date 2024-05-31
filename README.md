@@ -4,9 +4,15 @@
 ## Contents
 - [Introduction](#introduction)
 - [Installation](#installation)
-- [Pipeline steps](#pipeline-steps)
-- [Running Ensemblex](#running-scrnabox)
+- [Step 1: Set up](#step-1-set-up)
+- [Step 2: Preparation of input files](#step-2-preparation-of-input-files)
+- [Step 3: Genetic demultiplexing by constituent tools](#step-3-genetic-demultiplexing-by-constituent-tools)
+- [Step 4: Application of Ensemblex](#step-4-application-of-ensemblex)
 - [Tutorial](#tutorial)
+- [Contributing](#contributing)
+- [Change log](#change-log)
+- [License](#license)
+- [Acknowledgement](#acknowledgement)
 
 ---
 ## Introduction
