@@ -53,7 +53,7 @@ The pipelines comprise of four distinct steps:
 4. [Application of the Ensemblex framework](#step-4-application-of-ensemblex)
 
  <p align="center">
- <img src="https://github.com/mfiorini9/Ensemblux/assets/97498007/c1ba33da-e5d6-4d2d-82a5-24f46d7e84e0" width="550" height="600">
+ <img src="https://github.com/neurobioinfo/ensemblux/assets/97498007/395db4b1-2365-4ca8-8483-097b893dd640" width="550" height="600">
  </p>
 
 
