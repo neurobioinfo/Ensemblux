@@ -79,8 +79,24 @@ Ensemblux_HOME=/path/to/ensemblux.pip
 ## Define the path to the working directory
 Ensemblux_PWD=/path/to/working_directory
 
-## Initiate the pipeline
+## Initiate the pipeline for demultiplexing with prior genotype information
 bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step init-GT
+```
+
+**Demultiplexing pooled cells without prior genotype information**
+```
+## Create and navigate to the working directory
+mkdir working_directory
+cd /path/to/working_directory
+
+## Define the path to ensemblux.pip
+Ensemblux_HOME=/path/to/ensemblux.pip
+
+## Define the path to the working directory
+Ensemblux_PWD=/path/to/working_directory
+
+## Initiate the pipeline for demultiplexing without prior genotype information
+bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step init-noGT
 ```
 
 ---
