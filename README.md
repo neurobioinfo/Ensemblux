@@ -100,13 +100,50 @@ bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step init-noGT
 ```
 
 ---
-#### Step 2: Preparation of input files
+## Step 2: Preparation of input files
+**Demultiplexing pooled cells _with_ prior genotype information**
+The following files are required:
+
+|File|Description|
+|:--|:--|
+|**gene_expression.bam**|Gene expression bam file of the pooled samples (e.g., 10X Genomics possorted_genome_bam.bam)|
+|**gene_expression.bam.bai**|Gene expression bam index file of the pooled samples (e.g., 10X Genomics possorted_genome_bam.bam.bai)|
+|**barcodes.tsv**|Barcodes tsv file of the pooled cells  (e.g., 10X Genomics barcodes.tsv)|
+|**pooled_samples.vcf**|vcf file describing the genotypes of the pooled samples|
+|**genome_reference.fa**|Genome reference fasta file (e.g., 10X Genomics genome.fa)|
+|**genome_reference.fa.fai**|Genome reference fasta index file (e.g., 10X Genomics genome.fa.fai)|
+|**genotype_reference.vcf**|Population reference vcf file (e.g., 1000 Genomes Project)|
+
+```
+## Define all of the required files
+BAM=/path/to/possorted_genome_bam.bam
+BAM_INDEX=/path/to/possorted_genome_bam.bam.bai
+BARCODES=/path/to/barcodes.tsv
+SAMPLE_VCF=/path/to/pooled_samples.vcf
+REFERENCE_VCF=/path/to/genotype_reference.vcf
+REFERENCE_FASTA=/path/to/genome.fa
+REFERENCE_FASTA_INDEX=/path/to/genome.fa.fai
+
+## Define the path to the working directory
+Ensemblux_PWD=/path/to/working_directory
+
+## Copy the files to the input_files directory in the working directory
+cp $BAM  $Ensemblux_PWD/input_files/pooled_bam.bam
+cp $BAM_INDEX  $Ensemblux_PWD/input_files/pooled_bam.bam.bai
+cp $BARCODES  $Ensemblux_PWD/input_files/pooled_barcodes.tsv
+cp $SAMPLE_VCF  $Ensemblux_PWD/input_files/pooled_samples.vcf
+cp $REFERENCE_VCF  $Ensemblux_PWD/input_files/reference.vcf
+cp $REFERENCE_FASTA  $Ensemblux_PWD/input_files/reference.fa
+cp $REFERENCE_FASTA_INDEX  $Ensemblux_PWD/input_files/reference.fa.fai
+```
+
+**Demultiplexing pooled cells _without_ prior genotype information**
 
 ---
-#### Step 3: Genetic demultiplexing by constituent tools
+## Step 3: Genetic demultiplexing by constituent tools
 
 ---
-#### Step 4: Application of Ensemblex
+## Step 4: Application of Ensemblex
 
 ---
 #### Contributing
