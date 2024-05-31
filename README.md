@@ -57,8 +57,8 @@ The pipelines comprise of four distinct steps:
  </p>
 
 
-Below we provide a quick-start guide for using Ensemblex. For more detailed documentation, please see the [Ensemblex site](https://neurobioinfo.github.io/ensemblux/site/).
-In this documentation, we outline each step of the Ensemblex pipeline, illustrate how to run the pipeline, define best practices, and provide a tutorial with pubicly available datasets. 
+Below we provide a quick-start guide for using Ensemblex. For comprehensive documentation, please see the [Ensemblex site](https://neurobioinfo.github.io/ensemblux/site/).
+In the Ensemblex documentation, we outline each step of the Ensemblex pipeline, illustrate how to run the pipeline, define best practices, and provide a tutorial with pubicly available datasets. 
 
 ---
 #### Installation
@@ -67,6 +67,21 @@ In this documentation, we outline each step of the Ensemblex pipeline, illustrat
 
 ---
 #### Step 1: Set up
+**Demultiplexing pooled cells with prior genotype information**
+```
+## Create and navigate to the working directory
+mkdir working_directory
+cd /path/to/working_directory
+
+## Define the path to ensemblux.pip
+Ensemblux_HOME=/path/to/ensemblux.pip
+
+## Define the path to the working directory
+Ensemblux_PWD=/path/to/working_directory
+
+## Initiate the pipeline
+bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step init-GT
+```
 
 ---
 #### Step 2: Preparation of input files
