@@ -204,7 +204,7 @@ bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step vireo
 
 ```
 
-### Demultiplexing pooled cells _without_ prior genotype information*
+### Demultiplexing pooled cells _without_ prior genotype information
 
 Demultiplex the pooled cells with each of Ensemblex's constituent tools:
 ```
