@@ -67,7 +67,7 @@ In the Ensemblex documentation, we outline each step of the Ensemblex pipeline, 
 
 ---
 #### Step 1: Set up
-**Demultiplexing pooled cells with prior genotype information**
+**Demultiplexing pooled cells _with_ prior genotype information**
 ```
 ## Create and navigate to the working directory
 mkdir working_directory
@@ -83,7 +83,7 @@ Ensemblux_PWD=/path/to/working_directory
 bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step init-GT
 ```
 
-**Demultiplexing pooled cells without prior genotype information**
+**Demultiplexing pooled cells _without_ prior genotype information**
 ```
 ## Create and navigate to the working directory
 mkdir working_directory
