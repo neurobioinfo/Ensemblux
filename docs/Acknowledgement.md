@@ -1,2 +1,0 @@
-## Acknowledgement
-The Ensemblux pipeline was produced for projects funded by the Canadian Institute of Health Research and Michael J. Fox Foundation. It is written by [Michael Fiorini](https://github.com/fiorini9) and [Saeid Amiri](https://github.com/saeidamiri1) with associate of [Rhalena Thomas](https://github.com/RhalenaThomas) and Sali Farhan at the Montreal Neurological Institute-Hospital. Copyright belongs [MNI BIOINFO CORE](https://github.com/neurobioinfo). 
