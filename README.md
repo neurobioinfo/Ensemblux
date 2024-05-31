@@ -102,6 +102,7 @@ bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step init-noGT
 ---
 ## Step 2: Preparation of input files
 **Demultiplexing pooled cells _with_ prior genotype information**
+
 The following files are required:
 
 |File|Description|
@@ -138,6 +139,7 @@ cp $REFERENCE_FASTA_INDEX  $Ensemblux_PWD/input_files/reference.fa.fai
 ```
 
 **Demultiplexing pooled cells _without_ prior genotype information**
+
 The following files are required:
 
 |File|Description|
