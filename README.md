@@ -228,6 +228,23 @@ bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step demuxalot
 ---
 ## Step 4: Application of Ensemblex
 
+### Demultiplexing pooled cells _with_ prior genotype information
+```
+## Define the paths to Ensemblex and the working directory 
+Ensemblux_HOME=/path/to/ensemblux.pip
+Ensemblux_PWD=/path/to/working_directory
+
+bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step ensembluxing
+```
+### Demultiplexing pooled cells _without_ prior genotype information
+```
+## Define the paths to Ensemblex and the working directory 
+Ensemblux_HOME=/path/to/ensemblux.pip
+Ensemblux_PWD=/path/to/working_directory
+
+bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step ensembluxing
+```
+
 ---
 #### Contributing
 Any contributions or suggestions for improving the scRNAbox pipeline are welcomed and appreciated. 
