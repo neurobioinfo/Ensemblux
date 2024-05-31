@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://neurobioinfo.github.io/Step1/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Step 2: Preparation of input files - Ensemblux</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Step 2: Preparation of input files";
+        var mkdocs_page_input_path = "Step1.md";
+        var mkdocs_page_url = "/Step1/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Ensemblux
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">The Ensemblux algorithm</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../overview/">Ensemblux algorithm overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">The Ensemblux Pipeline</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../overview_pipeline/">Ensemblux pipeline overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Step0/">Step 1: Set up</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Step 2: Preparation of input files</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#demultiplexing-with-prior-genotype-information">Demultiplexing with prior genotype information</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#required-files">Required files</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#placing-files-into-the-ensemblux-pipeline-working-directory">Placing files into the Ensemblux pipeline working directory</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#demultiplexing-without-prior-genotype-information">Demultiplexing without prior genotype information</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#required-files_1">Required files</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#placing-files-into-the-ensemblux-pipeline-working-directory_1">Placing files into the Ensemblux pipeline working directory</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Step2/">Step 3: Genetic demultiplexing by constituent tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Step3/">Step 4: Application of Ensemblux</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/">Execution parameters</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../outputs/">Ensemblux outputs</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tutorial</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../midbrain_download/">Downloading data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Dataset1/">Ensemblux with prior genotype information</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">About</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../contributing/">Help and Feedback</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Acknowledgement/">Acknowledgement</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../LICENSE/">License</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Ensemblux</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+          <li>The Ensemblux Pipeline &raquo;</li>
+      <li class="breadcrumb-item active">Step 2: Preparation of input files</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="step-2-preparing-input-files-for-genetic-demultiplexing">Step 2: Preparing input files for genetic demultiplexing</h1>
+<p>In Step 2, we will define the necessary files needed for Ensemblux's constituent genetic demultiplexing tools and will place them within the working directory. The necessary files vary depending on the version of the Ensemblux pipeline being used:</p>
+<ul>
+<li><a href="#demultiplexing-with-prior-genotype-information">Demultiplexing with prior genotype information</a></li>
+<li><a href="#demultiplexing-without-prior-genotype-information">Demultiplexing without prior genotype information</a></li>
+</ul>
+<hr />
+<h2 id="demultiplexing-with-prior-genotype-information">Demultiplexing with prior genotype information</h2>
+<h4 id="required-files">Required files</h4>
+<p>To demultiplex the pooled samples <strong>with</strong> prior genotype information, the following files are required:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">File</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>gene_expression.bam</strong></td>
+<td style="text-align: left;">Gene expression bam file of the pooled samples (e.g., 10X Genomics possorted_genome_bam.bam)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>gene_expression.bam.bai</strong></td>
+<td style="text-align: left;">Gene expression bam index file of the pooled samples (e.g., 10X Genomics possorted_genome_bam.bam.bai)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>barcodes.tsv</strong></td>
+<td style="text-align: left;">Barcodes tsv file of the pooled cells  (e.g., 10X Genomics barcodes.tsv)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>pooled_samples.vcf</strong></td>
+<td style="text-align: left;">vcf file describing the genotypes of the pooled samples</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>genome_reference.fa</strong></td>
+<td style="text-align: left;">Genome reference fasta file (e.g., 10X Genomics: ~/Homo_sapiens.GRCh37/genome/10xGenomics/refdata-cellranger-GRCh37/fasta/genome.fa)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>genome_reference.fa.fai</strong></td>
+<td style="text-align: left;">Genome reference fasta index file (e.g., 10X Genomics: ~/Homo_sapiens.GRCh37/genome/10xGenomics/refdata-cellranger-GRCh37/fasta/genome.fa.fai)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>genotype_reference.vcf</strong></td>
+<td style="text-align: left;">Population reference vcf file (e.g., 1000 Genomes Project)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>NOTE:</strong> We demonstrate how to download reference vcf and fasta files in the <a href="../midbrain_download/">Tutorial</a> section of the Ensemblux documentation. </p>
+<h4 id="placing-files-into-the-ensemblux-pipeline-working-directory">Placing files into the Ensemblux pipeline working directory</h4>
+<p>First, define all of the required files:</p>
+<pre><code>BAM=/path/to/possorted_genome_bam.bam
+BAM_INDEX=/path/to/possorted_genome_bam.bam.bai
+BARCODES=/path/to/barcodes.tsv
+SAMPLE_VCF=/path/to/pooled_samples.vcf
+REFERENCE_VCF=/path/to/genotype_reference.vcf
+REFERENCE_FASTA=/path/to/genome.fa
+REFERENCE_FASTA_INDEX=/path/to/genome.fa.fai
+</code></pre>
+<p>Then, place the required files in the Ensemblux pipeline working directory:</p>
+<pre><code>## Define the path to the working directory
+Ensemblux_PWD=/path/to/working_directory
+
+## Copy the files to the input_files directory in the working directory
+cp $BAM  $Ensemblux_PWD/input_files/pooled_bam.bam
+cp $BAM_INDEX  $Ensemblux_PWD/input_files/pooled_bam.bam.bai
+cp $BARCODES  $Ensemblux_PWD/input_files/pooled_barcodes.tsv
+cp $SAMPLE_VCF  $Ensemblux_PWD/input_files/pooled_samples.vcf
+cp $REFERENCE_VCF  $Ensemblux_PWD/input_files/reference.vcf
+cp $REFERENCE_FASTA  $Ensemblux_PWD/input_files/reference.fa
+cp $REFERENCE_FASTA_INDEX  $Ensemblux_PWD/input_files/reference.fa.fai
+</code></pre>
+<p>If the file transfer was successful, the input_files directory of the Ensemblux pipeline working directory will contain the following files:</p>
+<pre><code>working_directory
+└── input_files
+    ├── pooled_bam.bam
+    ├── pooled_bam.bam.bai
+    ├── pooled_barcodes.tsv
+    ├── pooled_samples.vcf
+    ├── reference.fa
+    ├── reference.fa.fai
+    └── reference.vcf
+</code></pre>
+<p><strong>NOTE:</strong> You will notice that the names of the input files have been standardized, it is important that the input files have the corresonding name for the Ensemblux pipeline to work properly. </p>
+<p>Upon placing the required files in the Ensemblux pipeline, we can proceed to Step 3 where we will demultiplex the pooled samples using Ensemblux's constituent genetic demultiplexing tools: <a href="../Step2/">Genetic demultiplexing by consituent tools</a></p>
+<hr />
+<h2 id="demultiplexing-without-prior-genotype-information">Demultiplexing without prior genotype information</h2>
+<h4 id="required-files_1">Required files</h4>
+<p>To demultiplex the pooled samples <strong>without</strong> prior genotype information, the following files are required:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">File</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>gene_expression.bam</strong></td>
+<td style="text-align: left;">Gene expression bam file of the pooled samples (e.g., 10X Genomics possorted_genome_bam.bam)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>gene_expression.bam.bai</strong></td>
+<td style="text-align: left;">Gene expression bam index file of the pooled samples (e.g., 10X Genomics possorted_genome_bam.bam.bai)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>barcodes.tsv</strong></td>
+<td style="text-align: left;">Barcodes tsv file of the pooled cells  (e.g., 10X Genomics barcodes.tsv)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>genome_reference.fa</strong></td>
+<td style="text-align: left;">Genome reference fasta file (e.g., 10X Genomics: ~/Homo_sapiens.GRCh37/genome/10xGenomics/refdata-cellranger-GRCh37/fasta/genome.fa)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>genome_reference.fa.fai</strong></td>
+<td style="text-align: left;">Genome reference fasta index file (e.g., 10X Genomics: ~/Homo_sapiens.GRCh37/genome/10xGenomics/refdata-cellranger-GRCh37/fasta/genome.fa.fai)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>genotype_reference.vcf</strong></td>
+<td style="text-align: left;">Population reference vcf file (e.g., 1000 Genomes Project)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>NOTE:</strong> We demonstrate how to download reference vcf and fasta files in the <a href="../midbrain_download/">Tutorial</a> section of the Ensemblux documentation. </p>
+<h4 id="placing-files-into-the-ensemblux-pipeline-working-directory_1">Placing files into the Ensemblux pipeline working directory</h4>
+<p>First, define all of the required files:</p>
+<pre><code>BAM=/path/to/possorted_genome_bam.bam
+BAM_INDEX=/path/to/possorted_genome_bam.bam.bai
+BARCODES=/path/to/barcodes.tsv
+REFERENCE_VCF=/path/to/genotype_reference.vcf
+REFERENCE_FASTA=/path/to/genome.fa
+REFERENCE_FASTA_INDEX=/path/to/genome.fa.fai
+</code></pre>
+<p>Then, place the required files in the Ensemblux pipeline working directory:</p>
+<pre><code>## Define the path to the working directory
+Ensemblux_PWD=/path/to/working_directory
+
+## Copy the files to the input_files directory in the working directory
+cp $BAM  $Ensemblux_PWD/input_files/pooled_bam.bam
+cp $BAM_INDEX  $Ensemblux_PWD/input_files/pooled_bam.bam.bai
+cp $BARCODES  $Ensemblux_PWD/input_files/pooled_barcodes.tsv
+cp $REFERENCE_VCF  $Ensemblux_PWD/input_files/reference.vcf
+cp $REFERENCE_FASTA  $Ensemblux_PWD/input_files/reference.fa
+cp $REFERENCE_FASTA_INDEX  $Ensemblux_PWD/input_files/reference.fa.fai
+</code></pre>
+<p>If the file transfer was successful, the input_files directory of the Ensemblux pipeline working directory will contain the following files:</p>
+<pre><code>working_directory
+└── input_files
+    ├── pooled_bam.bam
+    ├── pooled_bam.bam.bai
+    ├── pooled_barcodes.tsv
+    ├── reference.fa
+    ├── reference.fa.fai
+    └── reference.vcf
+</code></pre>
+<p><strong>NOTE:</strong> You will notice that the names of the input files have been standardized, it is important that the input files have the corresonding name for the Ensemblux pipeline to work properly. </p>
+<p>Upon placing the required files in the Ensemblux pipeline, we can proceed to Step 3 where we will demultiplex the pooled samples using Ensemblux's constituent genetic demultiplexing tools: <a href="../Step2/">Genetic demultiplexing by consituent tools</a></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Step0/" class="btn btn-neutral float-left" title="Step 1: Set up"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Step2/" class="btn btn-neutral float-right" title="Step 3: Genetic demultiplexing by constituent tools">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Step0/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Step2/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
