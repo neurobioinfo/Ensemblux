@@ -37,7 +37,7 @@ Upon demultiplexing pools with each of the four constituent genetic demultiplexi
 **Step 3**: Ensemble-independent doublet detection <br />
 
  <p align="center">
- <img src="https://github.com/mfiorini9/Ensemblux/assets/97498007/b3853b82-231d-43c5-9b00-9f44510a4e84" width="650" height="700">
+ <img src="https://github.com/neurobioinfo/ensemblux/assets/97498007/d4161be8-8bc6-4c08-af60-4ee3f486e940" width="650" height="700">
  </p>
 
 
