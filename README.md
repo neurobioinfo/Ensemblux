@@ -5,7 +5,7 @@
 - [Introduction](#introduction)
 - [Installation](#installation)
 - [Pipeline steps](#pipeline-steps)
-- [Running Ensemblux](#running-scrnabox)
+- [Running Ensemblex](#running-scrnabox)
 - [Tutorial](#tutorial)
 
 ---
@@ -41,10 +41,10 @@ To facilitate the application of Ensemblex, we provide a pipeline that demultipl
 
 The pipelines comprise of four distinct steps:
 
-1. [Selection of Ensemblux pipeline and establishing the working directory (Set up)](Step0.md)
+1. [Selection of Ensemblex pipeline and establishing the working directory (Set up)](Step0.md)
 2. [Prepare input files for constituent genetic demultiplexing tools](Step1.md)
 3. [Genetic demultiplexing by constituent demultiplexing tools](Step2.md)
-4. [Application of the Ensemblux framework](Step3.md)
+4. [Application of the Ensemblex framework](Step3.md)
 
  <p align="center">
  <img src="https://github.com/mfiorini9/Ensemblux/assets/97498007/c1ba33da-e5d6-4d2d-82a5-24f46d7e84e0" width="550" height="100">
@@ -52,7 +52,7 @@ The pipelines comprise of four distinct steps:
 
 
 Below we provide a quick-start guide for using Ensemblex. For more detailed documentation, please see the [Ensemblex site](https://neurobioinfo.github.io/ensemblux/site/).
-In this documentation, we outline each step of the Ensemblux pipeline, illustrate how to run the pipeline, define best practices, and provide a tutorial with pubicly available datasets. 
+In this documentation, we outline each step of the Ensemblex pipeline, illustrate how to run the pipeline, define best practices, and provide a tutorial with pubicly available datasets. 
 
 ---
 #### Contributing
@@ -67,6 +67,6 @@ Every release is documented on the [GitHub Releases page](https://github.com/neu
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/neurobioinfo/ensemblux/blob/main/LICENSE) file for details.
 
 #### Acknowledgement
-The Ensemblux pipeline was produced for projects funded by Canadian Institute of Health Research and Michael J. Fox Foundation. The Ensemblux pipeline was produced as part Dark Genome Project. It is written by [Michael Fiorini](https://github.com/fiorini9), [Rhalena Thomas](https://github.com/RhalenaThomas), and [Saeid Amiri](https://github.com/saeidamiri1), with associate of Sali Farhan and Edward Fon at the Montreal Neurological Institute-Hospital. Copyright belongs [MNI BIOINFO CORE](https://github.com/neurobioinfo). 
+The Ensemblex pipeline was produced for projects funded by Canadian Institute of Health Research and Michael J. Fox Foundation. The Ensemblex pipeline was produced as part Dark Genome Project. It is written by [Michael Fiorini](https://github.com/fiorini9), [Rhalena Thomas](https://github.com/RhalenaThomas), and [Saeid Amiri](https://github.com/saeidamiri1), with associate of Sali Farhan and Edward Fon at the Montreal Neurological Institute-Hospital. Copyright belongs [MNI BIOINFO CORE](https://github.com/neurobioinfo). 
 
 **[⬆ back to top](#contents)**
