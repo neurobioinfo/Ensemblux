@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://neurobioinfo.github.io/midbrain_download/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Downloading data - Ensemblux</title>
+    <title>Downloading data - ensemblex</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -30,7 +30,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href=".." class="icon icon-home"> Ensemblux
+          <a href=".." class="icon icon-home"> ensemblex
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
@@ -43,14 +43,14 @@
                 <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
                 </li>
               </ul>
-              <p class="caption"><span class="caption-text">The Ensemblux algorithm</span></p>
+              <p class="caption"><span class="caption-text">The ensemblex algorithm</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../overview/">Ensemblux algorithm overview</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../overview/">ensemblex algorithm overview</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">The Ensemblux Pipeline</span></p>
+              <p class="caption"><span class="caption-text">The ensemblex Pipeline</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../overview_pipeline/">Ensemblux pipeline overview</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../overview_pipeline/">ensemblex pipeline overview</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
                   </li>
@@ -60,14 +60,14 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../Step2/">Step 3: Genetic demultiplexing by constituent tools</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Step3/">Step 4: Application of Ensemblux</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../Step3/">Step 4: Application of ensemblex</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Documentation</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../reference/">Execution parameters</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../outputs/">Ensemblux outputs</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../outputs/">ensemblex outputs</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Tutorial</span></p>
@@ -76,7 +76,7 @@
     <ul class="current">
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Dataset1/">Ensemblux with prior genotype information</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../Dataset1/">ensemblex with prior genotype information</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">About</span></p>
@@ -95,7 +95,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="..">Ensemblux</a>
+          <a href="..">ensemblex</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -130,9 +130,9 @@
 <li>Download reference genotype data</li>
 <li>Download a reference genome file</li>
 </ol>
-<p>Before we begin, we will create a designated folder for the Ensemblux tutorial:</p>
-<pre><code>mkdir Ensemblux_tutorial
-cd Ensemblux_tutorial
+<p>Before we begin, we will create a designated folder for the ensemblex tutorial:</p>
+<pre><code>mkdir ensemblex_tutorial
+cd ensemblex_tutorial
 </code></pre>
 <hr />
 <h2 id="downloading-and-processing-scrnaseq-data">Downloading and processing scRNAseq data</h2>
@@ -157,28 +157,28 @@ wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR470/002/ERR4700022/ERR4700022_2.fastq
 
 
 ## Rename pooled scRNAseq FASTQ files
-mv ERR4700019_1.fastq.gz ~/Ensemblux_tutorial/pooled_scRNAseq/pool_S1_L001_R1_001.fastq.gz 
-mv ERR4700019_2.fastq.gz ~/Ensemblux_tutorial/pooled_scRNAseq/pool_S1_L001_R2_001.fastq.gz 
+mv ERR4700019_1.fastq.gz ~/ensemblex_tutorial/pooled_scRNAseq/pool_S1_L001_R1_001.fastq.gz 
+mv ERR4700019_2.fastq.gz ~/ensemblex_tutorial/pooled_scRNAseq/pool_S1_L001_R2_001.fastq.gz 
 
-mv ERR4700020_1.fastq.gz ~/Ensemblux_tutorial/pooled_scRNAseq/pool_S1_L002_R1_001.fastq.gz 
-mv ERR4700020_2.fastq.gz ~/Ensemblux_tutorial/pooled_scRNAseq/pool_S1_L002_R2_001.fastq.gz
+mv ERR4700020_1.fastq.gz ~/ensemblex_tutorial/pooled_scRNAseq/pool_S1_L002_R1_001.fastq.gz 
+mv ERR4700020_2.fastq.gz ~/ensemblex_tutorial/pooled_scRNAseq/pool_S1_L002_R2_001.fastq.gz
 
-mv ERR4700021_1.fastq.gz ~/Ensemblux_tutorial/pooled_scRNAseq/pool_S1_L003_R1_001.fastq.gz
-mv ERR4700021_2.fastq.gz ~/Ensemblux_tutorial/pooled_scRNAseq/pool_S1_L003_R2_001.fastq.gz
+mv ERR4700021_1.fastq.gz ~/ensemblex_tutorial/pooled_scRNAseq/pool_S1_L003_R1_001.fastq.gz
+mv ERR4700021_2.fastq.gz ~/ensemblex_tutorial/pooled_scRNAseq/pool_S1_L003_R2_001.fastq.gz
 
-mv ERR4700022_1.fastq.gz ~/Ensemblux_tutorial/pooled_scRNAseq/pool_S1_L004_R1_001.fastq.gz
-mv ERR4700022_2.fastq.gz ~/Ensemblux_tutorial/pooled_scRNAseq/pool_S1_L004_R2_001.fastq.gz
+mv ERR4700022_1.fastq.gz ~/ensemblex_tutorial/pooled_scRNAseq/pool_S1_L004_R1_001.fastq.gz
+mv ERR4700022_2.fastq.gz ~/ensemblex_tutorial/pooled_scRNAseq/pool_S1_L004_R2_001.fastq.gz
 
 </code></pre>
 <p>Next, we will process the pooled scRNAseq data with the CellRanger <em>counts</em> pipeline:</p>
 <pre><code>## Create CellRanger directory
-cd ~/Ensemblux_tutorial
+cd ~/ensemblex_tutorial
 mkdir CellRanger
 cd CellRanger
 
 cellranger count \
 --id=pool \
---fastqs=/home/fiorini9/scratch/Ensemblux_pipeline_test/Ensemblux_tutorial/pooled_scRNAseq \
+--fastqs=/home/fiorini9/scratch/ensemblex_pipeline_test/ensemblex_tutorial/pooled_scRNAseq \
 --sample=pool \
 --transcriptome=~/10xGenomics/refdata-cellranger-GRCh37
 </code></pre>
@@ -193,7 +193,7 @@ cellranger count \
 <h2 id="downloading-sample-genotype-data">Downloading sample genotype data</h2>
 <p>Next, we will download the whole exome .vcf files corresponding to the nine pooled individuals from which the iPSC lines derived. We will download the .vcf files from the European Nucleotide Archive (ENA):</p>
 <pre><code>## Create a folder to place sample genotype data
-cd ~/Ensemblux_tutorial
+cd ~/ensemblex_tutorial
 mkdir sample_genotype
 cd sample_genotype
 
@@ -243,7 +243,7 @@ bcftools merge *.vcf.gz &gt; sample_genotype_merge.vcf
 <h2 id="downloading-reference-genotype-data">Downloading reference genotype data</h2>
 <p>Next, we will download a reference genotype file from the <a href="https://www.internationalgenome.org/">1000 Genomes Project, Phase 3</a>:</p>
 <pre><code>## Create a folder to place the reference files
-cd ~/Ensemblux_tutorial
+cd ~/ensemblex_tutorial
 mkdir reference_files
 cd reference_files
 
@@ -268,17 +268,17 @@ bcftools filter -e 'AF&lt;0.01' SNPs_only.recode.vcf &gt; common_SNPs_only.recod
 <h2 id="downloading-genome-reference-file">Downloading genome reference file</h2>
 <p>Finally, we will prepare a reference genome. For our tutorial we will use the GRCh37 10X reference genome. For information regarding references, see the <a href="https://www.10xgenomics.com/support/software/cell-ranger/downloads/cr-ref-build-steps">10X documentation</a>.</p>
 <pre><code>## Copy pre-built reference genome to working directory
-cp /cvmfs/soft.mugqic/CentOS6/genomes/species/Homo_sapiens.GRCh37/genome/10xGenomics/refdata-cellranger-GRCh37/fasta/genome.fa ~/Ensemblux_pipeline_test/Ensemblux_tutorial/reference_files
+cp /cvmfs/soft.mugqic/CentOS6/genomes/species/Homo_sapiens.GRCh37/genome/10xGenomics/refdata-cellranger-GRCh37/fasta/genome.fa ~/ensemblex_pipeline_test/ensemblex_tutorial/reference_files
 </code></pre>
 <p>We will use the <code>genome.fa</code> reference genome for genetic demultiplexing downstream.</p>
 <hr />
-<p>To run the Ensemblux pipeline on the downloaded data please see the <a href="../Dataset1/">Ensemblux with prior genotype information</a> section of the Ensemblux pipeline.</p>
+<p>To run the ensemblex pipeline on the downloaded data please see the <a href="../Dataset1/">ensemblex with prior genotype information</a> section of the ensemblex pipeline.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../outputs/" class="btn btn-neutral float-left" title="Ensemblux outputs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../Dataset1/" class="btn btn-neutral float-right" title="Ensemblux with prior genotype information">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../outputs/" class="btn btn-neutral float-left" title="ensemblex outputs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Dataset1/" class="btn btn-neutral float-right" title="ensemblex with prior genotype information">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>

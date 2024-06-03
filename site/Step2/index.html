@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://neurobioinfo.github.io/Step2/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Step 3: Genetic demultiplexing by constituent tools - Ensemblux</title>
+    <title>Step 3: Genetic demultiplexing by constituent tools - ensemblex</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -30,7 +30,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href=".." class="icon icon-home"> Ensemblux
+          <a href=".." class="icon icon-home"> ensemblex
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
@@ -43,14 +43,14 @@
                 <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
                 </li>
               </ul>
-              <p class="caption"><span class="caption-text">The Ensemblux algorithm</span></p>
+              <p class="caption"><span class="caption-text">The ensemblex algorithm</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../overview/">Ensemblux algorithm overview</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../overview/">ensemblex algorithm overview</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">The Ensemblux Pipeline</span></p>
+              <p class="caption"><span class="caption-text">The ensemblex Pipeline</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../overview_pipeline/">Ensemblux pipeline overview</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../overview_pipeline/">ensemblex pipeline overview</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
                   </li>
@@ -86,21 +86,21 @@
     </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Step3/">Step 4: Application of Ensemblux</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../Step3/">Step 4: Application of ensemblex</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Documentation</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../reference/">Execution parameters</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../outputs/">Ensemblux outputs</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../outputs/">ensemblex outputs</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Tutorial</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../midbrain_download/">Downloading data</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Dataset1/">Ensemblux with prior genotype information</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../Dataset1/">ensemblex with prior genotype information</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">About</span></p>
@@ -119,14 +119,14 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="..">Ensemblux</a>
+          <a href="..">ensemblex</a>
         
       </nav>
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
-          <li>The Ensemblux Pipeline &raquo;</li>
+          <li>The ensemblex Pipeline &raquo;</li>
       <li class="breadcrumb-item active">Step 3: Genetic demultiplexing by constituent tools</li>
     <li class="wy-breadcrumbs-aside">
     </li>
@@ -137,15 +137,15 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="step-3-genetic-demultiplexing-by-constituent-demultiplexing-tools">Step 3: Genetic demultiplexing by constituent demultiplexing tools</h1>
-<p>In Step 3, we will demultiplex the pooled samples with each of Ensemblux's constituent genetic demultiplexing tools. The constituent genetic demultiplexing tools will vary depending on the version of the Ensemblux pipeline being used:</p>
+<p>In Step 3, we will demultiplex the pooled samples with each of ensemblex's constituent genetic demultiplexing tools. The constituent genetic demultiplexing tools will vary depending on the version of the ensemblex pipeline being used:</p>
 <ul>
 <li><a href="#demultiplexing-with-prior-genotype-information">Demultiplexing with prior genotype information</a></li>
 <li><a href="#demultiplexing-without-prior-genotype-information">Demultiplexing without prior genotype information</a></li>
 </ul>
-<p><strong>NOTE</strong>: The analytical parameters for each constiuent tool can be adjusted using the the <code>ensemblux_config.ini</code> file located in <code>~/working_directory/job_info/configs</code>. For a comprehensive description of how to adjust the analytical parameters of the Ensemblux pipeline please see <a href="../reference/">Execution parameters</a>. </p>
+<p><strong>NOTE</strong>: The analytical parameters for each constiuent tool can be adjusted using the the <code>ensemblex_config.ini</code> file located in <code>~/working_directory/job_info/configs</code>. For a comprehensive description of how to adjust the analytical parameters of the ensemblex pipeline please see <a href="../reference/">Execution parameters</a>. </p>
 <hr />
 <h2 id="demultiplexing-with-prior-genotype-information">Demultiplexing with prior genotype information</h2>
-<p>When demultiplexing <strong>with</strong> prior genotype information, Ensemblux leverages the sample labels from</p>
+<p>When demultiplexing <strong>with</strong> prior genotype information, ensemblex leverages the sample labels from</p>
 <ul>
 <li><a href="#demuxalot">Demuxalot</a></li>
 <li><a href="#demuxlet">Demuxlet</a></li>
@@ -155,10 +155,10 @@
 <hr />
 <h4 id="demuxalot">Demuxalot</h4>
 <p>To run Demuxalot use the following code:</p>
-<pre><code>Ensemblux_HOME=/path/to/ensemblux.pip
-Ensemblux_PWD=/path/to/working_directory
+<pre><code>ensemblex_HOME=/path/to/ensemblex.pip
+ensemblex_PWD=/path/to/working_directory
 
-bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step demuxalot
+bash $ensemblex_HOME/launch_ensemblex.sh -d $ensemblex_PWD --step demuxalot
 </code></pre>
 <p>If Demuxalot completed successfully, the following files should be available in <code>~/working_directory/demuxalot</code></p>
 <pre><code>working_directory
@@ -169,10 +169,10 @@ bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step demuxalot
 <hr />
 <h4 id="demuxlet">Demuxlet</h4>
 <p>To run Demuxlet use the following code:</p>
-<pre><code>Ensemblux_HOME=/path/to/ensemblux.pip
-Ensemblux_PWD=/path/to/working_directory
+<pre><code>ensemblex_HOME=/path/to/ensemblex.pip
+ensemblex_PWD=/path/to/working_directory
 
-bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step demuxlet
+bash $ensemblex_HOME/launch_ensemblex.sh -d $ensemblex_PWD --step demuxlet
 </code></pre>
 <p>If Demuxlet completed successfully, the following files should be available in <code>~/working_directory/demuxlet</code></p>
 <pre><code>working_directory
@@ -186,10 +186,10 @@ bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step demuxlet
 <hr />
 <h4 id="souporcell">Souporcell</h4>
 <p>To run Souporcell use the following code:</p>
-<pre><code>Ensemblux_HOME=/path/to/ensemblux.pip
-Ensemblux_PWD=/path/to/working_directory
+<pre><code>ensemblex_HOME=/path/to/ensemblex.pip
+ensemblex_PWD=/path/to/working_directory
 
-bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step souporcell
+bash $ensemblex_HOME/launch_ensemblex.sh -d $ensemblex_PWD --step souporcell
 </code></pre>
 <p>If Souporcell completed successfully, the following files should be available in <code>~/working_directory/souporcell</code></p>
 <pre><code>working_directory
@@ -210,10 +210,10 @@ bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step souporcell
 <hr />
 <h4 id="vireo-gt">Vireo-GT</h4>
 <p>To run Vireo-GT use the following code:</p>
-<pre><code>Ensemblux_HOME=/path/to/ensemblux.pip
-Ensemblux_PWD=/path/to/working_directory
+<pre><code>ensemblex_HOME=/path/to/ensemblex.pip
+ensemblex_PWD=/path/to/working_directory
 
-bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step vireo
+bash $ensemblex_HOME/launch_ensemblex.sh -d $ensemblex_PWD --step vireo
 </code></pre>
 <p>If Vireo-GT completed successfully, the following files should be available in <code>~/working_directory/vireo_gt</code></p>
 <pre><code>working_directory
@@ -234,10 +234,10 @@ bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step vireo
     └── summary.tsv
 </code></pre>
 <hr />
-<p>Upon demultiplexing the pooled samples with each of Ensemblux's constituent genetic demultiplexing tools, we can proceed to Step 4 where we will process the output files of the consituent tools with the Ensemblux algorithm to generate the ensemble sample classifications: <a href="../Step3/">Application of Ensemblux</a></p>
+<p>Upon demultiplexing the pooled samples with each of ensemblex's constituent genetic demultiplexing tools, we can proceed to Step 4 where we will process the output files of the consituent tools with the ensemblex algorithm to generate the ensemble sample classifications: <a href="../Step3/">Application of ensemblex</a></p>
 <hr />
 <h2 id="demultiplexing-without-prior-genotype-information">Demultiplexing without prior genotype information</h2>
-<p>When demultiplexing <strong>without</strong> prior genotype information, Ensemblux leverages the sample labels from</p>
+<p>When demultiplexing <strong>without</strong> prior genotype information, ensemblex leverages the sample labels from</p>
 <ul>
 <li><a href="#freemuxlet">Freemuxlet</a></li>
 <li><a href="#souporcell">Souporcell</a></li>
@@ -247,10 +247,10 @@ bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step vireo
 <hr />
 <h4 id="freemuxlet">Freemuxlet</h4>
 <p>To run Freemuxlet use the following code:</p>
-<pre><code>Ensemblux_HOME=/path/to/ensemblux.pip
-Ensemblux_PWD=/path/to/working_directory
+<pre><code>ensemblex_HOME=/path/to/ensemblex.pip
+ensemblex_PWD=/path/to/working_directory
 
-bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step freemuxlet
+bash $ensemblex_HOME/launch_ensemblex.sh -d $ensemblex_PWD --step freemuxlet
 </code></pre>
 <p>If Freemuxlet completed successfully, the following files should be available in <code>~/working_directory/freemuxlet</code></p>
 <pre><code>working_directory
@@ -266,10 +266,10 @@ bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step freemuxlet
 <hr />
 <h4 id="souporcell_1">Souporcell</h4>
 <p>To run Souporcell use the following code:</p>
-<pre><code>Ensemblux_HOME=/path/to/ensemblux.pip
-Ensemblux_PWD=/path/to/working_directory
+<pre><code>ensemblex_HOME=/path/to/ensemblex.pip
+ensemblex_PWD=/path/to/working_directory
 
-bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step souporcell
+bash $ensemblex_HOME/launch_ensemblex.sh -d $ensemblex_PWD --step souporcell
 </code></pre>
 <p>If Souporcell completed successfully, the following files should be available in <code>~/working_directory/souporcell</code></p>
 <pre><code>working_directory
@@ -290,10 +290,10 @@ bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step souporcell
 <hr />
 <h4 id="vireo">Vireo</h4>
 <p>To run Vireo use the following code:</p>
-<pre><code>Ensemblux_HOME=/path/to/ensemblux.pip
-Ensemblux_PWD=/path/to/working_directory
+<pre><code>ensemblex_HOME=/path/to/ensemblex.pip
+ensemblex_PWD=/path/to/working_directory
 
-bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step vireo
+bash $ensemblex_HOME/launch_ensemblex.sh -d $ensemblex_PWD --step vireo
 </code></pre>
 <p>If Vireo completed successfully, the following files should be available in <code>~/working_directory/vireo</code></p>
 <pre><code>working_directory
@@ -314,16 +314,16 @@ bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step vireo
 </code></pre>
 <hr />
 <h4 id="demuxalot_1">Demuxalot</h4>
-<p><strong>NOTE</strong>: Because the Demuxalot algorithm requires prior genotype information, the Ensemblux pipeline uses the predicted vcf file generated by Freemuxlet as input into Demuxalot when prior genotype information is not available. Therefore, it is important to wait for Freemuxlet to complete before running Demuxalot. To check if the required Freemuxlet-generated vcf file is available prior to running Demuxalot, you can use the following code:</p>
+<p><strong>NOTE</strong>: Because the Demuxalot algorithm requires prior genotype information, the ensemblex pipeline uses the predicted vcf file generated by Freemuxlet as input into Demuxalot when prior genotype information is not available. Therefore, it is important to wait for Freemuxlet to complete before running Demuxalot. To check if the required Freemuxlet-generated vcf file is available prior to running Demuxalot, you can use the following code:</p>
 <pre><code>if test -f /path/to/working_directory/freemuxlet/outs.clust1.vcf; then
   echo &quot;File exists.&quot;
 fi
 </code></pre>
 <p>Upon confirming that the required Freemuxlet-generated file exists, we can run Demuxalot using the following code:</p>
-<pre><code>Ensemblux_HOME=/path/to/ensemblux.pip
-Ensemblux_PWD=/path/to/working_directory
+<pre><code>ensemblex_HOME=/path/to/ensemblex.pip
+ensemblex_PWD=/path/to/working_directory
 
-bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step demuxalot
+bash $ensemblex_HOME/launch_ensemblex.sh -d $ensemblex_PWD --step demuxalot
 </code></pre>
 <p>If Demuxalot completed successfully, the following files should be available in <code>~/working_directory/demuxalot</code></p>
 <pre><code>working_directory
@@ -333,13 +333,13 @@ bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step demuxalot
 </code></pre>
 <hr />
 <hr />
-<p>Upon demultiplexing the pooled samples with each of Ensemblux's constituent genetic demultiplexing tools, we can proceed to Step 4 where we will process the output files of the consituent tools with the Ensemblux algorithm to generate the ensemble sample classifications: <a href="../Step3/">Application of Ensemblux</a></p>
+<p>Upon demultiplexing the pooled samples with each of ensemblex's constituent genetic demultiplexing tools, we can proceed to Step 4 where we will process the output files of the consituent tools with the ensemblex algorithm to generate the ensemble sample classifications: <a href="../Step3/">Application of ensemblex</a></p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../Step1/" class="btn btn-neutral float-left" title="Step 2: Preparation of input files"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../Step3/" class="btn btn-neutral float-right" title="Step 4: Application of Ensemblux">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Step3/" class="btn btn-neutral float-right" title="Step 4: Application of ensemblex">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>

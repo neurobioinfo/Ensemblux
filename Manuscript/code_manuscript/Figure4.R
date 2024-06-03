@@ -3,7 +3,7 @@
 #########
 # NOTES #
 #########
-# This code was used to produce Figure 4 of the Ensemblux manuscript
+# This code was used to produce Figure 4 of the ensemblex manuscript
 
 ########
 # Main #
@@ -12,7 +12,7 @@
 packages <- c('dplyr', 'tidyr' 'pdfCluster', 'data.table','readr','lubridate', 'tidyverse', 'moments', 'mousetrap', 'usethis', 'devtools', 'desc', 'kneedle', 'ROCit', 'ggplot2', 'factoextra', 'ggpubr', 'ComplexUpset', 'Seurat', 'Matrix', 'scCustomize')
 lapply(packages, library, character.only = TRUE)
 
-output_dir <- "~/ensemblux_manuscript/Figure4"
+output_dir <- "~/ensemblex_manuscript/Figure4"
 
 ########################
 # create Seurat object #
@@ -22,15 +22,15 @@ output_dir <- "~/ensemblux_manuscript/Figure4"
     data <- Read10X(data.dir = data_dir)
     seurat_object = CreateSeuratObject(counts = data$'Gene Expression')
     seurat_object[['CMO']] = CreateAssayObject(counts = data$'Multiplexing Capture')
-    saveRDS(seurat_object, '~/ensemblux_manuscript/Figure4/cell_ranger_multi.rds')
+    saveRDS(seurat_object, '~/ensemblex_manuscript/Figure4/cell_ranger_multi.rds')
 ##
 
 #############################
 # Demultiplex with HTOdemux #
 #############################
 ## code
-    output_dir <- "~/ensemblux_manuscript/Figure4"
-    seurat_object<-readRDS('~/ensemblux_manuscript/Figure4/cell_ranger_multi.rds')
+    output_dir <- "~/ensemblex_manuscript/Figure4"
+    seurat_object<-readRDS('~/ensemblex_manuscript/Figure4/cell_ranger_multi.rds')
 
     confidence <- fread("~/20k_NSCLC_DTC_3p_nextgem_intron_Multiplex_multiplexing_analysis_assignment_confidence_table.csv")
     cells <- fread("~/CellRanger_multi/20k_NSCLC_DTC_3p_nextgem_intron_Multiplex_multiplexing_analysis_assignment_confidence_table.csv",select = c("Barcodes"))
@@ -76,35 +76,35 @@ output_dir <- "~/ensemblux_manuscript/Figure4"
         scale_colour_manual(values = c("Doublet" = "black", "CMO303" = "#CAB2D6", "CMO307" = "#A6CEE3", "CMO302" =  "#FDBF6F", "CMO306" =  "#FB9A99", "CMO308" = "#1F78B4", "CMO301" =  "#B2DF8A", "CMO304" =  "#33A02C"))
     ggsave(paste(output_dir,"/TSNE_CMO.pdf", sep=""),width = 5, height = 5, dpi = 300)
 
-    ## Add ensemblux metadata
-    Ensemblux <- read.delim("~/EID/PWE_GBD_EID_droplet_assignment.csv", sep=",")
-    Ensemblux <- Ensemblux %>% dplyr::select(barcode, assignment_R_consensus)
-    rownames(Ensemblux) <- unlist(seurat_object_demux@assays$CMO@counts@Dimnames[2])
-    seurat_object_demux <- AddMetaData(seurat_object_demux, Ensemblux)
+    ## Add ensemblex metadata
+    ensemblex <- read.delim("~/EID/PWE_GBD_EID_droplet_assignment.csv", sep=",")
+    ensemblex <- ensemblex %>% dplyr::select(barcode, assignment_R_consensus)
+    rownames(ensemblex) <- unlist(seurat_object_demux@assays$CMO@counts@Dimnames[2])
+    seurat_object_demux <- AddMetaData(seurat_object_demux, ensemblex)
 
-    ## Ensemblux tSNE all cells
+    ## ensemblex tSNE all cells
     DimPlot(seurat_object_demux, group.by = "assignment_R_consensus") +
         theme_void() +
         theme(legend.position = "none",
         plot.title = element_blank()) +
         scale_colour_manual(values = c("Doublet" = "black", "CMO303" = "#CAB2D6", "CMO307" = "#A6CEE3", "CMO302" =  "#FDBF6F", "CMO306" =  "#FB9A99", "CMO308" = "#1F78B4", "CMO301" =  "#B2DF8A", "CMO304" =  "#33A02C"))
-    ggsave(paste(output_dir,"/TSNE_ensemblux_all_cells.pdf", sep=""),width = 5, height = 5, dpi = 300)
+    ggsave(paste(output_dir,"/TSNE_ensemblex_all_cells.pdf", sep=""),width = 5, height = 5, dpi = 300)
 
     ### Evaluate doublet
     seurat_object_demux_doublet <- seurat_object_demux
 
-    ## Add Ensemblux metadata
-    Ensemblux <- read.delim("~/EID/PWE_GBD_EID_droplet_assignment.csv", sep=",")
-    Ensemblux <- Ensemblux %>% dplyr::select(barcode, assignment_R_consensus, truth)
-    rownames(Ensemblux) <- unlist(seurat_object_demux_doublet@assays$CMO@counts@Dimnames[2])
+    ## Add ensemblex metadata
+    ensemblex <- read.delim("~/EID/PWE_GBD_EID_droplet_assignment.csv", sep=",")
+    ensemblex <- ensemblex %>% dplyr::select(barcode, assignment_R_consensus, truth)
+    rownames(ensemblex) <- unlist(seurat_object_demux_doublet@assays$CMO@counts@Dimnames[2])
 
     ## Evaluate
-    Ensemblux$eval <- "singlet"
-    Ensemblux$eval[Ensemblux$assignment_R_consensus == "Doublet" & Ensemblux$truth == "Doublet"] <- "TP"
-    Ensemblux$eval[Ensemblux$assignment_R_consensus != "Doublet" & Ensemblux$truth == "Doublet"] <- "FN"
-    Ensemblux$eval[Ensemblux$assignment_R_consensus == "Doublet" & Ensemblux$truth != "Doublet"] <- "FP"
+    ensemblex$eval <- "singlet"
+    ensemblex$eval[ensemblex$assignment_R_consensus == "Doublet" & ensemblex$truth == "Doublet"] <- "TP"
+    ensemblex$eval[ensemblex$assignment_R_consensus != "Doublet" & ensemblex$truth == "Doublet"] <- "FN"
+    ensemblex$eval[ensemblex$assignment_R_consensus == "Doublet" & ensemblex$truth != "Doublet"] <- "FP"
 
-    seurat_object_demux_doublet <- AddMetaData(seurat_object_demux_doublet, Ensemblux)
+    seurat_object_demux_doublet <- AddMetaData(seurat_object_demux_doublet, ensemblex)
     seurat_object_demux_doublet <- subset(seurat_object_demux_doublet, eval != "singlet")
 
     ## Plot
@@ -113,23 +113,23 @@ output_dir <- "~/ensemblux_manuscript/Figure4"
         theme(legend.position = "none",
         plot.title = element_blank()) +
         scale_colour_manual(values = c("#fdda54","#f64941",  "#a6e0e9", "grey"))
-    ggsave(paste(output_dir,"/TSNE_ensemblux_doublet.pdf", sep=""),width = 3, height = 3, dpi = 300)
+    ggsave(paste(output_dir,"/TSNE_ensemblex_doublet.pdf", sep=""),width = 3, height = 3, dpi = 300)
 
 
     ### Evaluate singlet
     seurat_object_demux_singlet <- seurat_object_demux
 
-    ## Add Ensemblux metadata
-    Ensemblux <- read.delim("~/EID/PWE_GBD_EID_droplet_assignment.csv", sep=",")
-    Ensemblux <- Ensemblux %>% dplyr::select(barcode, assignment_R_consensus, truth)
-    rownames(Ensemblux) <- unlist(seurat_object_demux_singlet@assays$CMO@counts@Dimnames[2])
+    ## Add ensemblex metadata
+    ensemblex <- read.delim("~/EID/PWE_GBD_EID_droplet_assignment.csv", sep=",")
+    ensemblex <- ensemblex %>% dplyr::select(barcode, assignment_R_consensus, truth)
+    rownames(ensemblex) <- unlist(seurat_object_demux_singlet@assays$CMO@counts@Dimnames[2])
 
     ## Evaluate
-    Ensemblux$eval <- "doublet"
-    Ensemblux$eval[Ensemblux$assignment_R_consensus == Ensemblux$truth & Ensemblux$truth != "Doublet"] <- "TP"
-    Ensemblux$eval[Ensemblux$assignment_R_consensus != Ensemblux$truth & Ensemblux$truth != "Doublet"] <- "FP"
+    ensemblex$eval <- "doublet"
+    ensemblex$eval[ensemblex$assignment_R_consensus == ensemblex$truth & ensemblex$truth != "Doublet"] <- "TP"
+    ensemblex$eval[ensemblex$assignment_R_consensus != ensemblex$truth & ensemblex$truth != "Doublet"] <- "FP"
 
-    seurat_object_demux_singlet <- AddMetaData(seurat_object_demux_singlet, Ensemblux)
+    seurat_object_demux_singlet <- AddMetaData(seurat_object_demux_singlet, ensemblex)
     seurat_object_demux_singlet <- subset(seurat_object_demux_singlet, eval != "doublet")
 
     ## Plot
@@ -138,73 +138,73 @@ output_dir <- "~/ensemblux_manuscript/Figure4"
         theme(legend.position = "none",
         plot.title = element_blank()) +
         scale_colour_manual(values = c("#f64941", "#a6e0e9"))
-    ggsave(paste(output_dir,"/TSNE_ensemblux_singlet.pdf", sep=""),width = 3, height = 3, dpi = 300)
+    ggsave(paste(output_dir,"/TSNE_ensemblex_singlet.pdf", sep=""),width = 3, height = 3, dpi = 300)
 ##
 
 ################################
 # Singlet classification rates #
 ################################
 ## code
-    ## Load in Ensemblux outputs
-    Ensemblux <- read.delim("~/EID/PWE_GBD_EID_droplet_assignment.csv", sep=",")
+    ## Load in ensemblex outputs
+    ensemblex <- read.delim("~/EID/PWE_GBD_EID_droplet_assignment.csv", sep=",")
 
     ### Compute how many true singlets we have
-    Ensemblux_singlets <- subset(Ensemblux, truth != "Doublet")
-    n_singlets = nrow(Ensemblux_singlets)
+    ensemblex_singlets <- subset(ensemblex, truth != "Doublet")
+    n_singlets = nrow(ensemblex_singlets)
 
-    ## Ensemblux
-    Ensemblux$eval_ensemblux <- "Doublet"
-    Ensemblux$eval_ensemblux[Ensemblux$assignment_R_consensus != "Doublet" & Ensemblux$truth != "Doublet" & Ensemblux$truth == Ensemblux$assignment_R_consensus] <- "TP"
-    Ensemblux$eval_ensemblux[Ensemblux$assignment_R_consensus != "Doublet" & Ensemblux$truth != "Doublet" & Ensemblux$truth != Ensemblux$assignment_R_consensus] <- "FP"
-    df <- data.frame(table(Ensemblux$eval_ensemblux))
+    ## ensemblex
+    ensemblex$eval_ensemblex <- "Doublet"
+    ensemblex$eval_ensemblex[ensemblex$assignment_R_consensus != "Doublet" & ensemblex$truth != "Doublet" & ensemblex$truth == ensemblex$assignment_R_consensus] <- "TP"
+    ensemblex$eval_ensemblex[ensemblex$assignment_R_consensus != "Doublet" & ensemblex$truth != "Doublet" & ensemblex$truth != ensemblex$assignment_R_consensus] <- "FP"
+    df <- data.frame(table(ensemblex$eval_ensemblex))
     df <- subset(df, Var1 != "Doublet")
     df$Freq <- df$Freq/n_singlets
-    df$Trool <- "Ensemblux"
-    df_ensemblux <- df
+    df$Trool <- "ensemblex"
+    df_ensemblex <- df
 
     ## Demuxalot
-    Ensemblux$eval_ensemblux <- "Doublet"
-    Ensemblux$eval_ensemblux[Ensemblux$demuxalot != "Doublet" & Ensemblux$truth != "Doublet" & Ensemblux$truth == Ensemblux$demuxalot] <- "TP"
-    Ensemblux$eval_ensemblux[Ensemblux$demuxalot != "Doublet" & Ensemblux$truth != "Doublet" & Ensemblux$truth != Ensemblux$demuxalot] <- "FP"
-    df <- data.frame(table(Ensemblux$eval_ensemblux))
+    ensemblex$eval_ensemblex <- "Doublet"
+    ensemblex$eval_ensemblex[ensemblex$demuxalot != "Doublet" & ensemblex$truth != "Doublet" & ensemblex$truth == ensemblex$demuxalot] <- "TP"
+    ensemblex$eval_ensemblex[ensemblex$demuxalot != "Doublet" & ensemblex$truth != "Doublet" & ensemblex$truth != ensemblex$demuxalot] <- "FP"
+    df <- data.frame(table(ensemblex$eval_ensemblex))
     df <- subset(df, Var1 != "Doublet")
     df$Freq <- df$Freq/n_singlets
     df$Trool <- "demuxalot"
     df_demuxalot <- df
 
     ## Demuxlet
-    Ensemblux$eval_ensemblux <- "Doublet"
-    Ensemblux$eval_ensemblux[Ensemblux$freemuxlet_sample != "Doublet" & Ensemblux$truth != "Doublet" & Ensemblux$truth == Ensemblux$freemuxlet_sample] <- "TP"
-    Ensemblux$eval_ensemblux[Ensemblux$freemuxlet_sample != "Doublet" & Ensemblux$truth != "Doublet" & Ensemblux$truth != Ensemblux$freemuxlet_sample] <- "FP"
-    df <- data.frame(table(Ensemblux$eval_ensemblux))
+    ensemblex$eval_ensemblex <- "Doublet"
+    ensemblex$eval_ensemblex[ensemblex$freemuxlet_sample != "Doublet" & ensemblex$truth != "Doublet" & ensemblex$truth == ensemblex$freemuxlet_sample] <- "TP"
+    ensemblex$eval_ensemblex[ensemblex$freemuxlet_sample != "Doublet" & ensemblex$truth != "Doublet" & ensemblex$truth != ensemblex$freemuxlet_sample] <- "FP"
+    df <- data.frame(table(ensemblex$eval_ensemblex))
     df <- subset(df, Var1 != "Doublet")
     df$Freq <- df$Freq/n_singlets
     df$Trool <- "freemuxlet"
     df_freemuxlet <- df
 
     ## Souporcell
-    Ensemblux$eval_ensemblux <- "Doublet"
-    Ensemblux$eval_ensemblux[Ensemblux$souporcell_sample != "Doublet" & Ensemblux$truth != "Doublet" & Ensemblux$truth == Ensemblux$souporcell_sample] <- "TP"
-    Ensemblux$eval_ensemblux[Ensemblux$souporcell_sample != "Doublet" & Ensemblux$truth != "Doublet" & Ensemblux$truth != Ensemblux$souporcell_sample] <- "FP"
-    df <- data.frame(table(Ensemblux$eval_ensemblux))
+    ensemblex$eval_ensemblex <- "Doublet"
+    ensemblex$eval_ensemblex[ensemblex$souporcell_sample != "Doublet" & ensemblex$truth != "Doublet" & ensemblex$truth == ensemblex$souporcell_sample] <- "TP"
+    ensemblex$eval_ensemblex[ensemblex$souporcell_sample != "Doublet" & ensemblex$truth != "Doublet" & ensemblex$truth != ensemblex$souporcell_sample] <- "FP"
+    df <- data.frame(table(ensemblex$eval_ensemblex))
     df <- subset(df, Var1 != "Doublet")
     df$Freq <- df$Freq/n_singlets
     df$Trool <- "souporcell"
     df_souporcell <- df
 
     ## Vireo
-    Ensemblux$eval_ensemblux <- "Doublet"
-    Ensemblux$eval_ensemblux[Ensemblux$vireo_sample != "Doublet" & Ensemblux$truth != "Doublet" & Ensemblux$truth == Ensemblux$vireo_sample] <- "TP"
-    Ensemblux$eval_ensemblux[Ensemblux$vireo_sample != "Doublet" & Ensemblux$truth != "Doublet" & Ensemblux$truth != Ensemblux$vireo_sample] <- "FP"
-    df <- data.frame(table(Ensemblux$eval_ensemblux))
+    ensemblex$eval_ensemblex <- "Doublet"
+    ensemblex$eval_ensemblex[ensemblex$vireo_sample != "Doublet" & ensemblex$truth != "Doublet" & ensemblex$truth == ensemblex$vireo_sample] <- "TP"
+    ensemblex$eval_ensemblex[ensemblex$vireo_sample != "Doublet" & ensemblex$truth != "Doublet" & ensemblex$truth != ensemblex$vireo_sample] <- "FP"
+    df <- data.frame(table(ensemblex$eval_ensemblex))
     df <- subset(df, Var1 != "Doublet")
     df$Freq <- df$Freq/n_singlets
     df$Trool <- "vireo"
     df_vireo <- df
 
     ## Merge
-    df_merge <- rbind(df_ensemblux, df_demuxalot, df_freemuxlet, df_souporcell, df_vireo)
-    df_merge$Trool <- factor(df_merge$Trool, levels = c("Ensemblux",  "demuxalot",  "freemuxlet", "souporcell", "vireo"))
+    df_merge <- rbind(df_ensemblex, df_demuxalot, df_freemuxlet, df_souporcell, df_vireo)
+    df_merge$Trool <- factor(df_merge$Trool, levels = c("ensemblex",  "demuxalot",  "freemuxlet", "souporcell", "vireo"))
     df_merge$Var1 <- factor(df_merge$Var1, levels = c("TP", "FP"))
 
     ## Plot
@@ -219,7 +219,7 @@ output_dir <- "~/ensemblux_manuscript/Figure4"
         strip.background=element_rect(colour="black",
                                     fill="white")) +
         scale_x_continuous(expand = c(0,0.01), limits = c(0,1.15)) +
-        scale_y_discrete(labels = c("Ensemblux",  "Demuxalot",  "Demuxlet", "Souporcell", "Vireo")) +
+        scale_y_discrete(labels = c("ensemblex",  "Demuxalot",  "Demuxlet", "Souporcell", "Vireo")) +
         geom_bar(stat = "identity") +
         geom_text(hjust=-0.25) +
         xlab("Classification rate") + 
@@ -232,33 +232,33 @@ output_dir <- "~/ensemblux_manuscript/Figure4"
 # Doublet classification rates #
 ################################
 ## code
-    ## Load in Ensemblux outputs
-    Ensemblux <- read.delim("~/EID/PWE_GBD_EID_droplet_assignment.csv", sep=",")
+    ## Load in ensemblex outputs
+    ensemblex <- read.delim("~/EID/PWE_GBD_EID_droplet_assignment.csv", sep=",")
 
     ### Compute how many true doublets we have
-    Ensemblux_doublet <- subset(Ensemblux, truth == "Doublet")
+    ensemblex_doublet <- subset(ensemblex, truth == "Doublet")
 
-    n_doublets = nrow(Ensemblux_doublet)
-    n_droplets = nrow(Ensemblux)
+    n_doublets = nrow(ensemblex_doublet)
+    n_droplets = nrow(ensemblex)
 
-    ## Ensemblux
-    Ensemblux$eval_ensemblux <- "singlet"
-    Ensemblux$eval_ensemblux[Ensemblux$assignment_R_consensus == "Doublet" & Ensemblux$truth == "Doublet"] <- "TP"
-    Ensemblux$eval_ensemblux[Ensemblux$assignment_R_consensus != "Doublet" & Ensemblux$truth == "Doublet"] <- "FN"
-    Ensemblux$eval_ensemblux[Ensemblux$assignment_R_consensus == "Doublet" & Ensemblux$truth != "Doublet"] <- "FP"
-    df <- data.frame(table(Ensemblux$eval_ensemblux))
+    ## ensemblex
+    ensemblex$eval_ensemblex <- "singlet"
+    ensemblex$eval_ensemblex[ensemblex$assignment_R_consensus == "Doublet" & ensemblex$truth == "Doublet"] <- "TP"
+    ensemblex$eval_ensemblex[ensemblex$assignment_R_consensus != "Doublet" & ensemblex$truth == "Doublet"] <- "FN"
+    ensemblex$eval_ensemblex[ensemblex$assignment_R_consensus == "Doublet" & ensemblex$truth != "Doublet"] <- "FP"
+    df <- data.frame(table(ensemblex$eval_ensemblex))
     df <- subset(df, Var1 != "singlet")
     df$Freq[df$Var1 == "TP"] <- df$Freq[df$Var1 == "TP"]/n_doublets
     df$Freq[df$Var1 == "FP"] <- df$Freq[df$Var1 == "FP"]/n_droplets
-    df$Trool <- "Ensemblux"
-    df_ensemblux <- df
+    df$Trool <- "ensemblex"
+    df_ensemblex <- df
 
     ## Demuxalot
-    Ensemblux$eval_ensemblux <- "singlet"
-    Ensemblux$eval_ensemblux[Ensemblux$demuxalot == "Doublet" & Ensemblux$truth == "Doublet"] <- "TP"
-    Ensemblux$eval_ensemblux[Ensemblux$demuxalot != "Doublet" & Ensemblux$truth == "Doublet"] <- "FN"
-    Ensemblux$eval_ensemblux[Ensemblux$demuxalot == "Doublet" & Ensemblux$truth != "Doublet"] <- "FP"
-    df <- data.frame(table(Ensemblux$eval_ensemblux))
+    ensemblex$eval_ensemblex <- "singlet"
+    ensemblex$eval_ensemblex[ensemblex$demuxalot == "Doublet" & ensemblex$truth == "Doublet"] <- "TP"
+    ensemblex$eval_ensemblex[ensemblex$demuxalot != "Doublet" & ensemblex$truth == "Doublet"] <- "FN"
+    ensemblex$eval_ensemblex[ensemblex$demuxalot == "Doublet" & ensemblex$truth != "Doublet"] <- "FP"
+    df <- data.frame(table(ensemblex$eval_ensemblex))
     df <- subset(df, Var1 != "singlet")
     df$Freq[df$Var1 == "TP"] <- df$Freq[df$Var1 == "TP"]/n_doublets
     df$Freq[df$Var1 == "FP"] <- df$Freq[df$Var1 == "FP"]/n_droplets
@@ -266,11 +266,11 @@ output_dir <- "~/ensemblux_manuscript/Figure4"
     df_demuxalot <- df
 
     ## Demuxlet
-    Ensemblux$eval_ensemblux <- "singlet"
-    Ensemblux$eval_ensemblux[Ensemblux$freemuxlet == "Doublet" & Ensemblux$truth == "Doublet"] <- "TP"
-    Ensemblux$eval_ensemblux[Ensemblux$freemuxlet != "Doublet" & Ensemblux$truth == "Doublet"] <- "FN"
-    Ensemblux$eval_ensemblux[Ensemblux$freemuxlet == "Doublet" & Ensemblux$truth != "Doublet"] <- "FP"
-    df <- data.frame(table(Ensemblux$eval_ensemblux))
+    ensemblex$eval_ensemblex <- "singlet"
+    ensemblex$eval_ensemblex[ensemblex$freemuxlet == "Doublet" & ensemblex$truth == "Doublet"] <- "TP"
+    ensemblex$eval_ensemblex[ensemblex$freemuxlet != "Doublet" & ensemblex$truth == "Doublet"] <- "FN"
+    ensemblex$eval_ensemblex[ensemblex$freemuxlet == "Doublet" & ensemblex$truth != "Doublet"] <- "FP"
+    df <- data.frame(table(ensemblex$eval_ensemblex))
     df <- subset(df, Var1 != "singlet")
     df$Freq[df$Var1 == "TP"] <- df$Freq[df$Var1 == "TP"]/n_doublets
     df$Freq[df$Var1 == "FP"] <- df$Freq[df$Var1 == "FP"]/n_droplets
@@ -278,11 +278,11 @@ output_dir <- "~/ensemblux_manuscript/Figure4"
     df_freemuxlet <- df
 
     ## Souporcell
-    Ensemblux$eval_ensemblux <- "singlet"
-    Ensemblux$eval_ensemblux[Ensemblux$souporcell == "Doublet" & Ensemblux$truth == "Doublet"] <- "TP"
-    Ensemblux$eval_ensemblux[Ensemblux$souporcell != "Doublet" & Ensemblux$truth == "Doublet"] <- "FN"
-    Ensemblux$eval_ensemblux[Ensemblux$souporcell == "Doublet" & Ensemblux$truth != "Doublet"] <- "FP"
-    df <- data.frame(table(Ensemblux$eval_ensemblux))
+    ensemblex$eval_ensemblex <- "singlet"
+    ensemblex$eval_ensemblex[ensemblex$souporcell == "Doublet" & ensemblex$truth == "Doublet"] <- "TP"
+    ensemblex$eval_ensemblex[ensemblex$souporcell != "Doublet" & ensemblex$truth == "Doublet"] <- "FN"
+    ensemblex$eval_ensemblex[ensemblex$souporcell == "Doublet" & ensemblex$truth != "Doublet"] <- "FP"
+    df <- data.frame(table(ensemblex$eval_ensemblex))
     df <- subset(df, Var1 != "singlet")
     df$Freq[df$Var1 == "TP"] <- df$Freq[df$Var1 == "TP"]/n_doublets
     df$Freq[df$Var1 == "FP"] <- df$Freq[df$Var1 == "FP"]/n_droplets
@@ -290,11 +290,11 @@ output_dir <- "~/ensemblux_manuscript/Figure4"
     df_souporcell <- df
 
     ## Vireo
-    Ensemblux$eval_ensemblux <- "singlet"
-    Ensemblux$eval_ensemblux[Ensemblux$vireo == "Doublet" & Ensemblux$truth == "Doublet"] <- "TP"
-    Ensemblux$eval_ensemblux[Ensemblux$vireo != "Doublet" & Ensemblux$truth == "Doublet"] <- "FN"
-    Ensemblux$eval_ensemblux[Ensemblux$vireo == "Doublet" & Ensemblux$truth != "Doublet"] <- "FP"
-    df <- data.frame(table(Ensemblux$eval_ensemblux))
+    ensemblex$eval_ensemblex <- "singlet"
+    ensemblex$eval_ensemblex[ensemblex$vireo == "Doublet" & ensemblex$truth == "Doublet"] <- "TP"
+    ensemblex$eval_ensemblex[ensemblex$vireo != "Doublet" & ensemblex$truth == "Doublet"] <- "FN"
+    ensemblex$eval_ensemblex[ensemblex$vireo == "Doublet" & ensemblex$truth != "Doublet"] <- "FP"
+    df <- data.frame(table(ensemblex$eval_ensemblex))
     df <- subset(df, Var1 != "singlet")
     df$Freq[df$Var1 == "TP"] <- df$Freq[df$Var1 == "TP"]/n_doublets
     df$Freq[df$Var1 == "FP"] <- df$Freq[df$Var1 == "FP"]/n_droplets
@@ -302,8 +302,8 @@ output_dir <- "~/ensemblux_manuscript/Figure4"
     df_vireo <- df
 
     ## Merge
-    df_merge <- rbind(df_ensemblux, df_demuxalot, df_freemuxlet, df_souporcell, df_vireo)
-    df_merge$Trool <- factor(df_merge$Trool, levels = c("Ensemblux",  "demuxalot",  "freemuxlet", "souporcell", "vireo"))
+    df_merge <- rbind(df_ensemblex, df_demuxalot, df_freemuxlet, df_souporcell, df_vireo)
+    df_merge$Trool <- factor(df_merge$Trool, levels = c("ensemblex",  "demuxalot",  "freemuxlet", "souporcell", "vireo"))
     df_merge <- subset(df_merge, Var1 != "FN")
     df_merge$Var1 <- factor(df_merge$Var1, levels = c("TP", "FP"))
 
@@ -319,7 +319,7 @@ output_dir <- "~/ensemblux_manuscript/Figure4"
         strip.background=element_rect(colour="black",
                                         fill="white")) +
         scale_x_continuous(expand = c(0,0.01), limits = c(0,0.8)) +
-        scale_y_discrete(labels = c("Ensemblux",  "Demuxalot",  "Demuxlet", "Souporcell", "Vireo")) +
+        scale_y_discrete(labels = c("ensemblex",  "Demuxalot",  "Demuxlet", "Souporcell", "Vireo")) +
         geom_bar(stat = "identity") +
         geom_text(hjust=-0.25) +
         xlab("Classification rate") + 
@@ -357,17 +357,17 @@ output_dir <- "~/ensemblux_manuscript/Figure4"
     prop_usable_souporcell <- nrow(prop_souporcell)/nrow(test_prop)
     prop_usable_souporcell
 
-    ## Ensemblux
+    ## ensemblex
     test_prop$assignment_R_consensus[test_prop$singlet_confidence < 1.0] <- "unassigned"
-    prop_ensemblux  <- subset(test_prop, test_prop$assignment_R_consensus != "unassigned" & test_prop$assignment_R_consensus !="Doublet") 
-    prop_usable_ensemblux <- nrow(prop_ensemblux)/nrow(test_prop)
-    prop_usable_ensemblux
+    prop_ensemblex  <- subset(test_prop, test_prop$assignment_R_consensus != "unassigned" & test_prop$assignment_R_consensus !="Doublet") 
+    prop_usable_ensemblex <- nrow(prop_ensemblex)/nrow(test_prop)
+    prop_usable_ensemblex
 
     ## Dataframe
-    tool <- c("Ensemblux",  "Demuxalot", "Demuxlet", "Souporcell", "Vireo")
-    prop_usable <- c(prop_usable_ensemblux, prop_usable_demuxalot, prop_usable_demuxlet, prop_usable_souporcell, prop_usable_vireo)
+    tool <- c("ensemblex",  "Demuxalot", "Demuxlet", "Souporcell", "Vireo")
+    prop_usable <- c(prop_usable_ensemblex, prop_usable_demuxalot, prop_usable_demuxlet, prop_usable_souporcell, prop_usable_vireo)
     prop_usable_df <- data.frame(tool, prop_usable)
-    prop_usable_df$tool <- factor(prop_usable_df$tool, levels = c("Ensemblux",  "Demuxalot", "Demuxlet", "Souporcell", "Vireo"))
+    prop_usable_df$tool <- factor(prop_usable_df$tool, levels = c("ensemblex",  "Demuxalot", "Demuxlet", "Souporcell", "Vireo"))
 ##
 
 ###########################
@@ -403,18 +403,18 @@ output_dir <- "~/ensemblux_manuscript/Figure4"
     prop_usable_error_souporcell <- 1- nrow(prop_souporcell_correct)/nrow(prop_souporcell)
     prop_usable_error_souporcell
 
-    ## Ensemblux
+    ## ensemblex
     test_prop$assignment_R_consensus[test_prop$singlet_confidence < 1.0] <- "unassigned"
-    prop_ensemblux  <- subset(test_prop, test_prop$assignment_R_consensus != "unassigned" & test_prop$assignment_R_consensus !="Doublet") 
-    prop_ensemblux_correct <- subset(prop_ensemblux, assignment_R_consensus == truth)
-    prop_usable_error_ensemblux <- 1- nrow(prop_ensemblux_correct)/nrow(prop_ensemblux)
-    prop_usable_error_ensemblux
+    prop_ensemblex  <- subset(test_prop, test_prop$assignment_R_consensus != "unassigned" & test_prop$assignment_R_consensus !="Doublet") 
+    prop_ensemblex_correct <- subset(prop_ensemblex, assignment_R_consensus == truth)
+    prop_usable_error_ensemblex <- 1- nrow(prop_ensemblex_correct)/nrow(prop_ensemblex)
+    prop_usable_error_ensemblex
         
     ## Plot
-    tool <- c("Ensemblux",  "Demuxalot", "Demuxlet", "Souporcell", "Vireo")
-    prop_usable_error <- c(prop_usable_error_ensemblux, prop_usable_error_demuxalot, prop_usable_error_demuxlet, prop_usable_error_souporcell, prop_usable_error_vireo)
+    tool <- c("ensemblex",  "Demuxalot", "Demuxlet", "Souporcell", "Vireo")
+    prop_usable_error <- c(prop_usable_error_ensemblex, prop_usable_error_demuxalot, prop_usable_error_demuxlet, prop_usable_error_souporcell, prop_usable_error_vireo)
     prop_usable_error_df <- data.frame(tool, prop_usable_error)
-    prop_usable_error_df$tool <- factor(prop_usable_error_df$tool, levels = c("Ensemblux",  "Demuxalot", "Demuxlet", "Souporcell", "Vireo"))
+    prop_usable_error_df$tool <- factor(prop_usable_error_df$tool, levels = c("ensemblex",  "Demuxalot", "Demuxlet", "Souporcell", "Vireo"))
 ##
 
 #######################
@@ -424,12 +424,12 @@ output_dir <- "~/ensemblux_manuscript/Figure4"
     eval_df <- read.delim("~/EID/PWE_GBD_EID_droplet_assignment.csv", sep=",")
     test_prop <- eval_df
 
-    ### Apply threshold for Ensemblux and Demuxalot and make sure best guess is doublet even if "unassigned"
+    ### Apply threshold for ensemblex and Demuxalot and make sure best guess is doublet even if "unassigned"
     ## Demuxalot
     test_prop$demuxalot_test <- test_prop$demuxalot
     test_prop$demuxalot_test[test_prop$demuxalot_max < 0.9 & test_prop$demuxalot != "Doublet"] <- "unassigned"
 
-    ## Ensemblux
+    ## ensemblex
     test_prop$assignment_R_consensus[test_prop$singlet_confidence < 1.0 & test_prop$assignment_R_consensus != "Doublet"] <- "unassigned"
 
     ## Souporcell
@@ -443,16 +443,16 @@ output_dir <- "~/ensemblux_manuscript/Figure4"
 
     ## calculate ARI
     ARI_vireo_truth <- adj.rand.index(test_prop$vireo_sample, test_prop$truth) 
-    ARI_ensemblux_truth <- adj.rand.index(test_prop$assignment_R_consensus, test_prop$truth) 
+    ARI_ensemblex_truth <- adj.rand.index(test_prop$assignment_R_consensus, test_prop$truth) 
     ARI_demuxalot_truth <- adj.rand.index(test_prop$demuxalot_test, test_prop$truth) 
     ARI_demuxlet_truth <- adj.rand.index(test_prop$freemuxlet_sample, test_prop$truth) 
     ARI_souporcell_truth <- adj.rand.index(test_prop$souporcell_sample, test_prop$truth) 
 
     ## Dataframe
-    tool <- c("Ensemblux",  "Demuxalot", "Demuxlet", "Souporcell", "Vireo")
-    ARI_thresh <- c(ARI_ensemblux_truth, ARI_demuxalot_truth, ARI_demuxlet_truth, ARI_souporcell_truth, ARI_vireo_truth)
+    tool <- c("ensemblex",  "Demuxalot", "Demuxlet", "Souporcell", "Vireo")
+    ARI_thresh <- c(ARI_ensemblex_truth, ARI_demuxalot_truth, ARI_demuxlet_truth, ARI_souporcell_truth, ARI_vireo_truth)
     ARI_threshold_df <- data.frame(tool, ARI_thresh)
-    ARI_threshold_df$tool <- factor(ARI_threshold_df$tool, levels = c("Ensemblux", "Demuxalot", "Demuxlet", "Souporcell", "Vireo"))
+    ARI_threshold_df$tool <- factor(ARI_threshold_df$tool, levels = c("ensemblex", "Demuxalot", "Demuxlet", "Souporcell", "Vireo"))
 ##
 
 ######################
@@ -462,12 +462,12 @@ output_dir <- "~/ensemblux_manuscript/Figure4"
     eval_df <- read.delim("~/EID/PWE_GBD_EID_droplet_assignment.csv", sep=",")
     eval_df_ba <- eval_df
 
-    ### Apply threshold for Ensemblux and Demuxalot and make sure best guess is doublet even if "unassigned"
+    ### Apply threshold for ensemblex and Demuxalot and make sure best guess is doublet even if "unassigned"
     ## Demuxalot
     eval_df_ba$demuxalot_test <- eval_df_ba$demuxalot
     eval_df_ba$demuxalot_test[eval_df_ba$demuxalot_max < 0.9 & eval_df_ba$demuxalot != "Doublet"] <- "unassigned"
 
-    ## Ensemblux
+    ## ensemblex
     eval_df_ba$assignment_R_consensus[eval_df_ba$singlet_confidence < 1.0 & eval_df_ba$assignment_R_consensus != "Doublet"] <- "unassigned"
 
     ## Souporcell
@@ -514,13 +514,13 @@ output_dir <- "~/ensemblux_manuscript/Figure4"
             (df_summary$Freq[df_summary$Var1 == "TN"]/(df_summary$Freq[df_summary$Var1 == "TN"] + df_summary$Freq[df_summary$Var1 == "FP"])))/2
     demuxalot_BA <- BA
 
-    ## Ensemblux
-    eval_df_ba$ensemblux_eval[str_detect(eval_df_ba$truth, "D") & eval_df_ba$truth == eval_df_ba$assignment_R_consensus] <- "TN"
-    eval_df_ba$ensemblux_eval[str_detect(eval_df_ba$truth, "C") & eval_df_ba$truth == eval_df_ba$assignment_R_consensus] <- "TP"
-    eval_df_ba$ensemblux_eval[str_detect(eval_df_ba$truth, "C") & eval_df_ba$truth != eval_df_ba$assignment_R_consensus] <- "FP"
-    eval_df_ba$ensemblux_eval[str_detect(eval_df_ba$truth, "D") & eval_df_ba$truth != eval_df_ba$assignment_R_consensus] <- "FN"
+    ## ensemblex
+    eval_df_ba$ensemblex_eval[str_detect(eval_df_ba$truth, "D") & eval_df_ba$truth == eval_df_ba$assignment_R_consensus] <- "TN"
+    eval_df_ba$ensemblex_eval[str_detect(eval_df_ba$truth, "C") & eval_df_ba$truth == eval_df_ba$assignment_R_consensus] <- "TP"
+    eval_df_ba$ensemblex_eval[str_detect(eval_df_ba$truth, "C") & eval_df_ba$truth != eval_df_ba$assignment_R_consensus] <- "FP"
+    eval_df_ba$ensemblex_eval[str_detect(eval_df_ba$truth, "D") & eval_df_ba$truth != eval_df_ba$assignment_R_consensus] <- "FN"
     df <- eval_df_ba
-    df_summary <- data.frame(table(df$ensemblux_eval))
+    df_summary <- data.frame(table(df$ensemblex_eval))
     Var1 <- c("FN", "TN", "TP", "FP")
     Freq<- c(0,0,0,0)
     filler_frame <- data.frame(Var1, Freq)
@@ -529,7 +529,7 @@ output_dir <- "~/ensemblux_manuscript/Figure4"
         dplyr::summarise(Freq = sum(Freq)) %>% as.data.frame()
     BA <- ((df_summary$Freq[df_summary$Var1 == "TP"]/(df_summary$Freq[df_summary$Var1 == "TP"] + df_summary$Freq[df_summary$Var1 == "FN"])) + 
             (df_summary$Freq[df_summary$Var1 == "TN"]/(df_summary$Freq[df_summary$Var1 == "TN"] + df_summary$Freq[df_summary$Var1 == "FP"])))/2
-    ensemblux_BA <- BA
+    ensemblex_BA <- BA
 
     ## Demuxlet
     eval_df_ba$demuxlet_eval[str_detect(eval_df_ba$truth, "D") & eval_df_ba$truth == eval_df_ba$freemuxlet_sample] <- "TN"
@@ -566,10 +566,10 @@ output_dir <- "~/ensemblux_manuscript/Figure4"
     souporcell_BA <- BA
 
     ## Dataframe
-    tool <- c("Ensemblux",  "Demuxalot", "Demuxlet", "Souporcell", "Vireo")
-    BA_thresh <- c(ensemblux_BA, demuxalot_BA, demuxlet_BA,souporcell_BA, vireo_BA)
+    tool <- c("ensemblex",  "Demuxalot", "Demuxlet", "Souporcell", "Vireo")
+    BA_thresh <- c(ensemblex_BA, demuxalot_BA, demuxlet_BA,souporcell_BA, vireo_BA)
     BA_threshold_df <- data.frame(tool, BA_thresh)
-    BA_threshold_df$tool <- factor(BA_threshold_df$tool, levels = c("Ensemblux",  "Demuxalot", "Demuxlet", "Souporcell", "Vireo"))
+    BA_threshold_df$tool <- factor(BA_threshold_df$tool, levels = c("ensemblex",  "Demuxalot", "Demuxlet", "Souporcell", "Vireo"))
 ##
 
 #####################################
@@ -579,12 +579,12 @@ output_dir <- "~/ensemblux_manuscript/Figure4"
     eval_df <- read.delim("~/EID/PWE_GBD_EID_droplet_assignment.csv", sep=",")
     eval_df_ba <- eval_df
 
-    ### Apply threshold for Ensemblux and Demuxalot and make sure best guess is doublet even if "unassigned"
+    ### Apply threshold for ensemblex and Demuxalot and make sure best guess is doublet even if "unassigned"
     ## Demuxalot
     eval_df_ba$demuxalot_test <- eval_df_ba$demuxalot
     eval_df_ba$demuxalot_test[eval_df_ba$demuxalot_max < 0.9 & eval_df_ba$demuxalot != "Doublet"] <- "unassigned"
 
-    ## Ensemblux
+    ## ensemblex
     eval_df_ba$assignment_R_consensus[eval_df_ba$singlet_confidence < 1.0 & eval_df_ba$assignment_R_consensus != "Doublet"] <- "unassigned"
 
     ## Souporcell
@@ -631,13 +631,13 @@ output_dir <- "~/ensemblux_manuscript/Figure4"
                 sqrt((as.numeric(df_summary$Freq[df_summary$Var1 == "TP"])+as.numeric(df_summary$Freq[df_summary$Var1 == "FP"]))*(as.numeric(df_summary$Freq[df_summary$Var1 == "TP"])+as.numeric(df_summary$Freq[df_summary$Var1 == "FN"]))*(as.numeric(df_summary$Freq[df_summary$Var1 == "TN"])+as.numeric(df_summary$Freq[df_summary$Var1 == "FP"]))*(as.numeric(df_summary$Freq[df_summary$Var1 == "TN"])+as.numeric(df_summary$Freq[df_summary$Var1 == "FN"]))))
     demuxalot_MCC <- MCC
 
-    ## Ensemblux
-    eval_df_ba$ensemblux_eval[str_detect(eval_df_ba$truth, "D") & eval_df_ba$truth == eval_df_ba$assignment_R_consensus] <- "TN"
-    eval_df_ba$ensemblux_eval[str_detect(eval_df_ba$truth, "C") & eval_df_ba$truth == eval_df_ba$assignment_R_consensus] <- "TP"
-    eval_df_ba$ensemblux_eval[str_detect(eval_df_ba$truth, "C") & eval_df_ba$truth != eval_df_ba$assignment_R_consensus] <- "FP"
-    eval_df_ba$ensemblux_eval[str_detect(eval_df_ba$truth, "D") & eval_df_ba$truth != eval_df_ba$assignment_R_consensus] <- "FN"
+    ## ensemblex
+    eval_df_ba$ensemblex_eval[str_detect(eval_df_ba$truth, "D") & eval_df_ba$truth == eval_df_ba$assignment_R_consensus] <- "TN"
+    eval_df_ba$ensemblex_eval[str_detect(eval_df_ba$truth, "C") & eval_df_ba$truth == eval_df_ba$assignment_R_consensus] <- "TP"
+    eval_df_ba$ensemblex_eval[str_detect(eval_df_ba$truth, "C") & eval_df_ba$truth != eval_df_ba$assignment_R_consensus] <- "FP"
+    eval_df_ba$ensemblex_eval[str_detect(eval_df_ba$truth, "D") & eval_df_ba$truth != eval_df_ba$assignment_R_consensus] <- "FN"
     df <- eval_df_ba
-    df_summary <- data.frame(table(df$ensemblux_eval))
+    df_summary <- data.frame(table(df$ensemblex_eval))
     Var1 <- c("FN", "TN", "TP", "FP")
     Freq<- c(0,0,0,0)
     filler_frame <- data.frame(Var1, Freq)
@@ -646,7 +646,7 @@ output_dir <- "~/ensemblux_manuscript/Figure4"
         dplyr::summarise(Freq = sum(Freq)) %>% as.data.frame()
     MCC <- ((as.numeric((df_summary$Freq[df_summary$Var1 == "TP"])*as.numeric(df_summary$Freq[df_summary$Var1 == "TN"]))-(as.numeric(df_summary$Freq[df_summary$Var1 == "FP"])*as.numeric(df_summary$Freq[df_summary$Var1 == "FN"])))/
                 sqrt((as.numeric(df_summary$Freq[df_summary$Var1 == "TP"])+as.numeric(df_summary$Freq[df_summary$Var1 == "FP"]))*(as.numeric(df_summary$Freq[df_summary$Var1 == "TP"])+as.numeric(df_summary$Freq[df_summary$Var1 == "FN"]))*(as.numeric(df_summary$Freq[df_summary$Var1 == "TN"])+as.numeric(df_summary$Freq[df_summary$Var1 == "FP"]))*(as.numeric(df_summary$Freq[df_summary$Var1 == "TN"])+as.numeric(df_summary$Freq[df_summary$Var1 == "FN"]))))
-    ensemblux_MCC <- MCC
+    ensemblex_MCC <- MCC
 
     ## Demuxlet
     eval_df_ba$demuxlet_eval[str_detect(eval_df_ba$truth, "D") & eval_df_ba$truth == eval_df_ba$freemuxlet_sample] <- "TN"
@@ -683,10 +683,10 @@ output_dir <- "~/ensemblux_manuscript/Figure4"
     souporcell_MCC <- MCC
         
     ## Dataframe
-    tool <- c("Ensemblux",  "Demuxalot", "Demuxlet", "Souporcell", "Vireo")
-    MCC_thresh <- c(ensemblux_MCC, demuxalot_MCC, demuxlet_MCC, souporcell_MCC, vireo_MCC)
+    tool <- c("ensemblex",  "Demuxalot", "Demuxlet", "Souporcell", "Vireo")
+    MCC_thresh <- c(ensemblex_MCC, demuxalot_MCC, demuxlet_MCC, souporcell_MCC, vireo_MCC)
     MCC_threshold_df <- data.frame(tool, MCC_thresh)
-    MCC_threshold_df$tool <- factor(MCC_threshold_df$tool, levels = c("Ensemblux",  "Demuxalot", "Demuxlet", "Souporcell", "Vireo"))
+    MCC_threshold_df$tool <- factor(MCC_threshold_df$tool, levels = c("ensemblex",  "Demuxalot", "Demuxlet", "Souporcell", "Vireo"))
 ##
 
 #############################
@@ -712,7 +712,7 @@ output_dir <- "~/ensemblux_manuscript/Figure4"
     eval_df_ba$demuxalot_eval <- "bad"
     eval_df_ba$demuxalot_eval[eval_df_ba$demuxalot == eval_df_ba$truth ] <- "good"
 
-    ## Ensemblux 
+    ## ensemblex 
     eval_df_ba$concensus_eval <- "bad"
     eval_df_ba$concensus_eval[eval_df_ba$assignment_R_consensus == eval_df_ba$truth ] <- "good"
 
@@ -744,10 +744,10 @@ output_dir <- "~/ensemblux_manuscript/Figure4"
     summary(roc_empirical)
     AUC_souporcell <-roc_empirical$AUC
 
-    ## Ensemblux
+    ## ensemblex
     roc_empirical <- rocit(score = df$singlet_confidence, class = df$concensus_eval, ##change_here
                     negref = "bad") 
     summary(roc_empirical)
-    AUC_ensemblux <-roc_empirical$AUC
-    AUC_ensemblux
+    AUC_ensemblex <-roc_empirical$AUC
+    AUC_ensemblex
 ##

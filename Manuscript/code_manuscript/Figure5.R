@@ -3,7 +3,7 @@
 #########
 # NOTES #
 #########
-# This code was used to produce Figure 5 of the Ensemblux manuscript
+# This code was used to produce Figure 5 of the ensemblex manuscript
 
 ########
 # Main #
@@ -12,7 +12,7 @@
 packages <- c('dplyr', 'tidyr' 'pdfCluster', 'data.table','readr','lubridate', 'tidyverse', 'moments', 'mousetrap', 'usethis', 'devtools', 'desc', 'kneedle', 'ROCit', 'ggplot2', 'factoextra', 'ggpubr', 'ComplexUpset', 'Seurat', 'Matrix', 'scCustomize', 'vctrs', 'fossil', 'openxlsx', 'stringr' )
 lapply(packages, library, character.only = TRUE)
 
-output_dir= '~/ensemblux_manuscript/Figure5'
+output_dir= '~/ensemblex_manuscript/Figure5'
 
 #########################################################
 # Integrate, cluster, and ARI for Day 11 Seurat objects #
@@ -26,21 +26,21 @@ output_dir= '~/ensemblux_manuscript/Figure5'
     seu_r3 <- readRDS('~/jerber_pool5/day_11/rep3/step4/objs4/pool5_day_11_rep3.rds')
     df_r3 <- data.frame(seu_r3@meta.data)
 
-    ## Load corresponding Ensemblux output
-    ensemblux_r1 <- read.delim("~/jerber_pool5/day_11/rep1/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-    rownames(ensemblux_r1) <- paste0("pool5_day_11_rep1_", ensemblux_r1$barcode)
-    rownames(ensemblux_r1) == rownames(df_r1)
-    ensemblux_r2 <- read.delim("~/jerber_pool5/day_11/rep2/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-    rownames(ensemblux_r2) <- paste0("pool5_day_11_rep2_", ensemblux_r2$barcode)
-    rownames(ensemblux_r2) == rownames(df_r2)
-    ensemblux_r3 <- read.delim("~/jerber_pool5/day_11/rep3/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-    rownames(ensemblux_r3) <- paste0("pool5_day_11_rep3_", ensemblux_r3$barcode)
-    rownames(ensemblux_r3) == rownames(df_r3)
+    ## Load corresponding ensemblex output
+    ensemblex_r1 <- read.delim("~/jerber_pool5/day_11/rep1/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+    rownames(ensemblex_r1) <- paste0("pool5_day_11_rep1_", ensemblex_r1$barcode)
+    rownames(ensemblex_r1) == rownames(df_r1)
+    ensemblex_r2 <- read.delim("~/jerber_pool5/day_11/rep2/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+    rownames(ensemblex_r2) <- paste0("pool5_day_11_rep2_", ensemblex_r2$barcode)
+    rownames(ensemblex_r2) == rownames(df_r2)
+    ensemblex_r3 <- read.delim("~/jerber_pool5/day_11/rep3/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+    rownames(ensemblex_r3) <- paste0("pool5_day_11_rep3_", ensemblex_r3$barcode)
+    rownames(ensemblex_r3) == rownames(df_r3)
 
-    ## merge Seurat and Ensemblux
-    seu_r1 <- AddMetaData(seu_r1, ensemblux_r1)
-    seu_r2 <- AddMetaData(seu_r2, ensemblux_r2)
-    seu_r3 <- AddMetaData(seu_r3, ensemblux_r3)
+    ## merge Seurat and ensemblex
+    seu_r1 <- AddMetaData(seu_r1, ensemblex_r1)
+    seu_r2 <- AddMetaData(seu_r2, ensemblex_r2)
+    seu_r3 <- AddMetaData(seu_r3, ensemblex_r3)
 
     ### Prepare Seurat objects for integration
     ## Rep 1
@@ -229,21 +229,21 @@ output_dir= '~/ensemblux_manuscript/Figure5'
     seu_r3 <- readRDS('~/jerber_pool5/day_30/rep3/step4/objs4/pool5_day_30_rep3.rds')
     df_r3 <- data.frame(seu_r3@meta.data)
 
-    ## Load corresponding Ensemblux output
-    ensemblux_r1 <- read.delim("~/jerber_pool5/day_30/rep1/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-    rownames(ensemblux_r1) <- paste0("pool5_day_30_rep1_", ensemblux_r1$barcode)
-    rownames(ensemblux_r1) == rownames(df_r1)
-    ensemblux_r2 <- read.delim("~/jerber_pool5/day_30/rep2/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-    rownames(ensemblux_r2) <- paste0("pool5_day_30_rep2_", ensemblux_r2$barcode)
-    rownames(ensemblux_r2) == rownames(df_r2)
-    ensemblux_r3 <- read.delim("~/jerber_pool5/day_30/rep3/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-    rownames(ensemblux_r3) <- paste0("pool5_day_30_rep3_", ensemblux_r3$barcode)
-    rownames(ensemblux_r3) == rownames(df_r3)
+    ## Load corresponding ensemblex output
+    ensemblex_r1 <- read.delim("~/jerber_pool5/day_30/rep1/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+    rownames(ensemblex_r1) <- paste0("pool5_day_30_rep1_", ensemblex_r1$barcode)
+    rownames(ensemblex_r1) == rownames(df_r1)
+    ensemblex_r2 <- read.delim("~/jerber_pool5/day_30/rep2/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+    rownames(ensemblex_r2) <- paste0("pool5_day_30_rep2_", ensemblex_r2$barcode)
+    rownames(ensemblex_r2) == rownames(df_r2)
+    ensemblex_r3 <- read.delim("~/jerber_pool5/day_30/rep3/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+    rownames(ensemblex_r3) <- paste0("pool5_day_30_rep3_", ensemblex_r3$barcode)
+    rownames(ensemblex_r3) == rownames(df_r3)
 
-    ## merge Seurat and Ensemblux
-    seu_r1 <- AddMetaData(seu_r1, ensemblux_r1)
-    seu_r2 <- AddMetaData(seu_r2, ensemblux_r2)
-    seu_r3 <- AddMetaData(seu_r3, ensemblux_r3)
+    ## merge Seurat and ensemblex
+    seu_r1 <- AddMetaData(seu_r1, ensemblex_r1)
+    seu_r2 <- AddMetaData(seu_r2, ensemblex_r2)
+    seu_r3 <- AddMetaData(seu_r3, ensemblex_r3)
 
     ### Prepare Seurat objects for integration
     ## Rep 1
@@ -432,21 +432,21 @@ output_dir= '~/ensemblux_manuscript/Figure5'
     seu_r3 <- readRDS('~/jerber_pool5/day_52ctrl/rep3/step4/objs4/pool5_day_52ctrl_rep3.rds')
     df_r3 <- data.frame(seu_r3@meta.data)
 
-    ## Load corresponding Ensemblux output
-    ensemblux_r1 <- read.delim("~/jerber_pool5/day_52ctrl/rep1/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-    rownames(ensemblux_r1) <- paste0("pool5_day_52ctrl_rep1_", ensemblux_r1$barcode)
-    rownames(ensemblux_r1) == rownames(df_r1)
-    ensemblux_r2 <- read.delim("~/jerber_pool5/day_52ctrl/rep2/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-    rownames(ensemblux_r2) <- paste0("pool5_day_52ctrl_rep2_", ensemblux_r2$barcode)
-    rownames(ensemblux_r2) == rownames(df_r2)
-    ensemblux_r3 <- read.delim("~/jerber_pool5/day_52ctrl/rep3/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-    rownames(ensemblux_r3) <- paste0("pool5_day_52ctrl_rep3_", ensemblux_r3$barcode)
-    rownames(ensemblux_r3) == rownames(df_r3)
+    ## Load corresponding ensemblex output
+    ensemblex_r1 <- read.delim("~/jerber_pool5/day_52ctrl/rep1/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+    rownames(ensemblex_r1) <- paste0("pool5_day_52ctrl_rep1_", ensemblex_r1$barcode)
+    rownames(ensemblex_r1) == rownames(df_r1)
+    ensemblex_r2 <- read.delim("~/jerber_pool5/day_52ctrl/rep2/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+    rownames(ensemblex_r2) <- paste0("pool5_day_52ctrl_rep2_", ensemblex_r2$barcode)
+    rownames(ensemblex_r2) == rownames(df_r2)
+    ensemblex_r3 <- read.delim("~/jerber_pool5/day_52ctrl/rep3/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+    rownames(ensemblex_r3) <- paste0("pool5_day_52ctrl_rep3_", ensemblex_r3$barcode)
+    rownames(ensemblex_r3) == rownames(df_r3)
 
-    ## merge Seurat and Ensemblux
-    seu_r1 <- AddMetaData(seu_r1, ensemblux_r1)
-    seu_r2 <- AddMetaData(seu_r2, ensemblux_r2)
-    seu_r3 <- AddMetaData(seu_r3, ensemblux_r3)
+    ## merge Seurat and ensemblex
+    seu_r1 <- AddMetaData(seu_r1, ensemblex_r1)
+    seu_r2 <- AddMetaData(seu_r2, ensemblex_r2)
+    seu_r3 <- AddMetaData(seu_r3, ensemblex_r3)
 
     ### Prepare Seurat objects for integration
     ## Rep 1
@@ -627,12 +627,12 @@ output_dir= '~/ensemblux_manuscript/Figure5'
 # Integrate DaN object across timepoints #
 ############################################
 ## code
-    output_dir <- "~/ensemblux_manuscript/Figure5"
-    seu_11_integrated<-readRDS('~/ensemblux_manuscript/Figure5/None_d11_all/pool5_integrated_seurat_none.rds')
+    output_dir <- "~/ensemblex_manuscript/Figure5"
+    seu_11_integrated<-readRDS('~/ensemblex_manuscript/Figure5/None_d11_all/pool5_integrated_seurat_none.rds')
     unique(seu_11_integrated@meta.data$Sample_ID)
-    seu_30_integrated<-readRDS('~/ensemblux_manuscript/Figure5/None_d30_all/pool5_integrated_seurat_none.rds')
+    seu_30_integrated<-readRDS('~/ensemblex_manuscript/Figure5/None_d30_all/pool5_integrated_seurat_none.rds')
     unique(seu_30_integrated@meta.data$Sample_ID)
-    seu_52_integrated<-readRDS('~/ensemblux_manuscript/Figure5/None_d52_all/pool5_integrated_seurat_none_2.rds')
+    seu_52_integrated<-readRDS('~/ensemblex_manuscript/Figure5/None_d52_all/pool5_integrated_seurat_none_2.rds')
     unique(seu_52_integrated@meta.data$Sample_ID)
 
     seu_list <- list(seu_11_integrated = seu_11_integrated, 
@@ -655,8 +655,8 @@ output_dir= '~/ensemblux_manuscript/Figure5'
 ####################################################
 ## code
     ## Read in Seurat object
-    seu_int<-readRDS("~/ensemblux_manuscript/Figure5/pool5_seurat_integrated_all_timepoints.rds.rds")
-    output_dir <- "~/ensemblux_manuscript/Figure5"
+    seu_int<-readRDS("~/ensemblex_manuscript/Figure5/pool5_seurat_integrated_all_timepoints.rds.rds")
+    output_dir <- "~/ensemblex_manuscript/Figure5"
 
     ## Set default assay to integrated
     Seurat::DefaultAssay(seu_int) <- "integrated"
@@ -681,9 +681,9 @@ output_dir= '~/ensemblux_manuscript/Figure5'
     df <- data.frame(seu_int@meta.data)
 
     ### Add evaluation columns
-    ## Ensemblux
-    df$ensemblux_eval <- "no"
-    df$ensemblux_eval[df$Ensemblux_assignment == "unassigned"] <- "yes"
+    ## ensemblex
+    df$ensemblex_eval <- "no"
+    df$ensemblex_eval[df$ensemblex_assignment == "unassigned"] <- "yes"
     ## Demuxlet
     df$demuxlet_eval <- "no"
     df$demuxlet_eval[df$demuxlet_assignment == "unassigned" & df$demuxlet_best_assignment != "doublet" ] <- "yes"
@@ -698,14 +698,14 @@ output_dir= '~/ensemblux_manuscript/Figure5'
     df$souporcell_eval[df$souporcell_assignment == "unassigned" & df$souporcell_best_assignment != "doublet" ] <- "yes"
 
     ## Add new metadata back to Seurat object 
-    df <- df %>% dplyr::select(ensemblux_eval, demuxlet_eval, demuxalotx_eval, vireo_eval, souporcell_eval)
+    df <- df %>% dplyr::select(ensemblex_eval, demuxlet_eval, demuxalotx_eval, vireo_eval, souporcell_eval)
     seu_int <- AddMetaData(seu_int, df)
 
     ### Print tool-specific UMAPs
     ## Demuxlet
     DimPlot(seu_int, reduction = "umap", group.by="demuxlet_eval", raster = FALSE ) + scale_colour_manual(values = c("lightsteelblue1", "red")) + theme_void()
-    ## Ensemblux
-    DimPlot(seu_int, reduction = "umap", group.by="ensemblux_eval", raster = FALSE ) + scale_colour_manual(values = c("lightsteelblue1", "red")) + theme_void()
+    ## ensemblex
+    DimPlot(seu_int, reduction = "umap", group.by="ensemblex_eval", raster = FALSE ) + scale_colour_manual(values = c("lightsteelblue1", "red")) + theme_void()
     ## Demuxalot
     DimPlot(seu_int, reduction = "umap", group.by="demuxalotx_eval", raster = FALSE) + scale_colour_manual(values = c("lightsteelblue1", "red")) + theme_void()
     ## Vireo
@@ -718,188 +718,188 @@ output_dir= '~/ensemblux_manuscript/Figure5'
 # Compute proportion of confident/ambiguous singlet assignments #
 #################################################################
 ## code
-    ## Read in Ensemblux output    
+    ## Read in ensemblex output    
     ## D11
     # Rep 1
-    d11_rep1 <- read.delim("~/jerber_pool5/day_11/rep1/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+    d11_rep1 <- read.delim("~/jerber_pool5/day_11/rep1/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
     rownames(d11_rep1) <- paste0("pool5_day_11_rep1_", d11_rep1$barcode)
     rownames(d11_rep1) %in% rownames(df)
     # Rep 2
-    d11_rep2 <- read.delim("~/jerber_pool5/day_11/rep2/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+    d11_rep2 <- read.delim("~/jerber_pool5/day_11/rep2/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
     rownames(d11_rep2) <- paste0("pool5_day_11_rep2_", d11_rep2$barcode)
     rownames(d11_rep2) %in% rownames(df)
     # Rep 3
-    d11_rep3 <- read.delim("~/jerber_pool5/day_11/rep3/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+    d11_rep3 <- read.delim("~/jerber_pool5/day_11/rep3/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
     rownames(d11_rep3) <- paste0("pool5_day_11_rep3_", d11_rep3$barcode)
     rownames(d11_rep3) %in% rownames(df)
 
     ## D30
     # Rep 1
-    d30_rep1 <- read.delim("~/jerber_pool5/day_30/rep1/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+    d30_rep1 <- read.delim("~/jerber_pool5/day_30/rep1/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
     rownames(d30_rep1) <- paste0("pool5_day_30_rep1_", d30_rep1$barcode)
     rownames(d30_rep1) %in% rownames(df)
     # Rep 2
-    d30_rep2 <- read.delim("~/jerber_pool5/day_30/rep2/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+    d30_rep2 <- read.delim("~/jerber_pool5/day_30/rep2/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
     rownames(d30_rep2) <- paste0("pool5_day_30_rep2_", d30_rep2$barcode)
     rownames(d30_rep2) %in% rownames(df)
     # Rep 1
-    d30_rep3 <- read.delim("~/jerber_pool5/day_30/rep3/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+    d30_rep3 <- read.delim("~/jerber_pool5/day_30/rep3/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
     rownames(d30_rep3) <- paste0("pool5_day_30_rep3_", d30_rep3$barcode)
     rownames(d30_rep3) %in% rownames(df)
 
     ## D52
     # Rep 1
-    d52_rep1 <- read.delim("~/jerber_pool5/day_52ctrl/rep1/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+    d52_rep1 <- read.delim("~/jerber_pool5/day_52ctrl/rep1/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
     rownames(d52_rep1) <- paste0("pool5_day_52ctrl_rep1_", d52_rep1$barcode)
     rownames(d52_rep1) %in% rownames(df)
     # Rep 2
-    d52_rep2 <- read.delim("~/jerber_pool5/day_52ctrl/rep2/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+    d52_rep2 <- read.delim("~/jerber_pool5/day_52ctrl/rep2/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
     rownames(d52_rep2) <- paste0("pool5_day_52ctrl_rep2_", d52_rep2$barcode)
     rownames(d52_rep2) %in% rownames(df)
     # Rep 3
-    d52_rep3 <- read.delim("~/jerber_pool5/day_52ctrl/rep3/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+    d52_rep3 <- read.delim("~/jerber_pool5/day_52ctrl/rep3/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
     rownames(d52_rep3) <- paste0("pool5_day_52ctrl_rep3_", d52_rep3$barcode)
     rownames(d52_rep3) %in% rownames(df)
     ################################################
-    ## Ensemblux
+    ## ensemblex
     ################################################
     ## code
         ## D11 
         # R1
         d11_rep1_n <- nrow(d11_rep1)
-        d11_rep1$ensemblux_eval <- "no"
-        d11_rep1$ensemblux_eval[d11_rep1$Ensemblux_assignment == "unassigned"] <- "yes"
-        d_11_ensemblux <- subset(d11_rep1, ensemblux_eval == "no")
-        d_11_ensemblux <- nrow(d_11_ensemblux)
-        d_11_ensemblux_1 <- d_11_ensemblux
-        d_11_ensemblux_r1 <- d_11_ensemblux/d11_rep1_n
+        d11_rep1$ensemblex_eval <- "no"
+        d11_rep1$ensemblex_eval[d11_rep1$ensemblex_assignment == "unassigned"] <- "yes"
+        d_11_ensemblex <- subset(d11_rep1, ensemblex_eval == "no")
+        d_11_ensemblex <- nrow(d_11_ensemblex)
+        d_11_ensemblex_1 <- d_11_ensemblex
+        d_11_ensemblex_r1 <- d_11_ensemblex/d11_rep1_n
         
-        d11_rep1_singlet <- subset(d11_rep1, Ensemblux_best_assignment != "doublet" )
+        d11_rep1_singlet <- subset(d11_rep1, ensemblex_best_assignment != "doublet" )
         d11_rep1_singlet <- nrow(d11_rep1_singlet)
-        d11_rep1_unassigned <- subset(d11_rep1, ensemblux_eval == "yes")
+        d11_rep1_unassigned <- subset(d11_rep1, ensemblex_eval == "yes")
         d11_rep1_unassigned <- nrow(d11_rep1_unassigned)
-        d_11_ensemblux_r1_singlet <- 1- ((d11_rep1_unassigned)/d11_rep1_singlet)
+        d_11_ensemblex_r1_singlet <- 1- ((d11_rep1_unassigned)/d11_rep1_singlet)
 
         # R2
         d11_rep2_n <- nrow(d11_rep2)
-        d11_rep2$ensemblux_eval <- "no"
-        d11_rep2$ensemblux_eval[d11_rep2$Ensemblux_assignment == "unassigned"] <- "yes"
-        d_11_ensemblux <- subset(d11_rep2, ensemblux_eval == "no")
-        d_11_ensemblux <- nrow(d_11_ensemblux)
-        d_11_ensemblux_2 <- d_11_ensemblux
-        d_11_ensemblux_r2 <- d_11_ensemblux/d11_rep2_n
+        d11_rep2$ensemblex_eval <- "no"
+        d11_rep2$ensemblex_eval[d11_rep2$ensemblex_assignment == "unassigned"] <- "yes"
+        d_11_ensemblex <- subset(d11_rep2, ensemblex_eval == "no")
+        d_11_ensemblex <- nrow(d_11_ensemblex)
+        d_11_ensemblex_2 <- d_11_ensemblex
+        d_11_ensemblex_r2 <- d_11_ensemblex/d11_rep2_n
 
-        d11_rep2_singlet <- subset(d11_rep2, Ensemblux_best_assignment != "doublet" )
+        d11_rep2_singlet <- subset(d11_rep2, ensemblex_best_assignment != "doublet" )
         d11_rep2_singlet <- nrow(d11_rep2_singlet)
-        d11_rep2_unassigned <- subset(d11_rep2, ensemblux_eval == "yes")
+        d11_rep2_unassigned <- subset(d11_rep2, ensemblex_eval == "yes")
         d11_rep2_unassigned <- nrow(d11_rep2_unassigned)
-        d_11_ensemblux_r2_singlet <- 1- ((d11_rep2_unassigned)/d11_rep2_singlet)
+        d_11_ensemblex_r2_singlet <- 1- ((d11_rep2_unassigned)/d11_rep2_singlet)
 
         # R3
         d11_rep3_n <- nrow(d11_rep3)
-        d11_rep3$ensemblux_eval <- "no"
-        d11_rep3$ensemblux_eval[d11_rep3$Ensemblux_assignment == "unassigned"] <- "yes"
-        d_11_ensemblux <- subset(d11_rep3, ensemblux_eval == "no")
-        d_11_ensemblux <- nrow(d_11_ensemblux)
-        d_11_ensemblux_3 <- d_11_ensemblux
-        d_11_ensemblux_r3 <- d_11_ensemblux/d11_rep3_n
+        d11_rep3$ensemblex_eval <- "no"
+        d11_rep3$ensemblex_eval[d11_rep3$ensemblex_assignment == "unassigned"] <- "yes"
+        d_11_ensemblex <- subset(d11_rep3, ensemblex_eval == "no")
+        d_11_ensemblex <- nrow(d_11_ensemblex)
+        d_11_ensemblex_3 <- d_11_ensemblex
+        d_11_ensemblex_r3 <- d_11_ensemblex/d11_rep3_n
 
-        d11_rep3_singlet <- subset(d11_rep3, Ensemblux_best_assignment != "doublet" )
+        d11_rep3_singlet <- subset(d11_rep3, ensemblex_best_assignment != "doublet" )
         d11_rep3_singlet <- nrow(d11_rep3_singlet)
-        d11_rep3_unassigned <- subset(d11_rep3, ensemblux_eval == "yes")
+        d11_rep3_unassigned <- subset(d11_rep3, ensemblex_eval == "yes")
         d11_rep3_unassigned <- nrow(d11_rep3_unassigned)
-        d_11_ensemblux_r3_singlet <- 1- ((d11_rep3_unassigned)/d11_rep3_singlet)
+        d_11_ensemblex_r3_singlet <- 1- ((d11_rep3_unassigned)/d11_rep3_singlet)
 
         ## D30
         # R1
         d30_rep1_n <- nrow(d30_rep1)
-        d30_rep1$ensemblux_eval <- "no"
-        d30_rep1$ensemblux_eval[d30_rep1$Ensemblux_assignment == "unassigned"] <- "yes"
-        d_30_ensemblux <- subset(d30_rep1, ensemblux_eval == "no")
-        d_30_ensemblux <- nrow(d_30_ensemblux)
-        d_30_ensemblux_1 <- d_30_ensemblux
-        d_30_ensemblux_r1 <- d_30_ensemblux/d30_rep1_n
+        d30_rep1$ensemblex_eval <- "no"
+        d30_rep1$ensemblex_eval[d30_rep1$ensemblex_assignment == "unassigned"] <- "yes"
+        d_30_ensemblex <- subset(d30_rep1, ensemblex_eval == "no")
+        d_30_ensemblex <- nrow(d_30_ensemblex)
+        d_30_ensemblex_1 <- d_30_ensemblex
+        d_30_ensemblex_r1 <- d_30_ensemblex/d30_rep1_n
         
-        d30_rep1_singlet <- subset(d30_rep1, Ensemblux_best_assignment != "doublet" )
+        d30_rep1_singlet <- subset(d30_rep1, ensemblex_best_assignment != "doublet" )
         d30_rep1_singlet <- nrow(d30_rep1_singlet)
-        d30_rep1_unassigned <- subset(d30_rep1, ensemblux_eval == "yes")
+        d30_rep1_unassigned <- subset(d30_rep1, ensemblex_eval == "yes")
         d30_rep1_unassigned <- nrow(d30_rep1_unassigned)
-        d_30_ensemblux_r1_singlet <- 1- ((d30_rep1_unassigned)/d30_rep1_singlet)
+        d_30_ensemblex_r1_singlet <- 1- ((d30_rep1_unassigned)/d30_rep1_singlet)
         
         # R2
         d30_rep2_n <- nrow(d30_rep2)
-        d30_rep2$ensemblux_eval <- "no"
-        d30_rep2$ensemblux_eval[d30_rep2$Ensemblux_assignment == "unassigned"] <- "yes"
-        d_30_ensemblux <- subset(d30_rep2, ensemblux_eval == "no")
-        d_30_ensemblux <- nrow(d_30_ensemblux)
-        d_30_ensemblux_2 <- d_30_ensemblux
-        d_30_ensemblux_r2 <- d_30_ensemblux/d30_rep2_n
+        d30_rep2$ensemblex_eval <- "no"
+        d30_rep2$ensemblex_eval[d30_rep2$ensemblex_assignment == "unassigned"] <- "yes"
+        d_30_ensemblex <- subset(d30_rep2, ensemblex_eval == "no")
+        d_30_ensemblex <- nrow(d_30_ensemblex)
+        d_30_ensemblex_2 <- d_30_ensemblex
+        d_30_ensemblex_r2 <- d_30_ensemblex/d30_rep2_n
 
-        d30_rep2_singlet <- subset(d30_rep2, Ensemblux_best_assignment != "doublet" )
+        d30_rep2_singlet <- subset(d30_rep2, ensemblex_best_assignment != "doublet" )
         d30_rep2_singlet <- nrow(d30_rep2_singlet)
-        d30_rep2_unassigned <- subset(d30_rep2, ensemblux_eval == "yes")
+        d30_rep2_unassigned <- subset(d30_rep2, ensemblex_eval == "yes")
         d30_rep2_unassigned <- nrow(d30_rep2_unassigned)
-        d_30_ensemblux_r2_singlet <- 1- ((d30_rep2_unassigned)/d30_rep2_singlet)
+        d_30_ensemblex_r2_singlet <- 1- ((d30_rep2_unassigned)/d30_rep2_singlet)
 
         # R3
         d30_rep3_n <- nrow(d30_rep3)
-        d30_rep3$ensemblux_eval <- "no"
-        d30_rep3$ensemblux_eval[d30_rep3$Ensemblux_assignment == "unassigned"] <- "yes"
-        d_30_ensemblux <- subset(d30_rep3, ensemblux_eval == "no")
-        d_30_ensemblux <- nrow(d_30_ensemblux)
-        d_30_ensemblux_3 <- d_30_ensemblux
-        d_30_ensemblux_r3 <- d_30_ensemblux/d30_rep3_n
+        d30_rep3$ensemblex_eval <- "no"
+        d30_rep3$ensemblex_eval[d30_rep3$ensemblex_assignment == "unassigned"] <- "yes"
+        d_30_ensemblex <- subset(d30_rep3, ensemblex_eval == "no")
+        d_30_ensemblex <- nrow(d_30_ensemblex)
+        d_30_ensemblex_3 <- d_30_ensemblex
+        d_30_ensemblex_r3 <- d_30_ensemblex/d30_rep3_n
 
-        d30_rep3_singlet <- subset(d30_rep3, Ensemblux_best_assignment != "doublet" )
+        d30_rep3_singlet <- subset(d30_rep3, ensemblex_best_assignment != "doublet" )
         d30_rep3_singlet <- nrow(d30_rep3_singlet)
-        d30_rep3_unassigned <- subset(d30_rep3, ensemblux_eval == "yes")
+        d30_rep3_unassigned <- subset(d30_rep3, ensemblex_eval == "yes")
         d30_rep3_unassigned <- nrow(d30_rep3_unassigned)
-        d_30_ensemblux_r3_singlet <- 1- ((d30_rep3_unassigned)/d30_rep3_singlet)
+        d_30_ensemblex_r3_singlet <- 1- ((d30_rep3_unassigned)/d30_rep3_singlet)
 
         ## D52
         # R1
         d52_rep1_n <- nrow(d52_rep1)
-        d52_rep1$ensemblux_eval <- "no"
-        d52_rep1$ensemblux_eval[d52_rep1$Ensemblux_assignment == "unassigned"] <- "yes"
-        d_52_ensemblux <- subset(d52_rep1, ensemblux_eval == "no")
-        d_52_ensemblux <- nrow(d_52_ensemblux)
-        d_52_ensemblux_1 <- d_52_ensemblux
-        d_52_ensemblux_r1 <- d_52_ensemblux/d52_rep1_n
+        d52_rep1$ensemblex_eval <- "no"
+        d52_rep1$ensemblex_eval[d52_rep1$ensemblex_assignment == "unassigned"] <- "yes"
+        d_52_ensemblex <- subset(d52_rep1, ensemblex_eval == "no")
+        d_52_ensemblex <- nrow(d_52_ensemblex)
+        d_52_ensemblex_1 <- d_52_ensemblex
+        d_52_ensemblex_r1 <- d_52_ensemblex/d52_rep1_n
 
-        d52_rep1_singlet <- subset(d52_rep1, Ensemblux_best_assignment != "doublet" )
+        d52_rep1_singlet <- subset(d52_rep1, ensemblex_best_assignment != "doublet" )
         d52_rep1_singlet <- nrow(d52_rep1_singlet)
-        d52_rep1_unassigned <- subset(d52_rep1, ensemblux_eval == "yes")
+        d52_rep1_unassigned <- subset(d52_rep1, ensemblex_eval == "yes")
         d52_rep1_unassigned <- nrow(d52_rep1_unassigned)
-        d_52_ensemblux_r1_singlet <- 1- ((d52_rep1_unassigned)/d52_rep1_singlet)
+        d_52_ensemblex_r1_singlet <- 1- ((d52_rep1_unassigned)/d52_rep1_singlet)
         # R2
         d52_rep2_n <- nrow(d52_rep2)
-        d52_rep2$ensemblux_eval <- "no"
-        d52_rep2$ensemblux_eval[d52_rep2$Ensemblux_assignment == "unassigned"] <- "yes"
-        d_52_ensemblux <- subset(d52_rep2, ensemblux_eval == "no")
-        d_52_ensemblux <- nrow(d_52_ensemblux)
-        d_52_ensemblux_2 <- d_52_ensemblux
-        d_52_ensemblux_r2 <- d_52_ensemblux/d52_rep2_n
+        d52_rep2$ensemblex_eval <- "no"
+        d52_rep2$ensemblex_eval[d52_rep2$ensemblex_assignment == "unassigned"] <- "yes"
+        d_52_ensemblex <- subset(d52_rep2, ensemblex_eval == "no")
+        d_52_ensemblex <- nrow(d_52_ensemblex)
+        d_52_ensemblex_2 <- d_52_ensemblex
+        d_52_ensemblex_r2 <- d_52_ensemblex/d52_rep2_n
 
-        d52_rep2_singlet <- subset(d52_rep2, Ensemblux_best_assignment != "doublet" )
+        d52_rep2_singlet <- subset(d52_rep2, ensemblex_best_assignment != "doublet" )
         d52_rep2_singlet <- nrow(d52_rep2_singlet)
-        d52_rep2_unassigned <- subset(d52_rep2, ensemblux_eval == "yes")
+        d52_rep2_unassigned <- subset(d52_rep2, ensemblex_eval == "yes")
         d52_rep2_unassigned <- nrow(d52_rep2_unassigned)
-        d_52_ensemblux_r2_singlet <- 1- ((d52_rep2_unassigned)/d52_rep2_singlet)
+        d_52_ensemblex_r2_singlet <- 1- ((d52_rep2_unassigned)/d52_rep2_singlet)
 
         # R3
         d52_rep3_n <- nrow(d52_rep3)
-        d52_rep3$ensemblux_eval <- "no"
-        d52_rep3$ensemblux_eval[d52_rep3$Ensemblux_assignment == "unassigned"] <- "yes"
-        d_52_ensemblux <- subset(d52_rep3, ensemblux_eval == "no")
-        d_52_ensemblux <- nrow(d_52_ensemblux)
-        d_52_ensemblux_3 <- d_52_ensemblux
-        d_52_ensemblux_r3 <- d_52_ensemblux/d52_rep3_n
+        d52_rep3$ensemblex_eval <- "no"
+        d52_rep3$ensemblex_eval[d52_rep3$ensemblex_assignment == "unassigned"] <- "yes"
+        d_52_ensemblex <- subset(d52_rep3, ensemblex_eval == "no")
+        d_52_ensemblex <- nrow(d_52_ensemblex)
+        d_52_ensemblex_3 <- d_52_ensemblex
+        d_52_ensemblex_r3 <- d_52_ensemblex/d52_rep3_n
 
-        d52_rep3_singlet <- subset(d52_rep3, Ensemblux_best_assignment != "doublet" )
+        d52_rep3_singlet <- subset(d52_rep3, ensemblex_best_assignment != "doublet" )
         d52_rep3_singlet <- nrow(d52_rep3_singlet)
-        d52_rep3_unassigned <- subset(d52_rep3, ensemblux_eval == "yes")
+        d52_rep3_unassigned <- subset(d52_rep3, ensemblex_eval == "yes")
         d52_rep3_unassigned <- nrow(d52_rep3_unassigned)
-        d_52_ensemblux_r3_singlet <- 1- ((d52_rep3_unassigned)/d52_rep3_singlet)
+        d_52_ensemblex_r3_singlet <- 1- ((d52_rep3_unassigned)/d52_rep3_singlet)
 
         d_11_temp <- c(d11_rep1_unassigned + d11_rep2_unassigned + d11_rep3_unassigned)
         d_30_temp <- c(d30_rep1_unassigned + d30_rep2_unassigned + d30_rep3_unassigned)
@@ -910,15 +910,15 @@ output_dir= '~/ensemblux_manuscript/Figure5'
         ## bind
         #D11 
         total <- d11_rep1_n + d11_rep2_n + d11_rep3_n
-        assigned <- d_11_ensemblux_1 + d_11_ensemblux_2 + d_11_ensemblux_3 
+        assigned <- d_11_ensemblex_1 + d_11_ensemblex_2 + d_11_ensemblex_3 
         d_11_prop <- assigned/total
         #D30 
         total <- d30_rep1_n + d30_rep2_n + d30_rep3_n
-        assigned <- d_30_ensemblux_1 + d_30_ensemblux_2 + d_30_ensemblux_3 
+        assigned <- d_30_ensemblex_1 + d_30_ensemblex_2 + d_30_ensemblex_3 
         d_30_prop <- assigned/total
         #D52
         total <- d52_rep1_n + d52_rep2_n + d52_rep3_n 
-        assigned <- d_52_ensemblux_1 + d_52_ensemblux_2 + d_52_ensemblux_3
+        assigned <- d_52_ensemblex_1 + d_52_ensemblex_2 + d_52_ensemblex_3
         d_52_prop <- assigned/total
 
         bind <- data.frame(prop = c(d_11_prop,d_30_prop,d_52_prop  ), day = c("11", "30", "52"))
@@ -939,7 +939,7 @@ output_dir= '~/ensemblux_manuscript/Figure5'
             scale_fill_manual(values = c("red", "lightsteelblue1")) +
             scale_y_discrete(labels = c("D52", "D30", "D11")) +
             scale_x_continuous(expand= c(0,0), breaks = c(0, 0.5, 1), labels = c('0', '0.5', '1'))
-        ggsave(paste(output_dir,"/prop_ensemblux.pdf", sep=""), width = 2.25, height = 1)
+        ggsave(paste(output_dir,"/prop_ensemblex.pdf", sep=""), width = 2.25, height = 1)
     ##
     ################################################
     ## Demuxlet
@@ -1665,14 +1665,14 @@ output_dir= '~/ensemblux_manuscript/Figure5'
     ##
 
     ## Dataframe and Plot
-        df_prop <- data.frame(tool = c("Ensemblux","Ensemblux","Ensemblux","Ensemblux","Ensemblux","Ensemblux","Ensemblux","Ensemblux","Ensemblux",
+        df_prop <- data.frame(tool = c("ensemblex","ensemblex","ensemblex","ensemblex","ensemblex","ensemblex","ensemblex","ensemblex","ensemblex",
                                         "Demuxlet","Demuxlet","Demuxlet","Demuxlet","Demuxlet","Demuxlet","Demuxlet","Demuxlet","Demuxlet",
                                         "Demuxalot","Demuxalot","Demuxalot","Demuxalot","Demuxalot","Demuxalot","Demuxalot","Demuxalot","Demuxalot",
                                         "Vireo","Vireo","Vireo","Vireo","Vireo","Vireo","Vireo","Vireo","Vireo",
                                         "Souporcell","Souporcell","Souporcell","Souporcell","Souporcell","Souporcell","Souporcell","Souporcell", "Souporcell"),
-        prop = c(d_11_ensemblux_r1_singlet, d_11_ensemblux_r2_singlet, d_11_ensemblux_r3_singlet, 
-                    d_30_ensemblux_r1_singlet, d_30_ensemblux_r2_singlet, d_30_ensemblux_r3_singlet, 
-                    d_52_ensemblux_r1_singlet, d_52_ensemblux_r2_singlet, d_52_ensemblux_r3_singlet,
+        prop = c(d_11_ensemblex_r1_singlet, d_11_ensemblex_r2_singlet, d_11_ensemblex_r3_singlet, 
+                    d_30_ensemblex_r1_singlet, d_30_ensemblex_r2_singlet, d_30_ensemblex_r3_singlet, 
+                    d_52_ensemblex_r1_singlet, d_52_ensemblex_r2_singlet, d_52_ensemblex_r3_singlet,
                     d_11_demuxlet_r1_singlet, d_11_demuxlet_r2_singlet, d_11_demuxlet_r3_singlet,
                     d_30_demuxlet_r1_singlet, d_30_demuxlet_r2_singlet, d_30_demuxlet_r3_singlet,  
                     d_52_demuxlet_r1_singlet, d_52_demuxlet_r2_singlet, d_52_demuxlet_r3_singlet,     
@@ -1686,7 +1686,7 @@ output_dir= '~/ensemblux_manuscript/Figure5'
                     d_30_souporcell_r1_singlet, d_30_souporcell_r2_singlet, d_30_souporcell_r3_singlet,  
                     d_52_souporcell_r1_singlet, d_52_souporcell_r2_singlet, d_52_souporcell_r3_singlet
                     ))
-        df_prop$tool <- factor(df_prop$tool, levels = c("Ensemblux","Demuxalot", "Demuxlet", "Souporcell", "Vireo"))
+        df_prop$tool <- factor(df_prop$tool, levels = c("ensemblex","Demuxalot", "Demuxlet", "Souporcell", "Vireo"))
 
         ## Compute mean and quantile for boxplot
             df1 <- df_prop %>% 
@@ -1697,7 +1697,7 @@ output_dir= '~/ensemblux_manuscript/Figure5'
                     d_middle = mean(prop),
                     d_upper = quantile(prop, 0.75)) %>% as.data.frame()
 
-            df1$tool <- factor(df1$tool, levels = c("Ensemblux", "Demuxalot", "Demuxlet", "Souporcell", "Vireo"))
+            df1$tool <- factor(df1$tool, levels = c("ensemblex", "Demuxalot", "Demuxlet", "Souporcell", "Vireo"))
 
         ## plot
         ggplot(df1) + 
@@ -1718,10 +1718,10 @@ output_dir= '~/ensemblux_manuscript/Figure5'
             ggsave(paste(output_dir,"/prop_conf_singlet.pdf", sep=""), width = 2.25, height = 3.25) 
 
         ## Wilcoxon rank-sum test
-        wilcox.test(df_prop$prop[df_prop$tool == "Ensemblux"], df_prop$prop[df_prop$tool == "Demuxlet"], alternative = "greater")
-        wilcox.test(df_prop$prop[df_prop$tool == "Ensemblux"], df_prop$prop[df_prop$tool == "Demuxalot"], alternative = "greater")
-        wilcox.test(df_prop$prop[df_prop$tool == "Ensemblux"], df_prop$prop[df_prop$tool == "Souporcell"], alternative = "greater")
-        wilcox.test(df_prop$prop[df_prop$tool == "Ensemblux"], df_prop$prop[df_prop$tool == "Vireo"], alternative = "greater")
+        wilcox.test(df_prop$prop[df_prop$tool == "ensemblex"], df_prop$prop[df_prop$tool == "Demuxlet"], alternative = "greater")
+        wilcox.test(df_prop$prop[df_prop$tool == "ensemblex"], df_prop$prop[df_prop$tool == "Demuxalot"], alternative = "greater")
+        wilcox.test(df_prop$prop[df_prop$tool == "ensemblex"], df_prop$prop[df_prop$tool == "Souporcell"], alternative = "greater")
+        wilcox.test(df_prop$prop[df_prop$tool == "ensemblex"], df_prop$prop[df_prop$tool == "Vireo"], alternative = "greater")
     ##
 ##
 
@@ -1730,14 +1730,14 @@ output_dir= '~/ensemblux_manuscript/Figure5'
 ###################################################################
 ## code
     ## Load Seurat object
-    seu_int<-readRDS("~/ensemblux_manuscript/Figure5/pool5_seurat_integrated_all_timepoints.rds.rds")
-    output_dir <- "~/ensemblux_manuscript/Figure5"
+    seu_int<-readRDS("~/ensemblex_manuscript/Figure5/pool5_seurat_integrated_all_timepoints.rds.rds")
+    output_dir <- "~/ensemblex_manuscript/Figure5"
     df <- data.frame(seu_int@meta.data)
 
-    ### Add Ensemblux and Demuxlet eval columns
-    ## Ensemblux
-    df$ensemblux_eval <- "no"
-    df$ensemblux_eval[df$Ensemblux_assignment == "unassigned"] <- "yes"
+    ### Add ensemblex and Demuxlet eval columns
+    ## ensemblex
+    df$ensemblex_eval <- "no"
+    df$ensemblex_eval[df$ensemblex_assignment == "unassigned"] <- "yes"
     ## Demuxlet
     df$demuxlet_eval <- "no"
     df$demuxlet_eval[df$demuxlet_assignment == "unassigned" & df$demuxlet_best_assignment != "doublet" ] <- "yes"
@@ -1751,52 +1751,52 @@ output_dir= '~/ensemblux_manuscript/Figure5'
     df$souporcell_eval <- "no"
     df$souporcell_eval[df$souporcell_assignment == "unassigned" & df$souporcell_best_assignment != "doublet"] <- "yes"
 
-    df <- df %>% dplyr::select(ensemblux_eval, demuxlet_eval, demuxalotx_eval, vireo_eval, souporcell_eval)
+    df <- df %>% dplyr::select(ensemblex_eval, demuxlet_eval, demuxalotx_eval, vireo_eval, souporcell_eval)
 
     ## Add the metadata
     seu_int <- AddMetaData(seu_int, df)
     df <- data.frame(seu_int@meta.data)
 
     #############
-    # Ensemblux #
+    # ensemblex #
     #############
-        df_unassigned.ensemblux <- subset(df, ensemblux_eval == "yes" )
-        length <- nrow(df_unassigned.ensemblux)
+        df_unassigned.ensemblex <- subset(df, ensemblex_eval == "yes" )
+        length <- nrow(df_unassigned.ensemblex)
         ## Demuxalot
-        length_2 <- subset(df_unassigned.ensemblux, demuxalot_assignment == "unassigned") %>% nrow()
+        length_2 <- subset(df_unassigned.ensemblex, demuxalot_assignment == "unassigned") %>% nrow()
         prop <- length_2/length
-        class <- "Ensemblux"
+        class <- "ensemblex"
         tool <- "Demuxalot"
-        df_unassigned.ensemblux.demuxalot <- data.frame(prop,class, tool)
+        df_unassigned.ensemblex.demuxalot <- data.frame(prop,class, tool)
         ## Vireo
-        length_2 <- subset(df_unassigned.ensemblux, vireo_assignment == "unassigned") %>% nrow()
+        length_2 <- subset(df_unassigned.ensemblex, vireo_assignment == "unassigned") %>% nrow()
         prop <- length_2/length
-        class <- "Ensemblux"
+        class <- "ensemblex"
         tool <- "Vireo"
-        df_unassigned.ensemblux.vireo <- data.frame(prop,class, tool)
+        df_unassigned.ensemblex.vireo <- data.frame(prop,class, tool)
         ## Souporcell
-        length_2 <- subset(df_unassigned.ensemblux, souporcell_assignment == "unassigned") %>% nrow()
+        length_2 <- subset(df_unassigned.ensemblex, souporcell_assignment == "unassigned") %>% nrow()
         prop <- length_2/length
-        class <- "Ensemblux"
+        class <- "ensemblex"
         tool <- "Souporcell"
-        df_unassigned.ensemblux.souporcell <- data.frame(prop,class, tool)
+        df_unassigned.ensemblex.souporcell <- data.frame(prop,class, tool)
         ## Demuxlet
-        length_2 <- subset(df_unassigned.ensemblux, demuxlet_assignment == "unassigned") %>% nrow()
+        length_2 <- subset(df_unassigned.ensemblex, demuxlet_assignment == "unassigned") %>% nrow()
         prop <- length_2/length
-        class <- "Ensemblux"
+        class <- "ensemblex"
         tool <- "Demuxlet"
-        df_unassigned.ensemblux.demuxlet <- data.frame(prop,class, tool)
+        df_unassigned.ensemblex.demuxlet <- data.frame(prop,class, tool)
     #############
     # Demuxalot #
     #############
         df_unassigned.demuxalot <- subset(df, demuxalotx_eval == "yes" )
         length <- nrow(df_unassigned.demuxalot)
-        ## Ensemblux
-        length_2 <- subset(df_unassigned.demuxalot, Ensemblux_assignment == "unassigned") %>% nrow()
+        ## ensemblex
+        length_2 <- subset(df_unassigned.demuxalot, ensemblex_assignment == "unassigned") %>% nrow()
         prop <- length_2/length
         class <- "Demuxalot"
-        tool <- "Ensemblux"
-        df_unassigned.demuxalot.ensemblux <- data.frame(prop,class, tool)
+        tool <- "ensemblex"
+        df_unassigned.demuxalot.ensemblex <- data.frame(prop,class, tool)
         ## Vireo
         length_2 <- subset(df_unassigned.demuxalot, vireo_assignment == "unassigned") %>% nrow()
         prop <- length_2/length
@@ -1820,12 +1820,12 @@ output_dir= '~/ensemblux_manuscript/Figure5'
     ############
         df_unassigned.demuxlet <- subset(df, demuxlet_eval == "yes" )
         length <- nrow(df_unassigned.demuxlet)
-        ## Ensemblux
-        length_2 <- subset(df_unassigned.demuxlet, Ensemblux_assignment == "unassigned") %>% nrow()
+        ## ensemblex
+        length_2 <- subset(df_unassigned.demuxlet, ensemblex_assignment == "unassigned") %>% nrow()
         prop <- length_2/length
         class <- "Demuxlet"
-        tool <- "Ensemblux"
-        df_unassigned.demuxlet.ensemblux <- data.frame(prop,class, tool)
+        tool <- "ensemblex"
+        df_unassigned.demuxlet.ensemblex <- data.frame(prop,class, tool)
         ## Vireo
         length_2 <- subset(df_unassigned.demuxlet, vireo_assignment == "unassigned") %>% nrow()
         prop <- length_2/length
@@ -1849,12 +1849,12 @@ output_dir= '~/ensemblux_manuscript/Figure5'
     #########
         df_unassigned.vireo <- subset(df, vireo_eval == "yes" )
         length <- nrow(df_unassigned.vireo)
-        ## Ensemblux
-        length_2 <- subset(df_unassigned.vireo, Ensemblux_assignment == "unassigned") %>% nrow()
+        ## ensemblex
+        length_2 <- subset(df_unassigned.vireo, ensemblex_assignment == "unassigned") %>% nrow()
         prop <- length_2/length
         class <- "Vireo"
-        tool <- "Ensemblux"
-        df_unassigned.vireo.ensemblux <- data.frame(prop,class, tool)
+        tool <- "ensemblex"
+        df_unassigned.vireo.ensemblex <- data.frame(prop,class, tool)
         ## Demuxlet
         length_2 <- subset(df_unassigned.vireo, demuxlet_assignment == "unassigned") %>% nrow()
         prop <- length_2/length
@@ -1878,12 +1878,12 @@ output_dir= '~/ensemblux_manuscript/Figure5'
     ##############
         df_unassigned.souporcell <- subset(df, souporcell_eval == "yes" )
         length <- nrow(df_unassigned.souporcell)
-        ## Ensemblux
-        length_2 <- subset(df_unassigned.souporcell, Ensemblux_assignment == "unassigned") %>% nrow()
+        ## ensemblex
+        length_2 <- subset(df_unassigned.souporcell, ensemblex_assignment == "unassigned") %>% nrow()
         prop <- length_2/length
         class <- "Souporcell"
-        tool <- "Ensemblux"
-        df_unassigned.souporcell.ensemblux <- data.frame(prop,class, tool)
+        tool <- "ensemblex"
+        df_unassigned.souporcell.ensemblex <- data.frame(prop,class, tool)
         ## Demuxlet
         length_2 <- subset(df_unassigned.souporcell, demuxlet_assignment == "unassigned") %>% nrow()
         prop <- length_2/length
@@ -1903,14 +1903,14 @@ output_dir= '~/ensemblux_manuscript/Figure5'
         tool <- "Demuxalot"
         df_unassigned.souporcell.demuxalot <- data.frame(prop,class, tool)
     ## Dataframe and plot
-    bind_all <- rbind(df_unassigned.ensemblux.demuxalot, df_unassigned.ensemblux.vireo,df_unassigned.ensemblux.souporcell, df_unassigned.ensemblux.demuxlet, 
-                    df_unassigned.demuxlet.demuxalot, df_unassigned.demuxlet.vireo,df_unassigned.demuxlet.souporcell, df_unassigned.demuxlet.ensemblux, 
-                    df_unassigned.demuxalot.ensemblux, df_unassigned.demuxalot.vireo,df_unassigned.demuxalot.souporcell, df_unassigned.demuxalot.demuxlet,
-                    df_unassigned.vireo.demuxalot, df_unassigned.vireo.ensemblux,df_unassigned.vireo.souporcell, df_unassigned.vireo.demuxlet,
-                    df_unassigned.souporcell.demuxalot, df_unassigned.souporcell.vireo,df_unassigned.souporcell.ensemblux, df_unassigned.souporcell.demuxlet )
+    bind_all <- rbind(df_unassigned.ensemblex.demuxalot, df_unassigned.ensemblex.vireo,df_unassigned.ensemblex.souporcell, df_unassigned.ensemblex.demuxlet, 
+                    df_unassigned.demuxlet.demuxalot, df_unassigned.demuxlet.vireo,df_unassigned.demuxlet.souporcell, df_unassigned.demuxlet.ensemblex, 
+                    df_unassigned.demuxalot.ensemblex, df_unassigned.demuxalot.vireo,df_unassigned.demuxalot.souporcell, df_unassigned.demuxalot.demuxlet,
+                    df_unassigned.vireo.demuxalot, df_unassigned.vireo.ensemblex,df_unassigned.vireo.souporcell, df_unassigned.vireo.demuxlet,
+                    df_unassigned.souporcell.demuxalot, df_unassigned.souporcell.vireo,df_unassigned.souporcell.ensemblex, df_unassigned.souporcell.demuxlet )
 
-    bind_all$class <- factor(bind_all$class, levels = c('Ensemblux', 'Demuxalot', 'Demuxlet', 'Souporcell', 'Vireo'))
-    bind_all$tool <- factor(bind_all$tool, levels = c('Ensemblux', 'Demuxalot', 'Demuxlet', 'Souporcell', 'Vireo'))
+    bind_all$class <- factor(bind_all$class, levels = c('ensemblex', 'Demuxalot', 'Demuxlet', 'Souporcell', 'Vireo'))
+    bind_all$tool <- factor(bind_all$tool, levels = c('ensemblex', 'Demuxalot', 'Demuxlet', 'Souporcell', 'Vireo'))
 
     ggplot(bind_all, aes(y = prop, x = tool, fill = tool)) +
         geom_bar(stat = "identity") +
@@ -1935,24 +1935,24 @@ output_dir= '~/ensemblux_manuscript/Figure5'
     ##########
     # Day 11 #
     ##########
-    ## Ensemblux d11
-        ensemblux <- read.xlsx('~/ensemblux_manuscript/Figure5/Ensemblux_d11_all/clustering_ARI.xlsx')
-        ensemblux <- data.frame(ensemblux)
-        mean <- list(ensemblux[,1:20])
+    ## ensemblex d11
+        ensemblex <- read.xlsx('~/ensemblex_manuscript/Figure5/ensemblex_d11_all/clustering_ARI.xlsx')
+        ensemblex <- data.frame(ensemblex)
+        mean <- list(ensemblex[,1:20])
         mean <- unlist(mean)
         mean <- unname(mean)
-        sd <- list(ensemblux[,21:ncol(ensemblux)])
+        sd <- list(ensemblex[,21:ncol(ensemblex)])
         sd <- unlist(sd)
         sd <- unname(sd)
-        res <- colnames(ensemblux[,1:20])
+        res <- colnames(ensemblex[,1:20])
         res <- c(res)
         res <- gsub(".*_","",res)
-        ensemblux <- data.frame(mean, sd, res)
-        ensemblux <- na.omit(ensemblux)
-        ensemblux$class <- "Ensemblux"
+        ensemblex <- data.frame(mean, sd, res)
+        ensemblex <- na.omit(ensemblex)
+        ensemblex$class <- "ensemblex"
 
     ## Demuxlet d11
-        demuxlet <- read.xlsx('~/ensemblux_manuscript/Figure5/Demuxlet_d11_all/clustering_ARI.xlsx')
+        demuxlet <- read.xlsx('~/ensemblex_manuscript/Figure5/Demuxlet_d11_all/clustering_ARI.xlsx')
         demuxlet <- data.frame(demuxlet)
         mean <- list(demuxlet[,1:20])
         mean <- unlist(mean)
@@ -1968,7 +1968,7 @@ output_dir= '~/ensemblux_manuscript/Figure5'
         demuxlet$class <- "Demuxlet"
 
     ## None d11
-        none <- read.xlsx('~/ensemblux_manuscript/Figure5/None_d11_all/clustering_ARI.xlsx')
+        none <- read.xlsx('~/ensemblex_manuscript/Figure5/None_d11_all/clustering_ARI.xlsx')
         none <- data.frame(none)
         mean <- list(none[,1:20])
         mean <- unlist(mean)
@@ -1984,7 +1984,7 @@ output_dir= '~/ensemblux_manuscript/Figure5'
         none$class <- "None"
 
     ## DF d11
-        doubletfinder <- read.xlsx('~/ensemblux_manuscript/Figure5/DoubletFinder_d11_all/clustering_ARI.xlsx')
+        doubletfinder <- read.xlsx('~/ensemblex_manuscript/Figure5/DoubletFinder_d11_all/clustering_ARI.xlsx')
         doubletfinder <- data.frame(doubletfinder)
         mean <- list(doubletfinder[,1:20])
         mean <- unlist(mean)
@@ -2000,7 +2000,7 @@ output_dir= '~/ensemblux_manuscript/Figure5'
         doubletfinder$class <- "DF"
 
     ## Demuxalot d11
-        demuxalot <- read.xlsx('~/ensemblux_manuscript/Figure5/Demuxalot_d11_all/clustering_ARI.xlsx')
+        demuxalot <- read.xlsx('~/ensemblex_manuscript/Figure5/Demuxalot_d11_all/clustering_ARI.xlsx')
         demuxalot <- data.frame(demuxalot)
         mean <- list(demuxalot[,1:20])
         mean <- unlist(mean)
@@ -2016,7 +2016,7 @@ output_dir= '~/ensemblux_manuscript/Figure5'
         demuxalot$class <- "Demuxalot"
 
     ## Vireo d11
-        vireo <- read.xlsx('~/ensemblux_manuscript/Figure5/Vireo_d11_all/clustering_ARI.xlsx')
+        vireo <- read.xlsx('~/ensemblex_manuscript/Figure5/Vireo_d11_all/clustering_ARI.xlsx')
         vireo <- data.frame(vireo)
         mean <- list(vireo[,1:20])
         mean <- unlist(mean)
@@ -2032,7 +2032,7 @@ output_dir= '~/ensemblux_manuscript/Figure5'
         vireo$class <- "Vireo"
 
     ## Souporcell d11
-        souporcell <- read.xlsx('~/ensemblux_manuscript/Figure5/Souporcell_d11_all/clustering_ARI.xlsx')
+        souporcell <- read.xlsx('~/ensemblex_manuscript/Figure5/Souporcell_d11_all/clustering_ARI.xlsx')
         souporcell <- data.frame(souporcell)
         mean <- list(souporcell[,1:20])
         mean <- unlist(mean)
@@ -2048,32 +2048,32 @@ output_dir= '~/ensemblux_manuscript/Figure5'
         souporcell$class <- "Souporcell"
 
     ## Dataframe 
-            bind <- rbind(ensemblux, demuxlet, none, doubletfinder, demuxalot, vireo, souporcell)
-            bind$class <- factor(bind$class, levels = c("Ensemblux", "Demuxalot", "Demuxlet", "Souporcell", "Vireo", "DF", "None"))
+            bind <- rbind(ensemblex, demuxlet, none, doubletfinder, demuxalot, vireo, souporcell)
+            bind$class <- factor(bind$class, levels = c("ensemblex", "Demuxalot", "Demuxlet", "Souporcell", "Vireo", "DF", "None"))
             bind_11 <- bind
     ##
         
     ##########
     # Day 30 #
     ##########
-    ## Ensemblux d30
-        ensemblux <- openxlsx::read.xlsx('~/ensemblux_manuscript/Figure5/Ensemblux_d30_all/clustering_ARI.xlsx')
-        ensemblux <- data.frame(ensemblux)
-        mean <- list(ensemblux[,1:20])
+    ## ensemblex d30
+        ensemblex <- openxlsx::read.xlsx('~/ensemblex_manuscript/Figure5/ensemblex_d30_all/clustering_ARI.xlsx')
+        ensemblex <- data.frame(ensemblex)
+        mean <- list(ensemblex[,1:20])
         mean <- unlist(mean)
         mean <- unname(mean)
-        sd <- list(ensemblux[,21:ncol(ensemblux)])
+        sd <- list(ensemblex[,21:ncol(ensemblex)])
         sd <- unlist(sd)
         sd <- unname(sd)
-        res <- colnames(ensemblux[,1:20])
+        res <- colnames(ensemblex[,1:20])
         res <- c(res)
         res <- gsub(".*_","",res)
-        ensemblux <- data.frame(mean, sd, res)
-        ensemblux <- na.omit(ensemblux)
-        ensemblux$class <- "Ensemblux"
+        ensemblex <- data.frame(mean, sd, res)
+        ensemblex <- na.omit(ensemblex)
+        ensemblex$class <- "ensemblex"
 
     ## Demuxlet d30
-        demuxlet <- openxlsx::read.xlsx('~/ensemblux_manuscript/Figure5/Demuxlet_d30_all/clustering_ARI.xlsx')
+        demuxlet <- openxlsx::read.xlsx('~/ensemblex_manuscript/Figure5/Demuxlet_d30_all/clustering_ARI.xlsx')
         demuxlet <- data.frame(demuxlet)
         mean <- list(demuxlet[,1:20])
         mean <- unlist(mean)
@@ -2089,7 +2089,7 @@ output_dir= '~/ensemblux_manuscript/Figure5'
         demuxlet$class <- "Demuxlet"
 
     ## None d30
-        none <- openxlsx::read.xlsx('~/ensemblux_manuscript/Figure5/None_d30_all/clustering_ARI.xlsx')
+        none <- openxlsx::read.xlsx('~/ensemblex_manuscript/Figure5/None_d30_all/clustering_ARI.xlsx')
         none <- data.frame(none)
         mean <- list(none[,1:20])
         mean <- unlist(mean)
@@ -2105,7 +2105,7 @@ output_dir= '~/ensemblux_manuscript/Figure5'
         none$class <- "None"
 
     ## DF d30
-        doubletfinder <- read.xlsx('~/ensemblux_manuscript/Figure5/DoubletFinder_d30_all/clustering_ARI.xlsx')
+        doubletfinder <- read.xlsx('~/ensemblex_manuscript/Figure5/DoubletFinder_d30_all/clustering_ARI.xlsx')
         doubletfinder <- data.frame(doubletfinder)
         mean <- list(doubletfinder[,1:20])
         mean <- unlist(mean)
@@ -2121,7 +2121,7 @@ output_dir= '~/ensemblux_manuscript/Figure5'
         doubletfinder$class <- "DF"
 
     ## Demuxalot d30
-        demuxalot <- read.xlsx('~/ensemblux_manuscript/Figure5/Demuxalot_d30_all/clustering_ARI.xlsx')
+        demuxalot <- read.xlsx('~/ensemblex_manuscript/Figure5/Demuxalot_d30_all/clustering_ARI.xlsx')
         demuxalot <- data.frame(demuxalot)
         mean <- list(demuxalot[,1:20])
         mean <- unlist(mean)
@@ -2137,7 +2137,7 @@ output_dir= '~/ensemblux_manuscript/Figure5'
         demuxalot$class <- "Demuxalot"
 
     ## Vireo d30
-        vireo <- read.xlsx('~/ensemblux_manuscript/Figure5/Vireo_d30_all/clustering_ARI.xlsx')
+        vireo <- read.xlsx('~/ensemblex_manuscript/Figure5/Vireo_d30_all/clustering_ARI.xlsx')
         vireo <- data.frame(vireo)
         mean <- list(vireo[,1:20])
         mean <- unlist(mean)
@@ -2153,7 +2153,7 @@ output_dir= '~/ensemblux_manuscript/Figure5'
         vireo$class <- "Vireo"   
 
     ## Souporcell d30
-        souporcell <- read.xlsx('~/ensemblux_manuscript/Figure5/Souporcell_d30_all/clustering_ARI.xlsx')
+        souporcell <- read.xlsx('~/ensemblex_manuscript/Figure5/Souporcell_d30_all/clustering_ARI.xlsx')
         souporcell <- data.frame(souporcell)
         mean <- list(souporcell[,1:20])
         mean <- unlist(mean)
@@ -2169,32 +2169,32 @@ output_dir= '~/ensemblux_manuscript/Figure5'
         souporcell$class <- "Souporcell"  
 
     ## Dataframe
-            bind <- rbind(ensemblux, demuxlet, none, doubletfinder, demuxalot, vireo, souporcell)
-            bind$class <- factor(bind$class, levels = c("Ensemblux", "Demuxalot", "Demuxlet", "Souporcell", "Vireo", "DF", "None"))
+            bind <- rbind(ensemblex, demuxlet, none, doubletfinder, demuxalot, vireo, souporcell)
+            bind$class <- factor(bind$class, levels = c("ensemblex", "Demuxalot", "Demuxlet", "Souporcell", "Vireo", "DF", "None"))
             bind_30 <- bind
     ##
 
     ##########
     # Day 52 #
     ##########
-    ## Ensemblux d52
-        ensemblux <- openxlsx::read.xlsx('~/ensemblux_manuscript/Figure5/Ensemblux_d52_all/clustering_ARI_2.xlsx')
-        ensemblux <- data.frame(ensemblux)
-        mean <- list(ensemblux[,1:20])
+    ## ensemblex d52
+        ensemblex <- openxlsx::read.xlsx('~/ensemblex_manuscript/Figure5/ensemblex_d52_all/clustering_ARI_2.xlsx')
+        ensemblex <- data.frame(ensemblex)
+        mean <- list(ensemblex[,1:20])
         mean <- unlist(mean)
         mean <- unname(mean)
-        sd <- list(ensemblux[,21:ncol(ensemblux)])
+        sd <- list(ensemblex[,21:ncol(ensemblex)])
         sd <- unlist(sd)
         sd <- unname(sd)
-        res <- colnames(ensemblux[,1:20])
+        res <- colnames(ensemblex[,1:20])
         res <- c(res)
         res <- gsub(".*_","",res)
-        ensemblux <- data.frame(mean, sd, res)
-        ensemblux <- na.omit(ensemblux)
-        ensemblux$class <- "Ensemblux"
+        ensemblex <- data.frame(mean, sd, res)
+        ensemblex <- na.omit(ensemblex)
+        ensemblex$class <- "ensemblex"
 
     ## Demuxlet d52
-        demuxlet <- openxlsx::read.xlsx('~/ensemblux_manuscript/Figure5/Demuxlet_d52_all/clustering_ARI_2.xlsx')
+        demuxlet <- openxlsx::read.xlsx('~/ensemblex_manuscript/Figure5/Demuxlet_d52_all/clustering_ARI_2.xlsx')
         demuxlet <- data.frame(demuxlet)
         #demuxlet <- demuxlet[,-1]
         mean <- list(demuxlet[,1:20])
@@ -2212,7 +2212,7 @@ output_dir= '~/ensemblux_manuscript/Figure5'
         demuxlet$class <- "Demuxlet"
 
     ## None d52
-        none <- openxlsx::read.xlsx('~/ensemblux_manuscript/Figure5/None_d52_all/clustering_ARI_2.xlsx')
+        none <- openxlsx::read.xlsx('~/ensemblex_manuscript/Figure5/None_d52_all/clustering_ARI_2.xlsx')
         none <- data.frame(none)
         #none <- none[,-1]
         mean <- list(none[,1:20])
@@ -2230,7 +2230,7 @@ output_dir= '~/ensemblux_manuscript/Figure5'
         none$class <- "None"
 
     ## DF d52
-        doubletfinder <- read.xlsx('~/ensemblux_manuscript/Figure5/DoubletFinder_d52_all/clustering_ARI_2.xlsx')
+        doubletfinder <- read.xlsx('~/ensemblex_manuscript/Figure5/DoubletFinder_d52_all/clustering_ARI_2.xlsx')
         doubletfinder <- data.frame(doubletfinder)
         mean <- list(doubletfinder[,1:20])
         mean <- unlist(mean)
@@ -2247,7 +2247,7 @@ output_dir= '~/ensemblux_manuscript/Figure5'
         doubletfinder$class <- "DF"
 
     ## Demuxalot d52
-        demuxalot <- read.xlsx('~/ensemblux_manuscript/Figure5/Demuxalot_d52_all/clustering_ARI_2.xlsx')
+        demuxalot <- read.xlsx('~/ensemblex_manuscript/Figure5/Demuxalot_d52_all/clustering_ARI_2.xlsx')
         demuxalot <- data.frame(demuxalot)
         mean <- list(demuxalot[,1:20])
         mean <- unlist(mean)
@@ -2264,7 +2264,7 @@ output_dir= '~/ensemblux_manuscript/Figure5'
         demuxalot$class <- "Demuxalot"
 
     ## Vireo d52
-        vireo <- read.xlsx('~/ensemblux_manuscript/Figure5/Vireo_d52_all/clustering_ARI_2.xlsx')
+        vireo <- read.xlsx('~/ensemblex_manuscript/Figure5/Vireo_d52_all/clustering_ARI_2.xlsx')
         vireo <- data.frame(vireo)
         mean <- list(vireo[,1:20])
         mean <- unlist(mean)
@@ -2281,7 +2281,7 @@ output_dir= '~/ensemblux_manuscript/Figure5'
         vireo$class <- "Vireo"
 
     ## Souporcell d52
-        souporcell <- read.xlsx('~/ensemblux_manuscript/Figure5/Souporcell_d52_all/clustering_ARI_2.xlsx')
+        souporcell <- read.xlsx('~/ensemblex_manuscript/Figure5/Souporcell_d52_all/clustering_ARI_2.xlsx')
         souporcell <- data.frame(souporcell)
         mean <- list(souporcell[,1:20])
         mean <- unlist(mean)
@@ -2298,8 +2298,8 @@ output_dir= '~/ensemblux_manuscript/Figure5'
         souporcell$class <- "Souporcell"
 
     ## Dataframe
-            bind <- rbind(ensemblux, demuxlet, none, doubletfinder, demuxalot, vireo, souporcell)
-            bind$class <- factor(bind$class, levels = c("Ensemblux", "Demuxalot", "Demuxlet", "Souporcell", "Vireo", "DF", "None"))
+            bind <- rbind(ensemblex, demuxlet, none, doubletfinder, demuxalot, vireo, souporcell)
+            bind$class <- factor(bind$class, levels = c("ensemblex", "Demuxalot", "Demuxlet", "Souporcell", "Vireo", "DF", "None"))
             bind_52 <- bind
     ##
 
@@ -2319,7 +2319,7 @@ output_dir= '~/ensemblux_manuscript/Figure5'
                 d_middle = mean(mean),
                 d_upper = quantile(mean, 0.75)) %>% as.data.frame()
 
-        df1$class <- factor(df1$class, levels = c("Ensemblux", "Demuxalot", "Demuxlet", "Souporcell", "Vireo", "DF", "None"))
+        df1$class <- factor(df1$class, levels = c("ensemblex", "Demuxalot", "Demuxlet", "Souporcell", "Vireo", "DF", "None"))
 
         ## Plot
         ggplot(df1) + 
@@ -2337,14 +2337,14 @@ output_dir= '~/ensemblux_manuscript/Figure5'
             legend.position = "none") + 
             scale_colour_manual(values = c("black","#d95f02", "#e6ab02", "#7570b3", "#66a61e", "dodgerblue2", "grey63")) +
             ylab("Adjusted Rand Index") + xlab(("Clustering resolution")) +
-            scale_x_discrete(labels = c("Ensemblux", "Demuxalot",  "Demuxlet", "Souporcell", "Vireo", "DoubletFinder", "All cells"))
+            scale_x_discrete(labels = c("ensemblex", "Demuxalot",  "Demuxlet", "Souporcell", "Vireo", "DoubletFinder", "All cells"))
             ggsave(paste(output_dir,"/ARI_all_timepoints_mean.pdf", sep=""), width = 8, height = 2.75)
 
         ## Wilcoxon rank-sum test
-        wilcox.test(bind_all$mean[bind_all$class == "Ensemblux"], bind_all$mean[bind_all$class == "Demuxalot"], alternative = "greater")
-        wilcox.test(bind_all$mean[bind_all$class == "Ensemblux"], bind_all$mean[bind_all$class == "Demuxlet"], alternative = "greater")
-        wilcox.test(bind_all$mean[bind_all$class == "Ensemblux"], bind_all$mean[bind_all$class == "Vireo"], alternative = "greater")
-        wilcox.test(bind_all$mean[bind_all$class == "Ensemblux"], bind_all$mean[bind_all$class == "Souporcell"], alternative = "greater")
-        wilcox.test(bind_all$mean[bind_all$class == "Ensemblux"], bind_all$mean[bind_all$class == "DF"], alternative = "greater")
-        wilcox.test(bind_all$mean[bind_all$class == "Ensemblux"], bind_all$mean[bind_all$class == "None"], alternative = "greater")
+        wilcox.test(bind_all$mean[bind_all$class == "ensemblex"], bind_all$mean[bind_all$class == "Demuxalot"], alternative = "greater")
+        wilcox.test(bind_all$mean[bind_all$class == "ensemblex"], bind_all$mean[bind_all$class == "Demuxlet"], alternative = "greater")
+        wilcox.test(bind_all$mean[bind_all$class == "ensemblex"], bind_all$mean[bind_all$class == "Vireo"], alternative = "greater")
+        wilcox.test(bind_all$mean[bind_all$class == "ensemblex"], bind_all$mean[bind_all$class == "Souporcell"], alternative = "greater")
+        wilcox.test(bind_all$mean[bind_all$class == "ensemblex"], bind_all$mean[bind_all$class == "DF"], alternative = "greater")
+        wilcox.test(bind_all$mean[bind_all$class == "ensemblex"], bind_all$mean[bind_all$class == "None"], alternative = "greater")
 ##

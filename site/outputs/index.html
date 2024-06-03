@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://neurobioinfo.github.io/outputs/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Ensemblux outputs - Ensemblux</title>
+    <title>ensemblex outputs - ensemblex</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Ensemblux outputs";
+        var mkdocs_page_name = "ensemblex outputs";
         var mkdocs_page_input_path = "outputs.md";
         var mkdocs_page_url = "/outputs/";
       </script>
@@ -30,7 +30,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href=".." class="icon icon-home"> Ensemblux
+          <a href=".." class="icon icon-home"> ensemblex
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
@@ -43,14 +43,14 @@
                 <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
                 </li>
               </ul>
-              <p class="caption"><span class="caption-text">The Ensemblux algorithm</span></p>
+              <p class="caption"><span class="caption-text">The ensemblex algorithm</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../overview/">Ensemblux algorithm overview</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../overview/">ensemblex algorithm overview</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">The Ensemblux Pipeline</span></p>
+              <p class="caption"><span class="caption-text">The ensemblex Pipeline</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../overview_pipeline/">Ensemblux pipeline overview</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../overview_pipeline/">ensemblex pipeline overview</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
                   </li>
@@ -60,14 +60,14 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../Step2/">Step 3: Genetic demultiplexing by constituent tools</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Step3/">Step 4: Application of Ensemblux</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../Step3/">Step 4: Application of ensemblex</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Documentation</span></p>
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../reference/">Execution parameters</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Ensemblux outputs</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">ensemblex outputs</a>
     <ul class="current">
     </ul>
                   </li>
@@ -76,7 +76,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../midbrain_download/">Downloading data</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Dataset1/">Ensemblux with prior genotype information</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../Dataset1/">ensemblex with prior genotype information</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">About</span></p>
@@ -95,7 +95,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="..">Ensemblux</a>
+          <a href="..">ensemblex</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -103,7 +103,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
           <li>Documentation &raquo;</li>
-      <li class="breadcrumb-item active">Ensemblux outputs</li>
+      <li class="breadcrumb-item active">ensemblex outputs</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -112,7 +112,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="ensemblux-algorithm-outputs">Ensemblux algorithm outputs</h2>
+                <h2 id="ensemblex-algorithm-outputs">ensemblex algorithm outputs</h2>
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#outputs">Outputs</a><ul>
@@ -126,9 +126,9 @@
 </ul>
 <hr />
 <h2 id="introduction">Introduction</h2>
-<p>After applying the Ensemblux algorithm to the output files of the constituent genetic demultiplexing tools in Step 4, the <code>~/working_directory/ensemblux</code> folder will have the following structure:</p>
+<p>After applying the ensemblex algorithm to the output files of the constituent genetic demultiplexing tools in Step 4, the <code>~/working_directory/ensemblex</code> folder will have the following structure:</p>
 <pre><code>working_directory
-└── ensemblux
+└── ensemblex
     ├── constituent_tool_merge.csv
     ├── PWE
     ├── GBD
@@ -140,13 +140,13 @@
 <li><code>PWE/</code> contains the outputs from Step 1: probabilistic-weighted ensemble (PWE).</li>
 <li><code>GBD/</code> contains the outputs from Step 2: graph-based doublet detection (GBD).</li>
 <li><code>EID/</code> contains the outputs from Step 3: ensemble-independent doublet detection (EID).</li>
-<li><code>confidence/</code> contains the final Ensemblux output file, whose sample labels have been annotate with the Ensemblux signlet confidence score.</li>
+<li><code>confidence/</code> contains the final ensemblex output file, whose sample labels have been annotate with the ensemblex signlet confidence score.</li>
 </ul>
-<p><strong>Note:</strong> If users re-run a step of the Ensemblux workflow, the outputs from the previous run will automatically be overwritten. If you do not want to lose the outputs from a previous run, it is important to copy the materials to a separate directory. </p>
+<p><strong>Note:</strong> If users re-run a step of the ensemblex workflow, the outputs from the previous run will automatically be overwritten. If you do not want to lose the outputs from a previous run, it is important to copy the materials to a separate directory. </p>
 <hr />
 <h2 id="outputs">Outputs</h2>
 <h4 id="merging-constituent-output-files">Merging constituent output files</h4>
-<p>Ensemblux begins by merging the output files of the constituent genetic demultiplexing tools by cell barcode, which produces the <code>constituent_tool_merge.csv</code> file. In this file, each constituent genetic demultiplexing tool has two columns corresponding to their sample labels:</p>
+<p>ensemblex begins by merging the output files of the constituent genetic demultiplexing tools by cell barcode, which produces the <code>constituent_tool_merge.csv</code> file. In this file, each constituent genetic demultiplexing tool has two columns corresponding to their sample labels:</p>
 <ul>
 <li><code>demuxalot_assignment</code></li>
 <li><code>demuxalot_best_assignment</code></li>
@@ -158,12 +158,12 @@
 <li><code>vireo_best_assignment</code></li>
 </ul>
 <p>Taking Vireo as an example, <code>vireo_assignment</code> shows Vireo's sample labels after applying its recommended probability threshold; thus, cells that do not meet Vireo's recommended probability threshold will be labeled as "unassigned". In turn, <code>vireo_best_assignment</code> shows Vireo's best guess assignments with out applying the recommended probability threshold; thus, cells that do not meet Vireo's recommended probability threshold will still show the best sample label and will not be labelled as "unassigned". </p>
-<p>The <code>constituent_tool_merge.csv</code> file also contains a <code>general_consensus</code> column. <strong>This is not Ensemblux's sample labels</strong>. The <code>general_consensus</code> column simply shows the sample labels that result from a majority vote classifier; split decisions are labeled as unassigned. </p>
+<p>The <code>constituent_tool_merge.csv</code> file also contains a <code>general_consensus</code> column. <strong>This is not ensemblex's sample labels</strong>. The <code>general_consensus</code> column simply shows the sample labels that result from a majority vote classifier; split decisions are labeled as unassigned. </p>
 <hr />
 <h4 id="step-1-accuracy-weighted-probabilistic-ensemble">Step 1: Accuracy-weighted probabilistic ensemble</h4>
-<p>After running Step 1 of the Ensemblux algorithm, the <code>/PWE</code> folder will contain the following files:</p>
+<p>After running Step 1 of the ensemblex algorithm, the <code>/PWE</code> folder will contain the following files:</p>
 <pre><code>working_directory
-└── ensemblux
+└── ensemblex
     └── PWE
         ├── ARI_demultiplexing_tools.pdf
         ├── BA_demultiplexing_tools.pdf
@@ -197,21 +197,21 @@
 <tr>
 <td style="text-align: left;">File</td>
 <td style="text-align: left;">Step1_cell_assignment.csv</td>
-<td style="text-align: left;">Data file containing Ensemblux's sample labels after Step 1: accuracy-weighted probabilistic ensemble.</td>
+<td style="text-align: left;">Data file containing ensemblex's sample labels after Step 1: accuracy-weighted probabilistic ensemble.</td>
 </tr>
 </tbody>
 </table>
 <p>The <code>Step1_cell_assignment.csv</code> file contains the following important columns:</p>
 <ul>
-<li><code>Ensemblux_assignment</code>: Ensemblux sample labels after performing accuracy-weighted probabilistic ensemble.</li>
-<li><code>Ensemblux_probability</code>: Accuracy-weighted ensemble probability corresponding to Ensemblux's sample labels.</li>
+<li><code>ensemblex_assignment</code>: ensemblex sample labels after performing accuracy-weighted probabilistic ensemble.</li>
+<li><code>ensemblex_probability</code>: Accuracy-weighted ensemble probability corresponding to ensemblex's sample labels.</li>
 </ul>
-<p><strong>NOTE</strong>: Prior to using Ensemblux's sample labels for downstream analyses, we recommend computing the Ensemblux singlet confidence score to identify low confidence singlet assignments that should be removed from the dataset to mitigate the introduction of technical artificats. </p>
+<p><strong>NOTE</strong>: Prior to using ensemblex's sample labels for downstream analyses, we recommend computing the ensemblex singlet confidence score to identify low confidence singlet assignments that should be removed from the dataset to mitigate the introduction of technical artificats. </p>
 <hr />
 <h4 id="step-2-graph-based-doublet-detection">Step 2: Graph-based doublet detection</h4>
-<p>After running Step 2 of the Ensemblux algorithm, the <code>/GBD</code> folder will contain the following files:</p>
+<p>After running Step 2 of the ensemblex algorithm, the <code>/GBD</code> folder will contain the following files:</p>
 <pre><code>working_directory
-└── ensemblux
+└── ensemblex
     └── PWE
         ├── optimal_nCD.pdf
         ├── optimal_pT.pdf
@@ -256,7 +256,7 @@
 <tr>
 <td style="text-align: left;">Figure</td>
 <td style="text-align: left;">PCA1_graph_based_doublet_detection.pdf</td>
-<td style="text-align: left;">PCA showing Ensemblux sample labels (singlet or doublet) prior to performing graph-based doublet detection.</td>
+<td style="text-align: left;">PCA showing ensemblex sample labels (singlet or doublet) prior to performing graph-based doublet detection.</td>
 </tr>
 <tr>
 <td style="text-align: left;">Figure</td>
@@ -266,7 +266,7 @@
 <tr>
 <td style="text-align: left;">Figure</td>
 <td style="text-align: left;">PCA3_graph_based_doublet_detection.pdf</td>
-<td style="text-align: left;">PCA showing Ensemblux sample labels (singlet or doublet) after performing graph-based doublet detection.</td>
+<td style="text-align: left;">PCA showing ensemblex sample labels (singlet or doublet) after performing graph-based doublet detection.</td>
 </tr>
 <tr>
 <td style="text-align: left;">Figure</td>
@@ -281,25 +281,25 @@
 <tr>
 <td style="text-align: left;">File</td>
 <td style="text-align: left;">Step2_cell_assignment.csv</td>
-<td style="text-align: left;">Data file containing Ensemblux's sample labels after Step 2: graph-based doublet detection.</td>
+<td style="text-align: left;">Data file containing ensemblex's sample labels after Step 2: graph-based doublet detection.</td>
 </tr>
 </tbody>
 </table>
 <p>The <code>Step2_cell_assignment.csv</code> file contains the following important column:</p>
 <ul>
-<li><code>Ensemblux_assignment</code>: Ensemblux sample labels after performing graph-based doublet detection.</li>
+<li><code>ensemblex_assignment</code>: ensemblex sample labels after performing graph-based doublet detection.</li>
 </ul>
-<p><strong>NOTE</strong>: Prior to using Ensemblux's sample labels for downstream analyses, we recommend computing the Ensemblux singlet confidence score to identify low confidence singlet assignments that should be removed from the dataset to mitigate the introduction of technical artificats. </p>
+<p><strong>NOTE</strong>: Prior to using ensemblex's sample labels for downstream analyses, we recommend computing the ensemblex singlet confidence score to identify low confidence singlet assignments that should be removed from the dataset to mitigate the introduction of technical artificats. </p>
 <hr />
 <h4 id="step-3-ensemble-independent-doublet-detection">Step 3: Ensemble-independent doublet detection</h4>
-<p>After running Step 3 of the Ensemblux algorithm, the <code>/EID</code> folder will contain the following files:</p>
+<p>After running Step 3 of the ensemblex algorithm, the <code>/EID</code> folder will contain the following files:</p>
 <pre><code>working_directory
-└── ensemblux
+└── ensemblex
     └── EID
         ├── Doublet_overlap_no_threshold.pdf
         ├── Doublet_overlap_threshold.pdf
-        ├── Number_Ensemblux_doublets_EID_no_threshold.pdf
-        ├── Number_Ensemblux_doublets_EID_threshold.pdf
+        ├── Number_ensemblex_doublets_EID_no_threshold.pdf
+        ├── Number_ensemblex_doublets_EID_threshold.pdf
         └── Step3_cell_assignment.csv
 
 </code></pre>
@@ -324,33 +324,33 @@
 </tr>
 <tr>
 <td style="text-align: left;">Figure</td>
-<td style="text-align: left;">Number_Ensemblux_doublets_EID_no_threshold.pdf</td>
-<td style="text-align: left;">Number of cells that would be labelled as doublets by Ensemblux if a constituent tool was nominated for ensemble-independent doublet detection, without applying assignment probability thresholds.</td>
+<td style="text-align: left;">Number_ensemblex_doublets_EID_no_threshold.pdf</td>
+<td style="text-align: left;">Number of cells that would be labelled as doublets by ensemblex if a constituent tool was nominated for ensemble-independent doublet detection, without applying assignment probability thresholds.</td>
 </tr>
 <tr>
 <td style="text-align: left;">Figure</td>
-<td style="text-align: left;">Number_Ensemblux_doublets_EID_threshold.pdf</td>
-<td style="text-align: left;">Number of cells that would be labelled as doublets by Ensemblux if a constituent tool was nominated for ensemble-independent doublet detection, after applying assignment probability thresholds.</td>
+<td style="text-align: left;">Number_ensemblex_doublets_EID_threshold.pdf</td>
+<td style="text-align: left;">Number of cells that would be labelled as doublets by ensemblex if a constituent tool was nominated for ensemble-independent doublet detection, after applying assignment probability thresholds.</td>
 </tr>
 <tr>
 <td style="text-align: left;">File</td>
 <td style="text-align: left;">Step3_cell_assignment.csv</td>
-<td style="text-align: left;">Data file containing Ensemblux's sample labels after Step 3: ensemble-independent doublet detection.</td>
+<td style="text-align: left;">Data file containing ensemblex's sample labels after Step 3: ensemble-independent doublet detection.</td>
 </tr>
 </tbody>
 </table>
 <p>The <code>Step3_cell_assignment.csv</code> file contains the following important column:</p>
 <ul>
-<li><code>Ensemblux_assignment</code>: Ensemblux sample labels after performing ensemble-independent doublet detection.</li>
+<li><code>ensemblex_assignment</code>: ensemblex sample labels after performing ensemble-independent doublet detection.</li>
 </ul>
-<p><strong>NOTE</strong>: Prior to using Ensemblux's sample labels for downstream analyses, we recommend computing the Ensemblux singlet confidence score to identify low confidence singlet assignments that should be removed from the dataset to mitigate the introduction of technical artificats. </p>
+<p><strong>NOTE</strong>: Prior to using ensemblex's sample labels for downstream analyses, we recommend computing the ensemblex singlet confidence score to identify low confidence singlet assignments that should be removed from the dataset to mitigate the introduction of technical artificats. </p>
 <hr />
 <h4 id="singlet-confidence-score">Singlet confidence score</h4>
-<p>After computing the Ensemblux singlet confidence score, the <code>/confidence</code> folder will contain the following file:</p>
+<p>After computing the ensemblex singlet confidence score, the <code>/confidence</code> folder will contain the following file:</p>
 <pre><code>working_directory
-└── ensemblux
+└── ensemblex
     └── confidence
-        └── Ensemblux_final_cell_assignment.csv
+        └── ensemblex_final_cell_assignment.csv
 
 
 </code></pre>
@@ -365,18 +365,18 @@
 <tbody>
 <tr>
 <td style="text-align: left;">File</td>
-<td style="text-align: left;">Ensemblux_final_cell_assignment.csv</td>
-<td style="text-align: left;">Data file containing Ensemblux's final sample labels after computing the singlet confidence score.</td>
+<td style="text-align: left;">ensemblex_final_cell_assignment.csv</td>
+<td style="text-align: left;">Data file containing ensemblex's final sample labels after computing the singlet confidence score.</td>
 </tr>
 </tbody>
 </table>
-<p>The <code>Ensemblux_final_cell_assignment.csv</code> file contains the following important column:</p>
+<p>The <code>ensemblex_final_cell_assignment.csv</code> file contains the following important column:</p>
 <ul>
-<li><code>Ensemblux_assignment</code>: Ensemblux sample labels after applying the recommended singlet confidence score threshold; singlets with a confidence score &lt; 1  are labeled as "unassigned".</li>
-<li><code>Ensemblux_best_assignment</code>: Ensemblux's best guess assignments with out applying the recommended confidence score threshold; singlets with a confidence score &lt; 1 will still show the best sample label and will not be labelled as "unassigned".</li>
-<li><code>Ensemblux_singlet_confidence</code>: Ensemblux singlet confidence score.</li>
+<li><code>ensemblex_assignment</code>: ensemblex sample labels after applying the recommended singlet confidence score threshold; singlets with a confidence score &lt; 1  are labeled as "unassigned".</li>
+<li><code>ensemblex_best_assignment</code>: ensemblex's best guess assignments with out applying the recommended confidence score threshold; singlets with a confidence score &lt; 1 will still show the best sample label and will not be labelled as "unassigned".</li>
+<li><code>ensemblex_singlet_confidence</code>: ensemblex singlet confidence score.</li>
 </ul>
-<p><strong>NOTE</strong>: We recommend using the sample labels from <code>Ensemblux_assignment</code> for downstream analyses. </p>
+<p><strong>NOTE</strong>: We recommend using the sample labels from <code>ensemblex_assignment</code> for downstream analyses. </p>
               
             </div>
           </div><footer>

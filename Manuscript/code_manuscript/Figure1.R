@@ -3,7 +3,7 @@
 #########
 # NOTES #
 #########
-# This code was used to produce Figure 1 of the Ensemblux manuscript
+# This code was used to produce Figure 1 of the ensemblex manuscript
 
 ########
 # Main #
@@ -13,7 +13,7 @@ packages <- c('dplyr', 'tidyr' 'pdfCluster', 'data.table','readr','lubridate', '
 lapply(packages, library, character.only = TRUE)
 
 ## Figure 1 function
-# eval_df = output of Ensemblux
+# eval_df = output of ensemblex
 # run = simulated pool ID
 # sample_size = number of samples pooled
 # concentration = number of cells pooled

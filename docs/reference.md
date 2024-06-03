@@ -1,4 +1,4 @@
-## Adjustable execution parameters for the Ensemblux pipeline
+## Adjustable execution parameters for the ensemblex pipeline
 
 - [Introduction](#introduction)
 - [How to modify the parameter files](#how-to-modify-the-parameter-files)
@@ -12,18 +12,18 @@
     - [Freemuxlet](#step-1-fastq-to-gene-expression-matrix-hto-track)
     - [Souporcell](#step-2-create-seurat-object-and-remove-ambient-rna)
     - [Vireo](#step-3-quality-control-and-generation-of-filtered-data-objects)
-- [Ensemblux algorithm](#step-parameters) 
+- [ensemblex algorithm](#step-parameters) 
 
 - - - -
 
 ## Introduction
-Prior to running the Ensemblux pipeline, users should modify the execution parameters for the constituent genetic demultiplexing tools and the Ensemblux algorithm. Upon running [Step 1: Set up](Step0.md), a `/job_info` folder will be created in the wording directory. Within the `/job_info` folder is a `/configs` folder which contains the `ensemblux_config.ini`; this .ini file contains all of the adjustable parameters for the Ensemblux pipeline. 
+Prior to running the ensemblex pipeline, users should modify the execution parameters for the constituent genetic demultiplexing tools and the ensemblex algorithm. Upon running [Step 1: Set up](Step0.md), a `/job_info` folder will be created in the wording directory. Within the `/job_info` folder is a `/configs` folder which contains the `ensemblex_config.ini`; this .ini file contains all of the adjustable parameters for the ensemblex pipeline. 
 
 ```
 working_directory
 └── job_info
     ├── configs
-    │   └── ensemblux_config.ini
+    │   └── ensemblex_config.ini
     ├── logs
     └── summary_report.txt
 ```
@@ -31,20 +31,20 @@ To ensure replicability, the execution parameters are documented in `~/working_d
 
 - - - -
 ## How to modify the parameter files
-The following section illustrates how to modify the `ensemblux_config.ini` parameter file directly from the terminal. To begin, navigate to the `/configs` folder and view its contents:
+The following section illustrates how to modify the `ensemblex_config.ini` parameter file directly from the terminal. To begin, navigate to the `/configs` folder and view its contents:
 
 ```
 cd ~/working_directory/job_info/configs
 ls
 ```
-The following file will be available: `ensemblux_config.ini`
+The following file will be available: `ensemblex_config.ini`
 
-To modify the `ensemblux_config.ini` parameter file directly in the terminal we will use [Nano](https://help.ubuntu.com/community/Nano):
+To modify the `ensemblex_config.ini` parameter file directly in the terminal we will use [Nano](https://help.ubuntu.com/community/Nano):
 
 ```
-nano ensemblux_config.ini
+nano ensemblex_config.ini
 ```
-This will open `ensemblux_config.ini` in the terminal and allow users to modify the parameters. To save the modifications and exit the parameter file, type `ctrl+o` followed by `ctrl+x`.
+This will open `ensemblex_config.ini` in the terminal and allow users to modify the parameters. To save the modifications and exit the parameter file, type `ctrl+o` followed by `ctrl+x`.
 - - - -
 
 ## Constituent genetic demultiplexing tools with prior genotype information
@@ -175,37 +175,37 @@ The following parameters are adjustable for Souporcell:
 
 - - - -
 
-## Ensemblux
+## ensemblex
 
-The following parameters are adjustable for the Ensemblux algorithm:
+The following parameters are adjustable for the ensemblex algorithm:
 
 |Parameter|Default|Description|
 |:--|:--|:--|
 |<ins>**Pool parameters**</ins>|
-|PAR_ensemblux_sample_size| NULL| Number of samples multiplexed in the pool.|
-|PAR_ensemblux_expected_doublet_rate| NULL|Expected doublet rate for the pool. If using 10X Genomics, the expected doublet rate can be estimated based on the number of recovered cells. For more information see [10X Genomics Documentation](https://kb.10xgenomics.com/hc/en-us/articles/360059124751-Why-is-the-multiplet-rate-different-for-the-Next-GEM-Single-Cell-3-LT-v3-1-assay-compared-to-other-single-cell-applications).|
+|PAR_ensemblex_sample_size| NULL| Number of samples multiplexed in the pool.|
+|PAR_ensemblex_expected_doublet_rate| NULL|Expected doublet rate for the pool. If using 10X Genomics, the expected doublet rate can be estimated based on the number of recovered cells. For more information see [10X Genomics Documentation](https://kb.10xgenomics.com/hc/en-us/articles/360059124751-Why-is-the-multiplet-rate-different-for-the-Next-GEM-Single-Cell-3-LT-v3-1-assay-compared-to-other-single-cell-applications).|
 |<ins>**Set up parameters**</ins>|
-|PAR_ensemblux_merge_constituents|Yes|Whether or not to merge the output files of the constituent demultiplexing tools. If running Ensemblux on a pool for the first time, this parameter should be set to "Yes". Subsequent runs of Ensemblux (e.g., parameter optimization) can have this parameter set to "No" as the pipeline will automatically detect the previously generated merged file.|
+|PAR_ensemblex_merge_constituents|Yes|Whether or not to merge the output files of the constituent demultiplexing tools. If running ensemblex on a pool for the first time, this parameter should be set to "Yes". Subsequent runs of ensemblex (e.g., parameter optimization) can have this parameter set to "No" as the pipeline will automatically detect the previously generated merged file.|
 |<ins>**Step 1 parameters: Probabilistic-weighted ensemble**</ins>|
-|PAR_ensemblux_probabilistic_weighted_ensemble| Yes|Whether or not to perform Step 1: Probabilistic-weighted ensemble. If running Ensemblux on a pool for the first time, this parameter should be set to "Yes". Subsequent runs of Ensemblux (e.g., parameter optimization) can have this parameter set to "No" as the pipeline will automatically detect the previously generated Step 1 output file.|
+|PAR_ensemblex_probabilistic_weighted_ensemble| Yes|Whether or not to perform Step 1: Probabilistic-weighted ensemble. If running ensemblex on a pool for the first time, this parameter should be set to "Yes". Subsequent runs of ensemblex (e.g., parameter optimization) can have this parameter set to "No" as the pipeline will automatically detect the previously generated Step 1 output file.|
 |<ins>**Step 2 parameters: Graph-based doublet detection**</ins>|
-|PAR_ensemblux_preliminary_parameter_sweep| No|Whether or not to perform a preliminary parameter sweep for Step 2: Graph-based doublet detection. Users should utilize the preliminary parameter sweep if they wish to manually define the number of confident doublets in the pool (nCD) and the percentile threshold of the nearest neighour frequency (pT), which can be defined in the following two parameters, respectively. |
-|PAR_ensemblux_nCD| NULL|Manually defined number of confident doublets in the pool (nCD). Value can be informed by the output files generated by setting PAR_ensemblux_preliminary_parameter_sweep to "Yes". |
-|PAR_ensemblux_pT| NULL|Manually defined percentile threshold of the nearest neighour frequency (pT). Value can be informed by the output files generated by setting PAR_ensemblux_preliminary_parameter_sweep to "Yes".|
-|PAR_ensemblux_graph_based_doublet_detection| Yes|Whether or not to perform Step 2: Graph-based doublet detection. If PAR_ensemblux_nCD and PAR_ensemblux_pT are not defined by the user (NULL), Ensemblux will automatically determine the optimal parameter values using an unsupervised parameter sweep. If PAR_ensemblux_nCD and PAR_ensemblux_pT are defined by the user, graph-based doublet detection will be performed with the user-defined values.   |
+|PAR_ensemblex_preliminary_parameter_sweep| No|Whether or not to perform a preliminary parameter sweep for Step 2: Graph-based doublet detection. Users should utilize the preliminary parameter sweep if they wish to manually define the number of confident doublets in the pool (nCD) and the percentile threshold of the nearest neighour frequency (pT), which can be defined in the following two parameters, respectively. |
+|PAR_ensemblex_nCD| NULL|Manually defined number of confident doublets in the pool (nCD). Value can be informed by the output files generated by setting PAR_ensemblex_preliminary_parameter_sweep to "Yes". |
+|PAR_ensemblex_pT| NULL|Manually defined percentile threshold of the nearest neighour frequency (pT). Value can be informed by the output files generated by setting PAR_ensemblex_preliminary_parameter_sweep to "Yes".|
+|PAR_ensemblex_graph_based_doublet_detection| Yes|Whether or not to perform Step 2: Graph-based doublet detection. If PAR_ensemblex_nCD and PAR_ensemblex_pT are not defined by the user (NULL), ensemblex will automatically determine the optimal parameter values using an unsupervised parameter sweep. If PAR_ensemblex_nCD and PAR_ensemblex_pT are defined by the user, graph-based doublet detection will be performed with the user-defined values.   |
 |<ins>**Step 3 parameters: Ensemble-independent doublet detection**</ins>|
-|PAR_ensemblux_preliminary_ensemble_independent_doublet| No|Whether or not to perform a preliminary parameter sweep for Step 3: Ensemble-independent doublet detection. Users should utilize the preliminary parameter sweep if they wish to manually define which constituent tools to utilize for ensemble-independent doublet detection. Users can define which tools to utilize for ensemble-independent doublet detection in the following parameters.|
-|PAR_ensemblux_ensemble_independent_doublet| Yes|Whether or not to perform Step 3: Ensemble-independent doublet detection.|
-|PAR_ensemblux_doublet_Demuxalot_threshold| Yes|Whether or not to label doublets identified by Demuxalot as doublets. Only doublets with assignment probabilities exceeding Demuxalot's recommended probability threshold will be labeled as doublets by Ensemblux.|
-|PAR_ensemblux_doublet_Demuxalot_no_threshold| No|Whether or not to label doublets identified by Demuxalot as doublets, regardless of the corresponding assignment probability.|
-|PAR_ensemblux_doublet_Demuxlet_threshold| No|Whether or not to label doublets identified by Demuxlet as doublets. Only doublets with assignment probabilities exceeding Demuxlet's recommended probability threshold will be labeled as doublets by Ensemblux.|
-|PAR_ensemblux_doublet_Demuxlet_no_threshold| No|Whether or not to label doublets identified by Demuxlet as doublets, regardless of the corresponding assignment probability.|
-|PAR_ensemblux_doublet_Souporcell_threshold| No|Whether or not to label doublets identified by Souporcell as doublets. Only doublets with assignment probabilities exceeding Souporcell's recommended probability threshold will be labeled as doublets by Ensemblux.|
-|PAR_ensemblux_doublet_Souporcell_no_threshold| No|Whether or not to label doublets identified by Souporcell as doublets, regardless of the corresponding assignment probability.|
-|PAR_ensemblux_doublet_Vireo_threshold| Yes|Whether or not to label doublets identified by Vireo as doublets. Only doublets with assignment probabilities exceeding Vireo's recommended probability threshold will be labeled as doublets by Ensemblux.|
-|PAR_ensemblux_doublet_Vireo_no_threshold| No|Whether or not to label doublets identified by Vireo as doublets, regardless of the corresponding assignment probability.|
+|PAR_ensemblex_preliminary_ensemble_independent_doublet| No|Whether or not to perform a preliminary parameter sweep for Step 3: Ensemble-independent doublet detection. Users should utilize the preliminary parameter sweep if they wish to manually define which constituent tools to utilize for ensemble-independent doublet detection. Users can define which tools to utilize for ensemble-independent doublet detection in the following parameters.|
+|PAR_ensemblex_ensemble_independent_doublet| Yes|Whether or not to perform Step 3: Ensemble-independent doublet detection.|
+|PAR_ensemblex_doublet_Demuxalot_threshold| Yes|Whether or not to label doublets identified by Demuxalot as doublets. Only doublets with assignment probabilities exceeding Demuxalot's recommended probability threshold will be labeled as doublets by ensemblex.|
+|PAR_ensemblex_doublet_Demuxalot_no_threshold| No|Whether or not to label doublets identified by Demuxalot as doublets, regardless of the corresponding assignment probability.|
+|PAR_ensemblex_doublet_Demuxlet_threshold| No|Whether or not to label doublets identified by Demuxlet as doublets. Only doublets with assignment probabilities exceeding Demuxlet's recommended probability threshold will be labeled as doublets by ensemblex.|
+|PAR_ensemblex_doublet_Demuxlet_no_threshold| No|Whether or not to label doublets identified by Demuxlet as doublets, regardless of the corresponding assignment probability.|
+|PAR_ensemblex_doublet_Souporcell_threshold| No|Whether or not to label doublets identified by Souporcell as doublets. Only doublets with assignment probabilities exceeding Souporcell's recommended probability threshold will be labeled as doublets by ensemblex.|
+|PAR_ensemblex_doublet_Souporcell_no_threshold| No|Whether or not to label doublets identified by Souporcell as doublets, regardless of the corresponding assignment probability.|
+|PAR_ensemblex_doublet_Vireo_threshold| Yes|Whether or not to label doublets identified by Vireo as doublets. Only doublets with assignment probabilities exceeding Vireo's recommended probability threshold will be labeled as doublets by ensemblex.|
+|PAR_ensemblex_doublet_Vireo_no_threshold| No|Whether or not to label doublets identified by Vireo as doublets, regardless of the corresponding assignment probability.|
 |<ins>**Confidence score parameters**</ins>|
-|PAR_ensemblux_compute_singlet_confidence| Yes|Whether or not to compute Ensemblux's singlet confidence score. This will define low confidence assignments which should be removed from downstream analyses. |
+|PAR_ensemblex_compute_singlet_confidence| Yes|Whether or not to compute ensemblex's singlet confidence score. This will define low confidence assignments which should be removed from downstream analyses. |
 
 
 

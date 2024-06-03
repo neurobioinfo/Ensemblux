@@ -3,7 +3,7 @@
 #########
 # NOTES #
 #########
-# This code was used to produce Figure 5 of the Ensemblux manuscript
+# This code was used to produce Figure 5 of the ensemblex manuscript
 
 ########
 # Main #
@@ -12,7 +12,7 @@
 packages <- c('dplyr', 'tidyr' 'pdfCluster', 'data.table','readr','lubridate', 'tidyverse', 'moments', 'mousetrap', 'usethis', 'devtools', 'desc', 'kneedle', 'ROCit', 'ggplot2', 'factoextra', 'ggpubr', 'ComplexUpset', 'Seurat', 'Matrix', 'scCustomize', 'vctrs', 'fossil', 'openxlsx', 'stringr', 'MAST' )
 lapply(packages, library, character.only = TRUE)
 
-output_dir= '~/ensemblux_manuscript/Figure6'
+output_dir= '~/ensemblex_manuscript/Figure6'
 
 ######################################################
 # Integrate, cluster, and ARI for NSC Seurat objects #
@@ -24,17 +24,17 @@ output_dir= '~/ensemblux_manuscript/Figure6'
     seu_r2 <- readRDS('~/NSC/pool2/step4/objs4/Pool2.rds')
     df_r2 <- data.frame(seu_r2@meta.data)
 
-    ## Load corresponding Ensemblux outputs
-    ensemblux_r1 <- read.delim("~/NSC/pool1/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-    rownames(ensemblux_r1) <- paste0("Pool1_", ensemblux_r1$barcode)
-    rownames(ensemblux_r1) == rownames(df_r1)
-    ensemblux_r2 <- read.delim("~/NSC/pool2/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-    rownames(ensemblux_r2) <- paste0("Pool2_", ensemblux_r2$barcode)
-    rownames(ensemblux_r2) == rownames(df_r2)
+    ## Load corresponding ensemblex outputs
+    ensemblex_r1 <- read.delim("~/NSC/pool1/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+    rownames(ensemblex_r1) <- paste0("Pool1_", ensemblex_r1$barcode)
+    rownames(ensemblex_r1) == rownames(df_r1)
+    ensemblex_r2 <- read.delim("~/NSC/pool2/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+    rownames(ensemblex_r2) <- paste0("Pool2_", ensemblex_r2$barcode)
+    rownames(ensemblex_r2) == rownames(df_r2)
 
-    ## Merge Seurat and Ensemblux
-    seu_r1 <- AddMetaData(seu_r1, ensemblux_r1)
-    seu_r2 <- AddMetaData(seu_r2, ensemblux_r2)
+    ## Merge Seurat and ensemblex
+    seu_r1 <- AddMetaData(seu_r1, ensemblex_r1)
+    seu_r2 <- AddMetaData(seu_r2, ensemblex_r2)
    
     ## Prepare Seurat objects for integration
     DefaultAssay(seu_r1) <- 'RNA'
@@ -252,25 +252,25 @@ output_dir= '~/ensemblux_manuscript/Figure6'
 # Clustering-resolution specific Adjusted Rand Index plot #
 ###########################################################
 ## code
-    ## Ensemblux NSC
-    ensemblux <- read.xlsx('~/ensemblux_manuscript/Figure5/ADHD_NSC_ensemblux_500/clustering_ARI.xlsx')
-    ensemblux <- data.frame(ensemblux)
-    mean <- list(ensemblux[,1:20])
+    ## ensemblex NSC
+    ensemblex <- read.xlsx('~/ensemblex_manuscript/Figure5/ADHD_NSC_ensemblex_500/clustering_ARI.xlsx')
+    ensemblex <- data.frame(ensemblex)
+    mean <- list(ensemblex[,1:20])
     mean <- unlist(mean)
     mean <- unname(mean)
-    sd <- list(ensemblux[,21:ncol(ensemblux)])
+    sd <- list(ensemblex[,21:ncol(ensemblex)])
     sd <- unlist(sd)
     sd <- unname(sd)
-    res <- colnames(ensemblux[,1:20])
+    res <- colnames(ensemblex[,1:20])
     res <- c(res)
     res <- gsub(".*_","",res)
     #res <- as.numeric(res)
-    ensemblux <- data.frame(mean, sd, res)
-    ensemblux <- na.omit(ensemblux)
-    ensemblux$class <- "Ensemblux"
+    ensemblex <- data.frame(mean, sd, res)
+    ensemblex <- na.omit(ensemblex)
+    ensemblex$class <- "ensemblex"
 
     ## Demuxlet NSC
-    demuxlet <- read.xlsx('~/ensemblux_manuscript/Figure5/ADHD_NSC_demuxlet_500/clustering_ARI.xlsx')
+    demuxlet <- read.xlsx('~/ensemblex_manuscript/Figure5/ADHD_NSC_demuxlet_500/clustering_ARI.xlsx')
     demuxlet <- data.frame(demuxlet)
     mean <- list(demuxlet[,1:20])
     mean <- unlist(mean)
@@ -286,7 +286,7 @@ output_dir= '~/ensemblux_manuscript/Figure6'
     demuxlet$class <- "Demuxlet"
 
     ## None NSC
-    none <- read.xlsx('~/ensemblux_manuscript/Figure5/ADHD_NSC_none_500/clustering_ARI.xlsx')
+    none <- read.xlsx('~/ensemblex_manuscript/Figure5/ADHD_NSC_none_500/clustering_ARI.xlsx')
     none <- data.frame(none)
     mean <- list(none[,1:20])
     mean <- unlist(mean)
@@ -302,7 +302,7 @@ output_dir= '~/ensemblux_manuscript/Figure6'
     none$class <- "None"
 
     ## DF NSC
-    doubletfinder <- read.xlsx('~/ensemblux_manuscript/Figure5/ADHD_NSC_DF_500/clustering_ARI.xlsx')
+    doubletfinder <- read.xlsx('~/ensemblex_manuscript/Figure5/ADHD_NSC_DF_500/clustering_ARI.xlsx')
     doubletfinder <- data.frame(doubletfinder)
     mean <- list(doubletfinder[,1:20])
     mean <- unlist(mean)
@@ -318,7 +318,7 @@ output_dir= '~/ensemblux_manuscript/Figure6'
     doubletfinder$class <- "DF"
 
     ## Demuxalot NSC
-    demuxalot <- read.xlsx('~/ensemblux_manuscript/Figure5/ADHD_NSC_demuxalot_500/clustering_ARI.xlsx')
+    demuxalot <- read.xlsx('~/ensemblex_manuscript/Figure5/ADHD_NSC_demuxalot_500/clustering_ARI.xlsx')
     demuxalot <- data.frame(demuxalot)
     mean <- list(demuxalot[,1:20])
     mean <- unlist(mean)
@@ -334,7 +334,7 @@ output_dir= '~/ensemblux_manuscript/Figure6'
     demuxalot$class <- "Demuxalot"
 
     ## Vireo NSC
-    vireo <- read.xlsx('~/ensemblux_manuscript/Figure5/ADHD_NSC_vireo_500/clustering_ARI.xlsx')
+    vireo <- read.xlsx('~/ensemblex_manuscript/Figure5/ADHD_NSC_vireo_500/clustering_ARI.xlsx')
     vireo <- data.frame(vireo)
     mean <- list(vireo[,1:20])
     mean <- unlist(mean)
@@ -350,7 +350,7 @@ output_dir= '~/ensemblux_manuscript/Figure6'
     vireo$class <- "Vireo"
 
     ## Souporcell NSC
-    souporcell <- read.xlsx('~/ensemblux_manuscript/Figure5/ADHD_NSC_souporcell_500/clustering_ARI.xlsx')
+    souporcell <- read.xlsx('~/ensemblex_manuscript/Figure5/ADHD_NSC_souporcell_500/clustering_ARI.xlsx')
     souporcell <- data.frame(souporcell)
     mean <- list(souporcell[,1:20])
     mean <- unlist(mean)
@@ -366,8 +366,8 @@ output_dir= '~/ensemblux_manuscript/Figure6'
     souporcell$class <- "Souporcell"
 
     ## Dataframe 
-    bind <- rbind(ensemblux, demuxlet, none, doubletfinder, demuxalot, vireo, souporcell)
-    bind$class <- factor(bind$class, levels = c("Ensemblux", "Demuxalot", "Demuxlet", "Souporcell", "Vireo", "DF", "None"))
+    bind <- rbind(ensemblex, demuxlet, none, doubletfinder, demuxalot, vireo, souporcell)
+    bind$class <- factor(bind$class, levels = c("ensemblex", "Demuxalot", "Demuxlet", "Souporcell", "Vireo", "DF", "None"))
     bind_all <- bind
 
     ## Compute mean and quantile for boxplot
@@ -379,7 +379,7 @@ output_dir= '~/ensemblux_manuscript/Figure6'
             d_middle = mean(mean),
             d_upper = quantile(mean, 0.75)) %>% as.data.frame()
 
-    df1$class <- factor(df1$class, levels = c("Ensemblux", "Demuxalot", "Demuxlet", "Souporcell", "Vireo", "DF", "None"))
+    df1$class <- factor(df1$class, levels = c("ensemblex", "Demuxalot", "Demuxlet", "Souporcell", "Vireo", "DF", "None"))
 
     ## Plot
     ggplot(df1) + 
@@ -397,8 +397,8 @@ output_dir= '~/ensemblux_manuscript/Figure6'
             legend.position = "none") + 
             scale_colour_manual(values = c("black","#d95f02", "#e6ab02", "#7570b3", "#66a61e", "dodgerblue2", "grey63")) +
             ylab("Adjusted Rand Index") + xlab(("Clustering resolution")) +
-            scale_x_discrete(labels = c("Ensemblux", "Demuxalot",  "Demuxlet", "Souporcell", "Vireo-GT", "DoubletFinder", "All droplets"))
-    ggsave("~/ensemblux_manuscript/Figure5_ADHD/ADHD_ARI_alltool_500_NSC_2.pdf",width = 3.25, height = 3)
+            scale_x_discrete(labels = c("ensemblex", "Demuxalot",  "Demuxlet", "Souporcell", "Vireo-GT", "DoubletFinder", "All droplets"))
+    ggsave("~/ensemblex_manuscript/Figure5_ADHD/ADHD_ARI_alltool_500_NSC_2.pdf",width = 3.25, height = 3)
 
 
     ## Compute ANOVA
@@ -411,21 +411,21 @@ output_dir= '~/ensemblux_manuscript/Figure6'
 ##
 
 #########################################################################
-# Ensemblux putative doublets assigned as singlets by constituent tools #
+# ensemblex putative doublets assigned as singlets by constituent tools #
 #########################################################################
 ## code
     ## Load Seurat object
-    seu_int<-readRDS("~/ensemblux_manuscript/Figure6/NSC_annotated_seurat.rds")
+    seu_int<-readRDS("~/ensemblex_manuscript/Figure6/NSC_annotated_seurat.rds")
  
     ## Create Seurat matadata dataframe
     bind_meta <- data.frame(seu_int@meta.data)
-    bind_meta <- bind_meta %>% dplyr::select(Ensemblux_assignment, vireo_assignment, souporcell_assignment, demuxlet_assignment, demuxalot_assignment)
+    bind_meta <- bind_meta %>% dplyr::select(ensemblex_assignment, vireo_assignment, souporcell_assignment, demuxlet_assignment, demuxalot_assignment)
 
     ## Souporcell
-    par_metadata <- "~/ensemblux_manuscript/Figure6/ADHD_NSC_souporcell_500/meta.csv"
+    par_metadata <- "~/ensemblex_manuscript/Figure6/ADHD_NSC_souporcell_500/meta.csv"
     meta_data <- read.delim(par_metadata, header = T, sep = ",") 
     bind_meta_temp <- bind_meta
-    bind_meta_temp <- subset(bind_meta_temp, Ensemblux_assignment == "doublet" & souporcell_assignment != "doublet" )
+    bind_meta_temp <- subset(bind_meta_temp, ensemblex_assignment == "doublet" & souporcell_assignment != "doublet" )
     bind_meta_temp <- subset(bind_meta_temp, souporcell_assignment != "unassigned")
     bind_meta_temp <- merge(bind_meta_temp, meta_data, by = "souporcell_assignment")
     one <- data.frame(table(bind_meta_temp$DiseaseStatus))
@@ -443,10 +443,10 @@ output_dir= '~/ensemblux_manuscript/Figure6'
     souporcell_df <- three
 
     ## Demuxalot
-    par_metadata <- "~/ensemblux_manuscript/Figure6/ADHD_NSC_demuxalot_500/meta.csv"
+    par_metadata <- "~/ensemblex_manuscript/Figure6/ADHD_NSC_demuxalot_500/meta.csv"
     meta_data <- read.delim(par_metadata, header = T, sep = ",") 
     bind_meta_temp <- bind_meta
-    bind_meta_temp <- subset(bind_meta_temp, Ensemblux_assignment == "doublet" & demuxalot_assignment != "doublet" )
+    bind_meta_temp <- subset(bind_meta_temp, ensemblex_assignment == "doublet" & demuxalot_assignment != "doublet" )
     bind_meta_temp <- subset(bind_meta_temp, demuxalot_assignment != "unassigned")
     bind_meta_temp <- merge(bind_meta_temp, meta_data, by = "demuxalot_assignment")
     one <- data.frame(table(bind_meta_temp$DiseaseStatus))
@@ -464,10 +464,10 @@ output_dir= '~/ensemblux_manuscript/Figure6'
     demuxalot_df <- three
 
     ## Demuxlet
-    par_metadata <- "~/ensemblux_manuscript/Figure6/ADHD_NSC_demuxlet_500/meta.csv"
+    par_metadata <- "~/ensemblex_manuscript/Figure6/ADHD_NSC_demuxlet_500/meta.csv"
     meta_data <- read.delim(par_metadata, header = T, sep = ",") 
     bind_meta_temp <- bind_meta
-    bind_meta_temp <- subset(bind_meta_temp, Ensemblux_assignment == "doublet" & demuxlet_assignment != "doublet" )
+    bind_meta_temp <- subset(bind_meta_temp, ensemblex_assignment == "doublet" & demuxlet_assignment != "doublet" )
     bind_meta_temp <- subset(bind_meta_temp, demuxlet_assignment != "unassigned")
     bind_meta_temp <- merge(bind_meta_temp, meta_data, by = "demuxlet_assignment")
     one <- data.frame(table(bind_meta_temp$DiseaseStatus))
@@ -485,10 +485,10 @@ output_dir= '~/ensemblux_manuscript/Figure6'
     demuxlet_df <- three
 
     ## Vireo
-    par_metadata <- "~/ensemblux_manuscript/Figure6/ADHD_NSC_vireo_500/meta.csv"
+    par_metadata <- "~/ensemblex_manuscript/Figure6/ADHD_NSC_vireo_500/meta.csv"
     meta_data <- read.delim(par_metadata, header = T, sep = ",") 
     bind_meta_temp <- bind_meta
-    bind_meta_temp <- subset(bind_meta_temp, Ensemblux_assignment == "doublet" & vireo_assignment != "doublet" )
+    bind_meta_temp <- subset(bind_meta_temp, ensemblex_assignment == "doublet" & vireo_assignment != "doublet" )
     bind_meta_temp <- subset(bind_meta_temp, vireo_assignment != "unassigned")
     bind_meta_temp <- merge(bind_meta_temp, meta_data, by = "vireo_assignment")
     one <- data.frame(table(bind_meta_temp$DiseaseStatus))
@@ -526,7 +526,7 @@ output_dir= '~/ensemblux_manuscript/Figure6'
         scale_y_continuous(limits = c(0,0.5)) + 
         ylab("Proportion of cells\nwithin disorder status") + 
         facet_wrap(~tool, ncol = 4)
-    ggsave(paste(output_dir,"/Ensemblux_dub_as_sing_NSC.pdf", sep=""), width = 4, height = 2.75)
+    ggsave(paste(output_dir,"/ensemblex_dub_as_sing_NSC.pdf", sep=""), width = 4, height = 2.75)
 ##
 
 #######################################################################
@@ -537,25 +537,25 @@ output_dir= '~/ensemblux_manuscript/Figure6'
     # Demuxlet #
     ############
     ## code
-        output_dir= '~/ensemblux_manuscript/Figure6/ADHD_NSC_demuxlet_500_MAST'
+        output_dir= '~/ensemblex_manuscript/Figure6/ADHD_NSC_demuxlet_500_MAST'
         dir.create(output_dir)
         par_merge_meta <- "demuxlet_assignment"
-        par_metadata <- "~/ensemblux_manuscript/Figure6/ADHD_NSC_demuxlet_500/meta.csv"
+        par_metadata <- "~/ensemblex_manuscript/Figure6/ADHD_NSC_demuxlet_500/meta.csv"
                                                     
-        seu_int<-readRDS("~/ensemblux_manuscript/Figure6/NSC_annotated_seurat.rds")
+        seu_int<-readRDS("~/ensemblex_manuscript/Figure6/NSC_annotated_seurat.rds")
         nrow(seu_int@meta.data)
         
         seu_int[["RNA3"]] <- as(object = seu_int[["RNA"]], Class = "Assay")
         DefaultAssay(seu_int) <- "RNA3"
 
-        ensemblux_r1 <- read.delim("~/NSC/pool1/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-        rownames(ensemblux_r1) <- paste0("Pool1_", ensemblux_r1$barcode)
-        rownames(ensemblux_r1) == rownames(df_r1)
-        ensemblux_r2 <- read.delim("~/NSC/pool2/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-        rownames(ensemblux_r2) <- paste0("Pool2_", ensemblux_r2$barcode)
-        rownames(ensemblux_r2) == rownames(df_r2)
+        ensemblex_r1 <- read.delim("~/NSC/pool1/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+        rownames(ensemblex_r1) <- paste0("Pool1_", ensemblex_r1$barcode)
+        rownames(ensemblex_r1) == rownames(df_r1)
+        ensemblex_r2 <- read.delim("~/NSC/pool2/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+        rownames(ensemblex_r2) <- paste0("Pool2_", ensemblex_r2$barcode)
+        rownames(ensemblex_r2) == rownames(df_r2)
 
-        bind_meta <- rbind(ensemblux_r1, ensemblux_r2)
+        bind_meta <- rbind(ensemblex_r1, ensemblex_r2)
 
         seu_int <- AddMetaData(seu_int, bind_meta)
         nrow(seu_int@meta.data)
@@ -586,7 +586,7 @@ output_dir= '~/ensemblux_manuscript/Figure6'
         seu_int <- AddMetaData(seu_int, metadata = df[,i], col.name = colnames[i])
         }
 
-        dd<-read.csv('~/ensemblux_manuscript/Figure6/NSC_contrast.txt', sep="")
+        dd<-read.csv('~/ensemblex_manuscript/Figure6/NSC_contrast.txt', sep="")
 
         OUT_dir_sample <- paste(output_dir,"/Cell_based_celltype_groups",sep='') 
         dir.create(OUT_dir_sample)
@@ -620,25 +620,25 @@ output_dir= '~/ensemblux_manuscript/Figure6'
     # Demuxalot #
     ############
     ## code
-        output_dir= '~/ensemblux_manuscript/Figure6/ADHD_NSC_demuxalot_500_MAST'
+        output_dir= '~/ensemblex_manuscript/Figure6/ADHD_NSC_demuxalot_500_MAST'
         dir.create(output_dir)
         par_merge_meta <- "demuxalot_assignment"
-        par_metadata <- "~/ensemblux_manuscript/Figure6/ADHD_NSC_demuxalot_500/meta.csv"
+        par_metadata <- "~/ensemblex_manuscript/Figure6/ADHD_NSC_demuxalot_500/meta.csv"
                                                     
-        seu_int<-readRDS("~/ensemblux_manuscript/Figure6/NSC_annotated_seurat.rds")
+        seu_int<-readRDS("~/ensemblex_manuscript/Figure6/NSC_annotated_seurat.rds")
         nrow(seu_int@meta.data)
         
         seu_int[["RNA3"]] <- as(object = seu_int[["RNA"]], Class = "Assay")
         DefaultAssay(seu_int) <- "RNA3"
 
-        ensemblux_r1 <- read.delim("~/NSC/pool1/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-        rownames(ensemblux_r1) <- paste0("Pool1_", ensemblux_r1$barcode)
-        rownames(ensemblux_r1) == rownames(df_r1)
-        ensemblux_r2 <- read.delim("~/NSC/pool2/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-        rownames(ensemblux_r2) <- paste0("Pool2_", ensemblux_r2$barcode)
-        rownames(ensemblux_r2) == rownames(df_r2)
+        ensemblex_r1 <- read.delim("~/NSC/pool1/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+        rownames(ensemblex_r1) <- paste0("Pool1_", ensemblex_r1$barcode)
+        rownames(ensemblex_r1) == rownames(df_r1)
+        ensemblex_r2 <- read.delim("~/NSC/pool2/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+        rownames(ensemblex_r2) <- paste0("Pool2_", ensemblex_r2$barcode)
+        rownames(ensemblex_r2) == rownames(df_r2)
 
-        bind_meta <- rbind(ensemblux_r1, ensemblux_r2)
+        bind_meta <- rbind(ensemblex_r1, ensemblex_r2)
 
         seu_int <- AddMetaData(seu_int, bind_meta)
         nrow(seu_int@meta.data)
@@ -669,7 +669,7 @@ output_dir= '~/ensemblux_manuscript/Figure6'
         seu_int <- AddMetaData(seu_int, metadata = df[,i], col.name = colnames[i])
         }
 
-        dd<-read.csv('~/ensemblux_manuscript/Figure6/NSC_contrast.txt', sep="")
+        dd<-read.csv('~/ensemblex_manuscript/Figure6/NSC_contrast.txt', sep="")
 
         OUT_dir_sample <- paste(output_dir,"/Cell_based_celltype_groups",sep='') 
         dir.create(OUT_dir_sample)
@@ -703,25 +703,25 @@ output_dir= '~/ensemblux_manuscript/Figure6'
     # Souporcell #
     ############
     ## code
-        output_dir= '~/ensemblux_manuscript/Figure6/ADHD_NSC_souporcell_500_MAST'
+        output_dir= '~/ensemblex_manuscript/Figure6/ADHD_NSC_souporcell_500_MAST'
         dir.create(output_dir)
         par_merge_meta <- "souporcell_assignment"
-        par_metadata <- "~/ensemblux_manuscript/Figure6/ADHD_NSC_souporcell_500/meta.csv"
+        par_metadata <- "~/ensemblex_manuscript/Figure6/ADHD_NSC_souporcell_500/meta.csv"
                                                     
-        seu_int<-readRDS("~/ensemblux_manuscript/Figure6/NSC_annotated_seurat.rds")
+        seu_int<-readRDS("~/ensemblex_manuscript/Figure6/NSC_annotated_seurat.rds")
         nrow(seu_int@meta.data)
         
         seu_int[["RNA3"]] <- as(object = seu_int[["RNA"]], Class = "Assay")
         DefaultAssay(seu_int) <- "RNA3"
 
-        ensemblux_r1 <- read.delim("~/NSC/pool1/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-        rownames(ensemblux_r1) <- paste0("Pool1_", ensemblux_r1$barcode)
-        rownames(ensemblux_r1) == rownames(df_r1)
-        ensemblux_r2 <- read.delim("~/NSC/pool2/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-        rownames(ensemblux_r2) <- paste0("Pool2_", ensemblux_r2$barcode)
-        rownames(ensemblux_r2) == rownames(df_r2)
+        ensemblex_r1 <- read.delim("~/NSC/pool1/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+        rownames(ensemblex_r1) <- paste0("Pool1_", ensemblex_r1$barcode)
+        rownames(ensemblex_r1) == rownames(df_r1)
+        ensemblex_r2 <- read.delim("~/NSC/pool2/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+        rownames(ensemblex_r2) <- paste0("Pool2_", ensemblex_r2$barcode)
+        rownames(ensemblex_r2) == rownames(df_r2)
 
-        bind_meta <- rbind(ensemblux_r1, ensemblux_r2)
+        bind_meta <- rbind(ensemblex_r1, ensemblex_r2)
 
         seu_int <- AddMetaData(seu_int, bind_meta)
         nrow(seu_int@meta.data)
@@ -752,7 +752,7 @@ output_dir= '~/ensemblux_manuscript/Figure6'
         seu_int <- AddMetaData(seu_int, metadata = df[,i], col.name = colnames[i])
         }
 
-        dd<-read.csv('~/ensemblux_manuscript/Figure6/NSC_contrast.txt', sep="")
+        dd<-read.csv('~/ensemblex_manuscript/Figure6/NSC_contrast.txt', sep="")
 
         OUT_dir_sample <- paste(output_dir,"/Cell_based_celltype_groups",sep='') 
         dir.create(OUT_dir_sample)
@@ -786,25 +786,25 @@ output_dir= '~/ensemblux_manuscript/Figure6'
     # Vireo #
     ############
     ## code
-        output_dir= '~/ensemblux_manuscript/Figure6/ADHD_NSC_vireo_500_MAST'
+        output_dir= '~/ensemblex_manuscript/Figure6/ADHD_NSC_vireo_500_MAST'
         dir.create(output_dir)
         par_merge_meta <- "vireo_assignment"
-        par_metadata <- "~/ensemblux_manuscript/Figure6/ADHD_NSC_vireo_500/meta.csv"
+        par_metadata <- "~/ensemblex_manuscript/Figure6/ADHD_NSC_vireo_500/meta.csv"
                                                     
-        seu_int<-readRDS("~/ensemblux_manuscript/Figure6/NSC_annotated_seurat.rds")
+        seu_int<-readRDS("~/ensemblex_manuscript/Figure6/NSC_annotated_seurat.rds")
         nrow(seu_int@meta.data)
         
         seu_int[["RNA3"]] <- as(object = seu_int[["RNA"]], Class = "Assay")
         DefaultAssay(seu_int) <- "RNA3"
 
-        ensemblux_r1 <- read.delim("~/NSC/pool1/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-        rownames(ensemblux_r1) <- paste0("Pool1_", ensemblux_r1$barcode)
-        rownames(ensemblux_r1) == rownames(df_r1)
-        ensemblux_r2 <- read.delim("~/NSC/pool2/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-        rownames(ensemblux_r2) <- paste0("Pool2_", ensemblux_r2$barcode)
-        rownames(ensemblux_r2) == rownames(df_r2)
+        ensemblex_r1 <- read.delim("~/NSC/pool1/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+        rownames(ensemblex_r1) <- paste0("Pool1_", ensemblex_r1$barcode)
+        rownames(ensemblex_r1) == rownames(df_r1)
+        ensemblex_r2 <- read.delim("~/NSC/pool2/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+        rownames(ensemblex_r2) <- paste0("Pool2_", ensemblex_r2$barcode)
+        rownames(ensemblex_r2) == rownames(df_r2)
 
-        bind_meta <- rbind(ensemblux_r1, ensemblux_r2)
+        bind_meta <- rbind(ensemblex_r1, ensemblex_r2)
 
         seu_int <- AddMetaData(seu_int, bind_meta)
         nrow(seu_int@meta.data)
@@ -835,7 +835,7 @@ output_dir= '~/ensemblux_manuscript/Figure6'
         seu_int <- AddMetaData(seu_int, metadata = df[,i], col.name = colnames[i])
         }
 
-        dd<-read.csv('~/ensemblux_manuscript/Figure6/NSC_contrast.txt', sep="")
+        dd<-read.csv('~/ensemblex_manuscript/Figure6/NSC_contrast.txt', sep="")
 
         OUT_dir_sample <- paste(output_dir,"/Cell_based_celltype_groups",sep='') 
         dir.create(OUT_dir_sample)
@@ -866,41 +866,41 @@ output_dir= '~/ensemblux_manuscript/Figure6'
         ggsave(file = paste(output_dir, "/resolution_0.25_broad_refined_DEG.pdf", sep=''))
     ##
     ############
-    # Ensemblux #
+    # ensemblex #
     ############
     ## code
-        output_dir= '~/ensemblux_manuscript/Figure6/ADHD_NSC_ensemblux_500_MAST'
+        output_dir= '~/ensemblex_manuscript/Figure6/ADHD_NSC_ensemblex_500_MAST'
         dir.create(output_dir)
-        par_merge_meta <- "ensemblux_assignment"
-        par_metadata <- "~/ensemblux_manuscript/Figure6/ADHD_NSC_ensemblux_500/meta.csv"
+        par_merge_meta <- "ensemblex_assignment"
+        par_metadata <- "~/ensemblex_manuscript/Figure6/ADHD_NSC_ensemblex_500/meta.csv"
                                                     
-        seu_int<-readRDS("~/ensemblux_manuscript/Figure6/NSC_annotated_seurat.rds")
+        seu_int<-readRDS("~/ensemblex_manuscript/Figure6/NSC_annotated_seurat.rds")
         nrow(seu_int@meta.data)
         
         seu_int[["RNA3"]] <- as(object = seu_int[["RNA"]], Class = "Assay")
         DefaultAssay(seu_int) <- "RNA3"
 
-        ensemblux_r1 <- read.delim("~/NSC/pool1/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-        rownames(ensemblux_r1) <- paste0("Pool1_", ensemblux_r1$barcode)
-        rownames(ensemblux_r1) == rownames(df_r1)
-        ensemblux_r2 <- read.delim("~/NSC/pool2/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-        rownames(ensemblux_r2) <- paste0("Pool2_", ensemblux_r2$barcode)
-        rownames(ensemblux_r2) == rownames(df_r2)
+        ensemblex_r1 <- read.delim("~/NSC/pool1/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+        rownames(ensemblex_r1) <- paste0("Pool1_", ensemblex_r1$barcode)
+        rownames(ensemblex_r1) == rownames(df_r1)
+        ensemblex_r2 <- read.delim("~/NSC/pool2/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+        rownames(ensemblex_r2) <- paste0("Pool2_", ensemblex_r2$barcode)
+        rownames(ensemblex_r2) == rownames(df_r2)
 
-        bind_meta <- rbind(ensemblux_r1, ensemblux_r2)
+        bind_meta <- rbind(ensemblex_r1, ensemblex_r2)
 
         seu_int <- AddMetaData(seu_int, bind_meta)
         nrow(seu_int@meta.data)
 
-        unique(seu_int@meta.data$Ensemblux_assignment)
+        unique(seu_int@meta.data$ensemblex_assignment)
             
-            xx <- unique(seu_int@meta.data$Ensemblux_assignment)
+            xx <- unique(seu_int@meta.data$ensemblex_assignment)
             xx <- xx[!xx %in% c("unassigned", "doublet")]
 
-            Idents(seu_int) <- "Ensemblux_assignment"
+            Idents(seu_int) <- "ensemblex_assignment"
             seu_int=subset(seu_int,idents=xx)
 
-        unique(seu_int@meta.data$Ensemblux_assignment) 
+        unique(seu_int@meta.data$ensemblex_assignment) 
         nrow(seu_int@meta.data)
 
         meta_data <- read.delim(par_metadata, header = T, sep = ",") 
@@ -918,7 +918,7 @@ output_dir= '~/ensemblux_manuscript/Figure6'
         seu_int <- AddMetaData(seu_int, metadata = df[,i], col.name = colnames[i])
         }
 
-        dd<-read.csv('~/ensemblux_manuscript/Figure6/NSC_contrast.txt', sep="")
+        dd<-read.csv('~/ensemblex_manuscript/Figure6/NSC_contrast.txt', sep="")
 
         OUT_dir_sample <- paste(output_dir,"/Cell_based_celltype_groups",sep='') 
         dir.create(OUT_dir_sample)
@@ -951,41 +951,41 @@ output_dir= '~/ensemblux_manuscript/Figure6'
 ##
 
 ####################################################################################################################
-# Compute DEG with MAST using Sample labels from demultiplexing tools after removal of Ensemblux putative doublets #
+# Compute DEG with MAST using Sample labels from demultiplexing tools after removal of ensemblex putative doublets #
 ####################################################################################################################
 ## code
     ############
     # Demuxlet #
     ############
     ## code
-        output_dir= '~/ensemblux_manuscript/Figure6/ADHD_NSC_demuxlet_Ensemblux_doublets_500_MAST'
+        output_dir= '~/ensemblex_manuscript/Figure6/ADHD_NSC_demuxlet_ensemblex_doublets_500_MAST'
         dir.create(output_dir)
         par_merge_meta <- "demuxlet_assignment"
-        par_metadata <- "~/ensemblux_manuscript/Figure6/ADHD_NSC_demuxlet_500/meta.csv"
+        par_metadata <- "~/ensemblex_manuscript/Figure6/ADHD_NSC_demuxlet_500/meta.csv"
                                                     
-        seu_int<-readRDS("~/ensemblux_manuscript/Figure6/NSC_annotated_seurat.rds")
+        seu_int<-readRDS("~/ensemblex_manuscript/Figure6/NSC_annotated_seurat.rds")
         nrow(seu_int@meta.data)
         
         seu_int[["RNA3"]] <- as(object = seu_int[["RNA"]], Class = "Assay")
         DefaultAssay(seu_int) <- "RNA3"
 
-        ensemblux_r1 <- read.delim("~/NSC/pool1/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-        rownames(ensemblux_r1) <- paste0("Pool1_", ensemblux_r1$barcode)
-        rownames(ensemblux_r1) == rownames(df_r1)
-        ensemblux_r2 <- read.delim("~/NSC/pool2/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-        rownames(ensemblux_r2) <- paste0("Pool2_", ensemblux_r2$barcode)
-        rownames(ensemblux_r2) == rownames(df_r2)
+        ensemblex_r1 <- read.delim("~/NSC/pool1/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+        rownames(ensemblex_r1) <- paste0("Pool1_", ensemblex_r1$barcode)
+        rownames(ensemblex_r1) == rownames(df_r1)
+        ensemblex_r2 <- read.delim("~/NSC/pool2/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+        rownames(ensemblex_r2) <- paste0("Pool2_", ensemblex_r2$barcode)
+        rownames(ensemblex_r2) == rownames(df_r2)
 
-        bind_meta <- rbind(ensemblux_r1, ensemblux_r2)
+        bind_meta <- rbind(ensemblex_r1, ensemblex_r2)
         seu_int <- AddMetaData(seu_int, bind_meta)
 
-        unique(seu_int@meta.data$Ensemblux_assignment)
-            xx <- unique(seu_int@meta.data$Ensemblux_assignment)
+        unique(seu_int@meta.data$ensemblex_assignment)
+            xx <- unique(seu_int@meta.data$ensemblex_assignment)
             xx <- xx[!xx %in% c("doublet")]
 
-            Idents(seu_int) <- "Ensemblux_assignment"
+            Idents(seu_int) <- "ensemblex_assignment"
             seu_int=subset(seu_int,idents=xx)
-        unique(seu_int@meta.data$Ensemblux_assignment) 
+        unique(seu_int@meta.data$ensemblex_assignment) 
 
         unique(seu_int@meta.data$demuxlet_assignment)
             xx <- unique(seu_int@meta.data$demuxlet_assignment)
@@ -1011,7 +1011,7 @@ output_dir= '~/ensemblux_manuscript/Figure6'
         seu_int <- AddMetaData(seu_int, metadata = df[,i], col.name = colnames[i])
         }
 
-        dd<-read.csv('~/ensemblux_manuscript/Figure6/NSC_contrast.txt', sep="")
+        dd<-read.csv('~/ensemblex_manuscript/Figure6/NSC_contrast.txt', sep="")
 
         OUT_dir_sample <- paste(output_dir,"/Cell_based_celltype_groups",sep='') 
         dir.create(OUT_dir_sample)
@@ -1039,34 +1039,34 @@ output_dir= '~/ensemblux_manuscript/Figure6'
     # Demuxalot #
     ############
     ## code
-        output_dir= '~/ensemblux_manuscript/Figure6/ADHD_NSC_demuxalot_Ensemblux_doublets_500_MAST'
+        output_dir= '~/ensemblex_manuscript/Figure6/ADHD_NSC_demuxalot_ensemblex_doublets_500_MAST'
         dir.create(output_dir)
         par_merge_meta <- "demuxalot_assignment"
-        par_metadata <- "~/ensemblux_manuscript/Figure6/ADHD_NSC_demuxalot_500/meta.csv"
+        par_metadata <- "~/ensemblex_manuscript/Figure6/ADHD_NSC_demuxalot_500/meta.csv"
                                                     
-        seu_int<-readRDS("~/ensemblux_manuscript/Figure6/NSC_annotated_seurat.rds")
+        seu_int<-readRDS("~/ensemblex_manuscript/Figure6/NSC_annotated_seurat.rds")
         nrow(seu_int@meta.data)
         
         seu_int[["RNA3"]] <- as(object = seu_int[["RNA"]], Class = "Assay")
         DefaultAssay(seu_int) <- "RNA3"
 
-        ensemblux_r1 <- read.delim("~/NSC/pool1/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-        rownames(ensemblux_r1) <- paste0("Pool1_", ensemblux_r1$barcode)
-        rownames(ensemblux_r1) == rownames(df_r1)
-        ensemblux_r2 <- read.delim("~/NSC/pool2/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-        rownames(ensemblux_r2) <- paste0("Pool2_", ensemblux_r2$barcode)
-        rownames(ensemblux_r2) == rownames(df_r2)
+        ensemblex_r1 <- read.delim("~/NSC/pool1/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+        rownames(ensemblex_r1) <- paste0("Pool1_", ensemblex_r1$barcode)
+        rownames(ensemblex_r1) == rownames(df_r1)
+        ensemblex_r2 <- read.delim("~/NSC/pool2/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+        rownames(ensemblex_r2) <- paste0("Pool2_", ensemblex_r2$barcode)
+        rownames(ensemblex_r2) == rownames(df_r2)
 
-        bind_meta <- rbind(ensemblux_r1, ensemblux_r2)
+        bind_meta <- rbind(ensemblex_r1, ensemblex_r2)
         seu_int <- AddMetaData(seu_int, bind_meta)
 
-        unique(seu_int@meta.data$Ensemblux_assignment)
-            xx <- unique(seu_int@meta.data$Ensemblux_assignment)
+        unique(seu_int@meta.data$ensemblex_assignment)
+            xx <- unique(seu_int@meta.data$ensemblex_assignment)
             xx <- xx[!xx %in% c("doublet")]
 
-            Idents(seu_int) <- "Ensemblux_assignment"
+            Idents(seu_int) <- "ensemblex_assignment"
             seu_int=subset(seu_int,idents=xx)
-        unique(seu_int@meta.data$Ensemblux_assignment) 
+        unique(seu_int@meta.data$ensemblex_assignment) 
 
         unique(seu_int@meta.data$demuxalot_assignment)
             xx <- unique(seu_int@meta.data$demuxalot_assignment)
@@ -1092,7 +1092,7 @@ output_dir= '~/ensemblux_manuscript/Figure6'
         seu_int <- AddMetaData(seu_int, metadata = df[,i], col.name = colnames[i])
         }
 
-        dd<-read.csv('~/ensemblux_manuscript/Figure6/NSC_contrast.txt', sep="")
+        dd<-read.csv('~/ensemblex_manuscript/Figure6/NSC_contrast.txt', sep="")
 
         OUT_dir_sample <- paste(output_dir,"/Cell_based_celltype_groups",sep='') 
         dir.create(OUT_dir_sample)
@@ -1120,34 +1120,34 @@ output_dir= '~/ensemblux_manuscript/Figure6'
     # Souporcell #
     ############
     ## code
-        output_dir= '~/ensemblux_manuscript/Figure6/ADHD_NSC_souporcell_Ensemblux_doublets_500_MAST'
+        output_dir= '~/ensemblex_manuscript/Figure6/ADHD_NSC_souporcell_ensemblex_doublets_500_MAST'
         dir.create(output_dir)
         par_merge_meta <- "souporcell_assignment"
-        par_metadata <- "~/ensemblux_manuscript/Figure6/ADHD_NSC_souporcell_500/meta.csv"
+        par_metadata <- "~/ensemblex_manuscript/Figure6/ADHD_NSC_souporcell_500/meta.csv"
                                                     
-        seu_int<-readRDS("~/ensemblux_manuscript/Figure6/NSC_annotated_seurat.rds")
+        seu_int<-readRDS("~/ensemblex_manuscript/Figure6/NSC_annotated_seurat.rds")
         nrow(seu_int@meta.data)
         
         seu_int[["RNA3"]] <- as(object = seu_int[["RNA"]], Class = "Assay")
         DefaultAssay(seu_int) <- "RNA3"
 
-        ensemblux_r1 <- read.delim("~/NSC/pool1/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-        rownames(ensemblux_r1) <- paste0("Pool1_", ensemblux_r1$barcode)
-        rownames(ensemblux_r1) == rownames(df_r1)
-        ensemblux_r2 <- read.delim("~/NSC/pool2/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-        rownames(ensemblux_r2) <- paste0("Pool2_", ensemblux_r2$barcode)
-        rownames(ensemblux_r2) == rownames(df_r2)
+        ensemblex_r1 <- read.delim("~/NSC/pool1/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+        rownames(ensemblex_r1) <- paste0("Pool1_", ensemblex_r1$barcode)
+        rownames(ensemblex_r1) == rownames(df_r1)
+        ensemblex_r2 <- read.delim("~/NSC/pool2/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+        rownames(ensemblex_r2) <- paste0("Pool2_", ensemblex_r2$barcode)
+        rownames(ensemblex_r2) == rownames(df_r2)
 
-        bind_meta <- rbind(ensemblux_r1, ensemblux_r2)
+        bind_meta <- rbind(ensemblex_r1, ensemblex_r2)
         seu_int <- AddMetaData(seu_int, bind_meta)
 
-        unique(seu_int@meta.data$Ensemblux_assignment)
-            xx <- unique(seu_int@meta.data$Ensemblux_assignment)
+        unique(seu_int@meta.data$ensemblex_assignment)
+            xx <- unique(seu_int@meta.data$ensemblex_assignment)
             xx <- xx[!xx %in% c("doublet")]
 
-            Idents(seu_int) <- "Ensemblux_assignment"
+            Idents(seu_int) <- "ensemblex_assignment"
             seu_int=subset(seu_int,idents=xx)
-        unique(seu_int@meta.data$Ensemblux_assignment) 
+        unique(seu_int@meta.data$ensemblex_assignment) 
 
         unique(seu_int@meta.data$souporcell_assignment)
             xx <- unique(seu_int@meta.data$souporcell_assignment)
@@ -1173,7 +1173,7 @@ output_dir= '~/ensemblux_manuscript/Figure6'
         seu_int <- AddMetaData(seu_int, metadata = df[,i], col.name = colnames[i])
         }
 
-        dd<-read.csv('~/ensemblux_manuscript/Figure6/NSC_contrast.txt', sep="")
+        dd<-read.csv('~/ensemblex_manuscript/Figure6/NSC_contrast.txt', sep="")
 
         OUT_dir_sample <- paste(output_dir,"/Cell_based_celltype_groups",sep='') 
         dir.create(OUT_dir_sample)
@@ -1201,34 +1201,34 @@ output_dir= '~/ensemblux_manuscript/Figure6'
     # Vireo #
     ############
     ## code
-        output_dir= '~/ensemblux_manuscript/Figure6/ADHD_NSC_vireo_Ensemblux_doublets_500_MAST'
+        output_dir= '~/ensemblex_manuscript/Figure6/ADHD_NSC_vireo_ensemblex_doublets_500_MAST'
         dir.create(output_dir)
         par_merge_meta <- "vireo_assignment"
-        par_metadata <- "~/ensemblux_manuscript/Figure6/ADHD_NSC_vireo_500/meta.csv"
+        par_metadata <- "~/ensemblex_manuscript/Figure6/ADHD_NSC_vireo_500/meta.csv"
                                                     
-        seu_int<-readRDS("~/ensemblux_manuscript/Figure6/NSC_annotated_seurat.rds")
+        seu_int<-readRDS("~/ensemblex_manuscript/Figure6/NSC_annotated_seurat.rds")
         nrow(seu_int@meta.data)
         
         seu_int[["RNA3"]] <- as(object = seu_int[["RNA"]], Class = "Assay")
         DefaultAssay(seu_int) <- "RNA3"
 
-        ensemblux_r1 <- read.delim("~/NSC/pool1/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-        rownames(ensemblux_r1) <- paste0("Pool1_", ensemblux_r1$barcode)
-        rownames(ensemblux_r1) == rownames(df_r1)
-        ensemblux_r2 <- read.delim("~/NSC/pool2/Ensemblux/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
-        rownames(ensemblux_r2) <- paste0("Pool2_", ensemblux_r2$barcode)
-        rownames(ensemblux_r2) == rownames(df_r2)
+        ensemblex_r1 <- read.delim("~/NSC/pool1/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+        rownames(ensemblex_r1) <- paste0("Pool1_", ensemblex_r1$barcode)
+        rownames(ensemblex_r1) == rownames(df_r1)
+        ensemblex_r2 <- read.delim("~/NSC/pool2/ensemblex/confidence/confidence_PWE_GBD_EID_droplet_assignment.csv", header = T, sep = ",")
+        rownames(ensemblex_r2) <- paste0("Pool2_", ensemblex_r2$barcode)
+        rownames(ensemblex_r2) == rownames(df_r2)
 
-        bind_meta <- rbind(ensemblux_r1, ensemblux_r2)
+        bind_meta <- rbind(ensemblex_r1, ensemblex_r2)
         seu_int <- AddMetaData(seu_int, bind_meta)
 
-        unique(seu_int@meta.data$Ensemblux_assignment)
-            xx <- unique(seu_int@meta.data$Ensemblux_assignment)
+        unique(seu_int@meta.data$ensemblex_assignment)
+            xx <- unique(seu_int@meta.data$ensemblex_assignment)
             xx <- xx[!xx %in% c("doublet")]
 
-            Idents(seu_int) <- "Ensemblux_assignment"
+            Idents(seu_int) <- "ensemblex_assignment"
             seu_int=subset(seu_int,idents=xx)
-        unique(seu_int@meta.data$Ensemblux_assignment) 
+        unique(seu_int@meta.data$ensemblex_assignment) 
 
         unique(seu_int@meta.data$vireo_assignment)
             xx <- unique(seu_int@meta.data$vireo_assignment)
@@ -1254,7 +1254,7 @@ output_dir= '~/ensemblux_manuscript/Figure6'
         seu_int <- AddMetaData(seu_int, metadata = df[,i], col.name = colnames[i])
         }
 
-        dd<-read.csv('~/ensemblux_manuscript/Figure6/NSC_contrast.txt', sep="")
+        dd<-read.csv('~/ensemblex_manuscript/Figure6/NSC_contrast.txt', sep="")
 
         OUT_dir_sample <- paste(output_dir,"/Cell_based_celltype_groups",sep='') 
         dir.create(OUT_dir_sample)
@@ -1286,11 +1286,11 @@ output_dir= '~/ensemblux_manuscript/Figure6'
 ## code
     ### Load in and process DEG outputs
     #############
-    # Ensemblux #
+    # ensemblex #
     #############
     ## code
         cell_based_cell_types <- c("Glia", "NSC_SOX2", "NPC_POU5F1", "Neurons_DCX", "Neurons_GRIA1", "NPC_S100B", "NPC_MEF2C", "NSC_APOA1")
-        t = "Ensemblux"
+        t = "ensemblex"
         list <- list()
 
         for(i in unique(cell_based_cell_types)){        
@@ -1321,11 +1321,11 @@ output_dir= '~/ensemblux_manuscript/Figure6'
         list_CellBased[i]
         }
 
-        list_CellBased_Ensemblux <- list_CellBased
+        list_CellBased_ensemblex <- list_CellBased
         list2env(list_CellBased,envir=.GlobalEnv)
         bind_cell_based <- rbind(Glia, NSC_SOX2, NPC_POU5F1, Neurons_DCX, Neurons_GRIA1, NPC_S100B, NPC_MEF2C, NSC_APOA1)
         bind_cell_based$tool <- t
-        Ensemblux_df <- bind_cell_based
+        ensemblex_df <- bind_cell_based
     ##
     ##############
     # Demuxalot #
@@ -1370,7 +1370,7 @@ output_dir= '~/ensemblux_manuscript/Figure6'
         Demuxalot_df <- bind_cell_based
     ##
     #############################################
-    # Demuxalot with Ensemblux doublets removed #
+    # Demuxalot with ensemblex doublets removed #
     #############################################
     ## code
         cell_based_cell_types <- c("Glia", "NSC_SOX2", "NPC_POU5F1", "Neurons_DCX", "Neurons_GRIA1", "NPC_S100B", "NPC_MEF2C", "NSC_APOA1")
@@ -1454,7 +1454,7 @@ output_dir= '~/ensemblux_manuscript/Figure6'
         Souporcell_df <- bind_cell_based
     ##
     #############################################
-    # Souporcell with Ensemblux doublets removed #
+    # Souporcell with ensemblex doublets removed #
     #############################################
     ## code
         cell_based_cell_types <- c("Glia", "NSC_SOX2", "NPC_POU5F1", "Neurons_DCX", "Neurons_GRIA1", "NPC_S100B", "NPC_MEF2C", "NSC_APOA1")
@@ -1538,7 +1538,7 @@ output_dir= '~/ensemblux_manuscript/Figure6'
         Vireo_df <- bind_cell_based
     ##
     #########################################
-    # Vireo with Ensemblux doublets removed #
+    # Vireo with ensemblex doublets removed #
     #########################################
     ## code
         cell_based_cell_types <- c("Glia", "NSC_SOX2", "NPC_POU5F1", "Neurons_DCX", "Neurons_GRIA1", "NPC_S100B", "NPC_MEF2C", "NSC_APOA1")
@@ -1622,7 +1622,7 @@ output_dir= '~/ensemblux_manuscript/Figure6'
         Demuxlet_df <- bind_cell_based
     ##
     ############################################
-    # Demuxlet with Ensemblux doublets removed #
+    # Demuxlet with ensemblex doublets removed #
     ############################################
     ## code
         cell_based_cell_types <- c("Glia", "NSC_SOX2", "NPC_POU5F1", "Neurons_DCX", "Neurons_GRIA1", "NPC_S100B", "NPC_MEF2C", "NSC_APOA1")
@@ -1667,9 +1667,9 @@ output_dir= '~/ensemblux_manuscript/Figure6'
     # Plot DEG counts for demultiplexing tools #
     ############################################
     ## code
-        temp_df <- rbind( Ensemblux_df, Demuxalot_df, Demuxlet_df,  Souporcell_df, Vireo_df)
+        temp_df <- rbind( ensemblex_df, Demuxalot_df, Demuxlet_df,  Souporcell_df, Vireo_df)
         temp_df <- subset(temp_df, p_val_adj <= 0.01 & abs(avg_log2FC) >= 0.5 )
-        temp_df$tool <- factor(temp_df$tool, levels = c( "Ensemblux", "Demuxalot",  "Demuxlet", "Souporcell",  "Vireo"))
+        temp_df$tool <- factor(temp_df$tool, levels = c( "ensemblex", "Demuxalot",  "Demuxlet", "Souporcell",  "Vireo"))
         temp_df <- subset(temp_df, X != "fill")
 
         table_df <- table(temp_df$cell_type,temp_df$tool )
@@ -1693,12 +1693,12 @@ output_dir= '~/ensemblux_manuscript/Figure6'
             scale_x_discrete(expand = c(0,0)) 
     ##
     ################################################################################
-    # Plot DEG counts for demultiplexing tools after removal of Ensemblux doublets #
+    # Plot DEG counts for demultiplexing tools after removal of ensemblex doublets #
     ################################################################################
     ## code
-        temp_df <- rbind( Ensemblux_df, Demuxalot_ens_df,  Demuxlet_ens_df,  Vireo_ens_df, Souporcell_ens_df)
+        temp_df <- rbind( ensemblex_df, Demuxalot_ens_df,  Demuxlet_ens_df,  Vireo_ens_df, Souporcell_ens_df)
         temp_df <- subset(temp_df, p_val_adj <= 0.01 & abs(avg_log2FC) >= 0.5 )
-        temp_df$tool <- factor(temp_df$tool, levels = c( "Ensemblux", "Demuxalot_ens",  "Demuxlet_ens", "Souporcell_ens",  "Vireo_ens"))
+        temp_df$tool <- factor(temp_df$tool, levels = c( "ensemblex", "Demuxalot_ens",  "Demuxlet_ens", "Souporcell_ens",  "Vireo_ens"))
         temp_df <- subset(temp_df, X != "fill")
 
         table_df <- table(temp_df$cell_type,temp_df$tool )
@@ -1718,7 +1718,7 @@ output_dir= '~/ensemblux_manuscript/Figure6'
                     legend.position = "none") +
             ylab("Number of DEGs") +
             scale_fill_gradient(low = "white", high = "indianred3") +
-            scale_y_discrete(expand = c(0,0), labels = c("Ensemblux", "Demuxalot", "Demuxlet", "Souporcell","Vireo")) +
+            scale_y_discrete(expand = c(0,0), labels = c("ensemblex", "Demuxalot", "Demuxlet", "Souporcell","Vireo")) +
             scale_x_discrete(expand = c(0,0)) 
     ##
 

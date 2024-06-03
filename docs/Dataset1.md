@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Ensemblux tutorial
-description: Ensemblux tutorial
+title: ensemblex tutorial
+description: ensemblex tutorial
 date: 2024-05-02
 author: Michael Fiorini
 published: true
@@ -9,26 +9,26 @@ tags: scRNA
 categories: 
 comments: false
 ---
-## Ensemblux pipeline with prior genotype information
+## ensemblex pipeline with prior genotype information
 
 - [Introduction](#introduction)
 - [Installation](#installation)
 - [Step 1: Set up](#step-1-set-up)
 - [Step 2: Preparation of input files](#step-2-preparation-of-input-files)
 - [Step 3: Genetic demultiplexing by constituent tools](#step-3-genetic-demultiplexing-by-constituent-tools)
-- [Step 4: Application of Ensemblux](#step-4-application-of-ensemblux)
+- [Step 4: Application of ensemblex](#step-4-application-of-ensemblex)
 - [Resource requirements](#resource-requirements)
 
  - - - -
 
 ## Introduction 
-This guide illustrates how to use the Ensemblux pipeline to demultiplexed pooled scRNAseq samples with prior genotype information. Here, we will leverage a pooled scRNAseq dataset produced by [Jerber et al.](https://www.nature.com/articles/s41588-021-00801-6). This pool contains induced pluripotent cell lines (iPSC) from 9 healthy controls that were differentiated towards a dopaminergic neuron state. The Ensemblux pipeline is illustrated in the diagram below:
+This guide illustrates how to use the ensemblex pipeline to demultiplexed pooled scRNAseq samples with prior genotype information. Here, we will leverage a pooled scRNAseq dataset produced by [Jerber et al.](https://www.nature.com/articles/s41588-021-00801-6). This pool contains induced pluripotent cell lines (iPSC) from 9 healthy controls that were differentiated towards a dopaminergic neuron state. The ensemblex pipeline is illustrated in the diagram below:
 
  <p align="center">
- <img src="https://github.com/neurobioinfo/ensemblux/assets/97498007/58dac8ce-c83a-44ef-aa0e-9c31e771388f" width="200" height="100">
+ <img src="https://github.com/neurobioinfo/ensemblex/assets/97498007/58dac8ce-c83a-44ef-aa0e-9c31e771388f" width="200" height="100">
  </p>
 
-**NOTE**: To download the necessary files for the tutorial please see the [Downloading data](midbrain_download.md) section of the Ensemblux documentation.
+**NOTE**: To download the necessary files for the tutorial please see the [Downloading data](midbrain_download.md) section of the ensemblex documentation.
 
  - - - -
 
@@ -41,94 +41,94 @@ module load apptainer/1.2.4
  - - - -
 
 ## Step 1: Set up
-In Step 1, we will set up the working directory for the Ensemblux pipeline and decide which version of the pipeline we want to use.
+In Step 1, we will set up the working directory for the ensemblex pipeline and decide which version of the pipeline we want to use.
 
-First, create a dedicated folder for the analysis (hereafter referred to as the working directory). Then, define the path to the working directory and the path to ensemblux.pip:
+First, create a dedicated folder for the analysis (hereafter referred to as the working directory). Then, define the path to the working directory and the path to ensemblex.pip:
 
 ```
 ## Create and navigate to the working directory
-cd Ensemblux_tutorial
+cd ensemblex_tutorial
 mkdir working_directory
-cd ~/Ensemblux_tutorial/working_directory
+cd ~/ensemblex_tutorial/working_directory
 
-## Define the path to ensemblux.pip
-Ensemblux_HOME=~/ensemblux.pip
+## Define the path to ensemblex.pip
+ensemblex_HOME=~/ensemblex.pip
 
 ## Define the path to the working directory
-Ensemblux_PWD=~/Ensemblux_tutorial/working_directory
+ensemblex_PWD=~/ensemblex_tutorial/working_directory
 ```
 
-Next, we can set up the working directory and choose the Ensemblux pipeline for demultiplexing with prior genotype information (`--step init-GT`) using the following code:
+Next, we can set up the working directory and choose the ensemblex pipeline for demultiplexing with prior genotype information (`--step init-GT`) using the following code:
 
 ```
-bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step init-GT
+bash $ensemblex_HOME/launch_ensemblex.sh -d $ensemblex_PWD --step init-GT
 ```
 
 After running the above code, the working directory should have the following structure:
 
 ```
-Ensemblux_tutorial
+ensemblex_tutorial
 └── working_directory
     ├── demuxalot
     ├── demuxlet
-    ├── ensemblux_gt
+    ├── ensemblex_gt
     ├── input_files
     ├── job_info
     │   ├── configs
-    │   │   └── ensemblux_config.ini
+    │   │   └── ensemblex_config.ini
     │   ├── logs
     │   └── summary_report.txt
     ├── souporcell
     └── vireo_gt
 ```
 
-Upon setting up the Ensemblux pipeline, we can proceed to Step 2 where we will prepare the input files for Ensemblux's constituent genetic demultiplexing tools.
+Upon setting up the ensemblex pipeline, we can proceed to Step 2 where we will prepare the input files for ensemblex's constituent genetic demultiplexing tools.
 
  - - - -
 
 ## Step 2: Preparation of input files
-In Step 2, we will define the necessary files needed for Ensemblux's constituent genetic demultiplexing tools and will place them within the working directory. 
+In Step 2, we will define the necessary files needed for ensemblex's constituent genetic demultiplexing tools and will place them within the working directory. 
 
 **Note**: For the tutorial we will be using the data downloaded in the [Downloading data](midbrain_download.md) section of the Ensemblex documentation. 
 
 First, define all of the required files:
 
 ```
-BAM=~/Ensemblux_tutorial/CellRanger/outs/possorted_genome_bam.bam
+BAM=~/ensemblex_tutorial/CellRanger/outs/possorted_genome_bam.bam
 
-BAM_INDEX=~/Ensemblux_tutorial/CellRanger/outs/possorted_genome_bam.bam.bai
+BAM_INDEX=~/ensemblex_tutorial/CellRanger/outs/possorted_genome_bam.bam.bai
 
-BARCODES=~/Ensemblux_tutorial/CellRanger/outs/filtered_gene_bc_matrices/refdata-cellranger-GRCh37/barcodes.tsv
+BARCODES=~/ensemblex_tutorial/CellRanger/outs/filtered_gene_bc_matrices/refdata-cellranger-GRCh37/barcodes.tsv
 
-SAMPLE_VCF=~/Ensemblux_tutorial/sample_genotype/sample_genotype_merge.vcf
+SAMPLE_VCF=~/ensemblex_tutorial/sample_genotype/sample_genotype_merge.vcf
 
-REFERENCE_VCF=~/Ensemblux_tutorial/reference_files/common_SNPs_only.recode.vcf
+REFERENCE_VCF=~/ensemblex_tutorial/reference_files/common_SNPs_only.recode.vcf
 
-REFERENCE_FASTA=~/Ensemblux_tutorial/reference_files/genome.fa
+REFERENCE_FASTA=~/ensemblex_tutorial/reference_files/genome.fa
 
-REFERENCE_FASTA_INDEX=~/Ensemblux_tutorial/reference_files/genome.fa.fai
+REFERENCE_FASTA_INDEX=~/ensemblex_tutorial/reference_files/genome.fa.fai
 ```
 
 Next, we will sort the pooled samples and reference .vcf files according to the .bam file and place them within the working directory:
 
 ```
 ## Sort pooled samples .vcf file
-bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD/input_files/pooled_samples.vcf --step sort --vcf $SAMPLE_VCF --bam $Ensemblux_PWD/input_files/pooled_bam.bam
+bash $ensemblex_HOME/launch_ensemblex.sh -d $ensemblex_PWD/input_files/pooled_samples.vcf --step sort --vcf $SAMPLE_VCF --bam $ensemblex_PWD/input_files/pooled_bam.bam
 
 ## Sort reference .vcf file
-bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD/input_files/reference.vcf --step sort --vcf $SAMPLE_VCF --bam $Ensemblux_PWD/input_files/pooled_bam.bam
+bash $ensemblex_HOME/launch_ensemblex.sh -d $ensemblex_PWD/input_files/reference.vcf --step sort --vcf $SAMPLE_VCF --bam $ensemblex_PWD/input_files/pooled_bam.bam
 ```
 Next, we will place the remaining necessary files within the working directory:
 
 ```
-cp $BAM $Ensemblux_PWD/input_files/pooled_bam.bam
-cp $BAM_INDEX $Ensemblux_PWD/input_files/pooled_bam.bam.bai 
-cp $BARCODES $Ensemblux_PWD/input_files/pooled_barcodes.tsv
-cp $REFERENCE_FASTA $Ensemblux_PWD/input_files/reference.fa
-cp $REFERENCE_FASTA_INDEX $Ensemblux_PWD/input_files/reference.fa.fai
+cp $BAM $ensemblex_PWD/input_files/pooled_bam.bam
+cp $BAM_INDEX $ensemblex_PWD/input_files/pooled_bam.bam.bai 
+cp $BARCODES $ensemblex_PWD/input_files/pooled_barcodes.tsv
+cp $REFERENCE_FASTA $ensemblex_PWD/input_files/reference.fa
+cp $REFERENCE_FASTA_INDEX $ensemblex_PWD/input_files/reference.fa.fai
 ```
 
-After running the above code,  `$Ensemblux_PWD/input_files` should contain the following files:
+After running the above code,  `$ensemblex_PWD/input_files` should contain the following files:
 ```
 input_files
 ├── pooled_bam.bam
@@ -139,26 +139,26 @@ input_files
 ├── reference.fa.fai
 └── reference.vcf
 ```
-**NOTE**: It is important that the file names match those listed above as they are necessary for the Ensemblux pipeline to recognize them.
+**NOTE**: It is important that the file names match those listed above as they are necessary for the ensemblex pipeline to recognize them.
 
  - - - -
 
 ## Step 3: Genetic demultiplexing by constituent tools
-In Step 3, we will demultiplex the pooled samples with each of Ensemblux's constituent genetic demultiplexing tools:
+In Step 3, we will demultiplex the pooled samples with each of ensemblex's constituent genetic demultiplexing tools:
 
 - [Demuxalot](#demuxalot)
 - [Demuxlet](#demuxlet)
 - [Souporcell](#souporcell)
 - [Vireo-GT](#vireo-gt)
 
-First, we will navigate to the `ensemblux_config.ini` file to adjust the demultiplexing parameters for each of the constituent genetic demultiplexing tools:
+First, we will navigate to the `ensemblex_config.ini` file to adjust the demultiplexing parameters for each of the constituent genetic demultiplexing tools:
 
 ```
 ## Navigate to the .ini file
-cd $Ensemblux_PWD/job_info/configs
+cd $ensemblex_PWD/job_info/configs
 
 ## Open the .ini file and adjust parameters directly in the terminal
-nano ensemblux_config.ini
+nano ensemblex_config.ini
 ```
 
 For the tutorial, we set the following parameters for the constituent genetic demultiplexing tools:
@@ -196,10 +196,10 @@ Now that the parameters have been defined, we can demultiplex the pools with the
 To run Demuxalot use the following code:
 
 ```
-bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step demuxalot
+bash $ensemblex_HOME/launch_ensemblex.sh -d $ensemblex_PWD --step demuxalot
 ```
 
-If Demuxalot completed successfully, the following files should be available in `$Ensemblux_PWD/demuxalot`:
+If Demuxalot completed successfully, the following files should be available in `$ensemblex_PWD/demuxalot`:
 
 ```
 demuxalot
@@ -214,10 +214,10 @@ demuxalot
 To run Demuxlet use the following code:
 
 ```
-bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step demuxlet
+bash $ensemblex_HOME/launch_ensemblex.sh -d $ensemblex_PWD --step demuxlet
 ```
 
-If Demuxlet completed successfully, the following files should be available in `$Ensemblux_PWD/demuxlet`:
+If Demuxlet completed successfully, the following files should be available in `$ensemblex_PWD/demuxlet`:
 
 ```
 demuxlet
@@ -235,10 +235,10 @@ demuxlet
 To run Souporcell use the following code:
 
 ```
-bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step souporcell
+bash $ensemblex_HOME/launch_ensemblex.sh -d $ensemblex_PWD --step souporcell
 ```
 
-If Souporcell completed successfully, the following files should be available in `$Ensemblux_PWD/souporcell`:
+If Souporcell completed successfully, the following files should be available in `$ensemblex_PWD/souporcell`:
 
 ```
 souporcell
@@ -262,10 +262,10 @@ souporcell
 To run Vireo-GT use the following code:
 
 ```
-bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step vireo
+bash $ensemblex_HOME/launch_ensemblex.sh -d $ensemblex_PWD --step vireo
 ```
 
-If Vireo-GT completed successfully, the following files should be available in `$Ensemblux_PWD/vireo_gt`:
+If Vireo-GT completed successfully, the following files should be available in `$ensemblex_PWD/vireo_gt`:
 
 ```
 vireo_gt
@@ -286,45 +286,45 @@ vireo_gt
 ```
   - - - -
 
-Upon demultiplexing the pooled samples with each of Ensemblux's constituent genetic demultiplexing tools, we can proceed to Step 4 where we will process the output files of the consituent tools with the Ensemblux algorithm to generate the ensemble sample classifications
+Upon demultiplexing the pooled samples with each of ensemblex's constituent genetic demultiplexing tools, we can proceed to Step 4 where we will process the output files of the consituent tools with the ensemblex algorithm to generate the ensemble sample classifications
 
-**NOTE**: To minimize computation time for the tutorial, we have provided the necessary outpu files from the constituent tools [here](https://github.com/neurobioinfo/ensemblux/tree/main/tutorial). To access the files and place them in the working directory, use the following code:
+**NOTE**: To minimize computation time for the tutorial, we have provided the necessary outpu files from the constituent tools [here](https://github.com/neurobioinfo/ensemblex/tree/main/tutorial). To access the files and place them in the working directory, use the following code:
 
 ```
 ## Demuxalot
-cd $Ensemblux_PWD/demuxalot
-wget https://github.com/neurobioinfo/ensemblux/blob/caad8c250566bfa9a6d7a78b77d2cc338468a58e/tutorial/Demuxalot_result.csv
+cd $ensemblex_PWD/demuxalot
+wget https://github.com/neurobioinfo/ensemblex/blob/caad8c250566bfa9a6d7a78b77d2cc338468a58e/tutorial/Demuxalot_result.csv
 
 ## Demuxlet
-cd $Ensemblux_PWD/demuxlet
-wget https://github.com/neurobioinfo/ensemblux/blob/caad8c250566bfa9a6d7a78b77d2cc338468a58e/tutorial/outs.best
+cd $ensemblex_PWD/demuxlet
+wget https://github.com/neurobioinfo/ensemblex/blob/caad8c250566bfa9a6d7a78b77d2cc338468a58e/tutorial/outs.best
 
 ## Souporcell
-cd $Ensemblux_PWD/souporcell
-wget https://github.com/neurobioinfo/ensemblux/blob/caad8c250566bfa9a6d7a78b77d2cc338468a58e/tutorial/clusters.tsv
+cd $ensemblex_PWD/souporcell
+wget https://github.com/neurobioinfo/ensemblex/blob/caad8c250566bfa9a6d7a78b77d2cc338468a58e/tutorial/clusters.tsv
 
 ## Vireo
-cd $Ensemblux_PWD/vireo_gt
-wget https://github.com/neurobioinfo/ensemblux/blob/caad8c250566bfa9a6d7a78b77d2cc338468a58e/tutorial/donor_ids.tsv
+cd $ensemblex_PWD/vireo_gt
+wget https://github.com/neurobioinfo/ensemblex/blob/caad8c250566bfa9a6d7a78b77d2cc338468a58e/tutorial/donor_ids.tsv
 
 ```
 
  - - - -
-## Step 4: Application of Ensemblux
+## Step 4: Application of ensemblex
 In Step 4, we will process the output files of the four constituent genetic demultiplexing tools with the three-step Ensemblex algorithm:
 
 - Step 1: Probabilistic-weighted ensemble
 - Step 2: Graph-based doublet detection
 - Step 3: Step 3: Ensemble-independent doublet detection
 
-First, we will navigate to the `ensemblux_config.ini` file to adjust the demultiplexing parameters for the Ensemblex algorithm:
+First, we will navigate to the `ensemblex_config.ini` file to adjust the demultiplexing parameters for the Ensemblex algorithm:
 
 ```
 ## Navigate to the .ini file
-cd $Ensemblux_PWD/job_info/configs
+cd $ensemblex_PWD/job_info/configs
 
 ## Open the .ini file and adjust parameters directly in the terminal
-nano ensemblux_config.ini
+nano ensemblex_config.ini
 ```
 
 For the tutorial, we set the following parameters for the Ensemblex algorithm:
@@ -332,37 +332,37 @@ For the tutorial, we set the following parameters for the Ensemblex algorithm:
 |Parameter|Value|
 |:--|:--|
 |<ins>**Pool parameters**</ins>|
-|PAR_ensemblux_sample_size| 9|
-|PAR_ensemblux_expected_doublet_rate| 0.10|
+|PAR_ensemblex_sample_size| 9|
+|PAR_ensemblex_expected_doublet_rate| 0.10|
 |<ins>**Set up parameters**</ins>|
-|PAR_ensemblux_merge_constituents|Yes|
+|PAR_ensemblex_merge_constituents|Yes|
 |<ins>**Step 1 parameters: Probabilistic-weighted ensemble**</ins>|
-|PAR_ensemblux_probabilistic_weighted_ensemble| Yes|
+|PAR_ensemblex_probabilistic_weighted_ensemble| Yes|
 |<ins>**Step 2 parameters: Graph-based doublet detection**</ins>|
-|PAR_ensemblux_preliminary_parameter_sweep| No|
-|PAR_ensemblux_nCD| NULL|
-|PAR_ensemblux_pT| NULL|
-|PAR_ensemblux_graph_based_doublet_detection| Yes|
+|PAR_ensemblex_preliminary_parameter_sweep| No|
+|PAR_ensemblex_nCD| NULL|
+|PAR_ensemblex_pT| NULL|
+|PAR_ensemblex_graph_based_doublet_detection| Yes|
 |<ins>**Step 3 parameters: Ensemble-independent doublet detection**</ins>|
-|PAR_ensemblux_preliminary_ensemble_independent_doublet| No|
-|PAR_ensemblux_ensemble_independent_doublet| Yes|
-|PAR_ensemblux_doublet_Demuxalot_threshold| Yes|
-|PAR_ensemblux_doublet_Demuxalot_no_threshold| No|
-|PAR_ensemblux_doublet_Demuxlet_threshold| No|
-|PAR_ensemblux_doublet_Demuxlet_no_threshold| No|
-|PAR_ensemblux_doublet_Souporcell_threshold| No|
-|PAR_ensemblux_doublet_Souporcell_no_threshold| No|
-|PAR_ensemblux_doublet_Vireo_threshold| Yes|
-|PAR_ensemblux_doublet_Vireo_no_threshold| No|
+|PAR_ensemblex_preliminary_ensemble_independent_doublet| No|
+|PAR_ensemblex_ensemble_independent_doublet| Yes|
+|PAR_ensemblex_doublet_Demuxalot_threshold| Yes|
+|PAR_ensemblex_doublet_Demuxalot_no_threshold| No|
+|PAR_ensemblex_doublet_Demuxlet_threshold| No|
+|PAR_ensemblex_doublet_Demuxlet_no_threshold| No|
+|PAR_ensemblex_doublet_Souporcell_threshold| No|
+|PAR_ensemblex_doublet_Souporcell_no_threshold| No|
+|PAR_ensemblex_doublet_Vireo_threshold| Yes|
+|PAR_ensemblex_doublet_Vireo_no_threshold| No|
 |<ins>**Confidence score parameters**</ins>|
-|PAR_ensemblux_compute_singlet_confidence| Yes|
+|PAR_ensemblex_compute_singlet_confidence| Yes|
 
-If Ensemblex completed successfully, the following files should be available in `$Ensemblux_PWD/ensemblux_gt`:
+If Ensemblex completed successfully, the following files should be available in `$ensemblex_PWD/ensemblex_gt`:
 
 ```
-ensemblux_gt
+ensemblex_gt
 ├── confidence
-│   └── Ensemblux_final_cell_assignment.csv
+│   └── ensemblex_final_cell_assignment.csv
 ├── constituent_tool_merge.csv
 ├── step1
 │   ├── ARI_demultiplexing_tools.pdf
@@ -383,16 +383,16 @@ ensemblux_gt
 └── step3
     ├── Doublet_overlap_no_threshold.pdf
     ├── Doublet_overlap_threshold.pdf
-    ├── Number_Ensemblux_doublets_EID_no_threshold.pdf
-    ├── Number_Ensemblux_doublets_EID_threshold.pdf
+    ├── Number_ensemblex_doublets_EID_no_threshold.pdf
+    ├── Number_ensemblex_doublets_EID_threshold.pdf
     └── Step3_cell_assignment.csv
 ```
 
-Ensemblex's final assignments are described in the `Ensemblux_final_cell_assignment.csv` file. 
+Ensemblex's final assignments are described in the `ensemblex_final_cell_assignment.csv` file. 
 
-Specifically, the `Ensemblux_assignment` column describes Ensemblex's final assignments after application of the singlet confidence threshold (i.e., singlets that fail to meet a singlet confidence of 1.0 are labelled as unassigned); we recomment that users use this column to label their cells for downstream analyses. The `Ensemblux_best_assignment` column describes Ensemblex's best assignments, independent of the singlets confidence threshold (i.e., singlets that fail to meet a singlet confidence of 1.0 are **NOT** labelled as unassigned).
+Specifically, the `ensemblex_assignment` column describes Ensemblex's final assignments after application of the singlet confidence threshold (i.e., singlets that fail to meet a singlet confidence of 1.0 are labelled as unassigned); we recomment that users use this column to label their cells for downstream analyses. The `ensemblex_best_assignment` column describes Ensemblex's best assignments, independent of the singlets confidence threshold (i.e., singlets that fail to meet a singlet confidence of 1.0 are **NOT** labelled as unassigned).
 
-The cell barcodes listed under the `barcode` column can be used to add the `Ensemblux_final_cell_assignment.csv` information to the metadata of a Seurat object. 
+The cell barcodes listed under the `barcode` column can be used to add the `ensemblex_final_cell_assignment.csv` information to the metadata of a Seurat object. 
 
  - - - -
 ## Resource requirements

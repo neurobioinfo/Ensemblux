@@ -18,11 +18,11 @@ In this section of the tutorial, we will:
 3. Download reference genotype data
 4. Download a reference genome file
 
-Before we begin, we will create a designated folder for the Ensemblux tutorial:
+Before we begin, we will create a designated folder for the ensemblex tutorial:
 
 ```
-mkdir Ensemblux_tutorial
-cd Ensemblux_tutorial
+mkdir ensemblex_tutorial
+cd ensemblex_tutorial
 ```
 
  - - - -
@@ -52,30 +52,30 @@ wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR470/002/ERR4700022/ERR4700022_2.fastq
 
 
 ## Rename pooled scRNAseq FASTQ files
-mv ERR4700019_1.fastq.gz ~/Ensemblux_tutorial/pooled_scRNAseq/pool_S1_L001_R1_001.fastq.gz 
-mv ERR4700019_2.fastq.gz ~/Ensemblux_tutorial/pooled_scRNAseq/pool_S1_L001_R2_001.fastq.gz 
+mv ERR4700019_1.fastq.gz ~/ensemblex_tutorial/pooled_scRNAseq/pool_S1_L001_R1_001.fastq.gz 
+mv ERR4700019_2.fastq.gz ~/ensemblex_tutorial/pooled_scRNAseq/pool_S1_L001_R2_001.fastq.gz 
 
-mv ERR4700020_1.fastq.gz ~/Ensemblux_tutorial/pooled_scRNAseq/pool_S1_L002_R1_001.fastq.gz 
-mv ERR4700020_2.fastq.gz ~/Ensemblux_tutorial/pooled_scRNAseq/pool_S1_L002_R2_001.fastq.gz
+mv ERR4700020_1.fastq.gz ~/ensemblex_tutorial/pooled_scRNAseq/pool_S1_L002_R1_001.fastq.gz 
+mv ERR4700020_2.fastq.gz ~/ensemblex_tutorial/pooled_scRNAseq/pool_S1_L002_R2_001.fastq.gz
 
-mv ERR4700021_1.fastq.gz ~/Ensemblux_tutorial/pooled_scRNAseq/pool_S1_L003_R1_001.fastq.gz
-mv ERR4700021_2.fastq.gz ~/Ensemblux_tutorial/pooled_scRNAseq/pool_S1_L003_R2_001.fastq.gz
+mv ERR4700021_1.fastq.gz ~/ensemblex_tutorial/pooled_scRNAseq/pool_S1_L003_R1_001.fastq.gz
+mv ERR4700021_2.fastq.gz ~/ensemblex_tutorial/pooled_scRNAseq/pool_S1_L003_R2_001.fastq.gz
     
-mv ERR4700022_1.fastq.gz ~/Ensemblux_tutorial/pooled_scRNAseq/pool_S1_L004_R1_001.fastq.gz
-mv ERR4700022_2.fastq.gz ~/Ensemblux_tutorial/pooled_scRNAseq/pool_S1_L004_R2_001.fastq.gz
+mv ERR4700022_1.fastq.gz ~/ensemblex_tutorial/pooled_scRNAseq/pool_S1_L004_R1_001.fastq.gz
+mv ERR4700022_2.fastq.gz ~/ensemblex_tutorial/pooled_scRNAseq/pool_S1_L004_R2_001.fastq.gz
 
 ```
 Next, we will process the pooled scRNAseq data with the CellRanger *counts* pipeline:
 
 ```
 ## Create CellRanger directory
-cd ~/Ensemblux_tutorial
+cd ~/ensemblex_tutorial
 mkdir CellRanger
 cd CellRanger
 
 cellranger count \
 --id=pool \
---fastqs=/home/fiorini9/scratch/Ensemblux_pipeline_test/Ensemblux_tutorial/pooled_scRNAseq \
+--fastqs=/home/fiorini9/scratch/ensemblex_pipeline_test/ensemblex_tutorial/pooled_scRNAseq \
 --sample=pool \
 --transcriptome=~/10xGenomics/refdata-cellranger-GRCh37
 ```
@@ -96,7 +96,7 @@ Next, we will download the whole exome .vcf files corresponding to the nine pool
 
 ```
 ## Create a folder to place sample genotype data
-cd ~/Ensemblux_tutorial
+cd ~/ensemblex_tutorial
 mkdir sample_genotype
 cd sample_genotype
 
@@ -154,7 +154,7 @@ Next, we will download a reference genotype file from the [1000 Genomes Project,
 
 ```
 ## Create a folder to place the reference files
-cd ~/Ensemblux_tutorial
+cd ~/ensemblex_tutorial
 mkdir reference_files
 cd reference_files
 
@@ -184,11 +184,11 @@ Finally, we will prepare a reference genome. For our tutorial we will use the GR
 
 ```
 ## Copy pre-built reference genome to working directory
-cp /cvmfs/soft.mugqic/CentOS6/genomes/species/Homo_sapiens.GRCh37/genome/10xGenomics/refdata-cellranger-GRCh37/fasta/genome.fa ~/Ensemblux_pipeline_test/Ensemblux_tutorial/reference_files
+cp /cvmfs/soft.mugqic/CentOS6/genomes/species/Homo_sapiens.GRCh37/genome/10xGenomics/refdata-cellranger-GRCh37/fasta/genome.fa ~/ensemblex_pipeline_test/ensemblex_tutorial/reference_files
 ```
 
 We will use the `genome.fa` reference genome for genetic demultiplexing downstream.
 
  - - - -
 
- To run the Ensemblux pipeline on the downloaded data please see the [Ensemblux with prior genotype information](Dataset1.md) section of the Ensemblux pipeline.
+ To run the ensemblex pipeline on the downloaded data please see the [ensemblex with prior genotype information](Dataset1.md) section of the ensemblex pipeline.

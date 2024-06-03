@@ -37,7 +37,7 @@ Upon demultiplexing pools with each of the four constituent genetic demultiplexi
 **Step 3**: Ensemble-independent doublet detection <br />
 
  <p align="center">
- <img src="https://github.com/neurobioinfo/ensemblux/assets/97498007/d4161be8-8bc6-4c08-af60-4ee3f486e940" width="650" height="700">
+ <img src="https://github.com/neurobioinfo/ensemblex/assets/97498007/d4161be8-8bc6-4c08-af60-4ee3f486e940" width="650" height="700">
  </p>
 
 
@@ -53,11 +53,11 @@ The pipelines comprise of four distinct steps:
 4. [Application of the Ensemblex framework](#step-4-application-of-ensemblex)
 
  <p align="center">
- <img src="https://github.com/neurobioinfo/ensemblux/assets/97498007/395db4b1-2365-4ca8-8483-097b893dd640" width="550" height="600">
+ <img src="https://github.com/neurobioinfo/ensemblex/assets/97498007/395db4b1-2365-4ca8-8483-097b893dd640" width="550" height="600">
  </p>
 
 
-Below we provide a quick-start guide for using Ensemblex. For comprehensive documentation, please see the [Ensemblex site](https://neurobioinfo.github.io/ensemblux/site/).
+Below we provide a quick-start guide for using Ensemblex. For comprehensive documentation, please see the [Ensemblex site](https://neurobioinfo.github.io/ensemblex/site/).
 In the Ensemblex documentation, we outline each step of the Ensemblex pipeline, illustrate how to run the pipeline, define best practices, and provide a tutorial with pubicly available datasets. 
 
 ---
@@ -75,14 +75,14 @@ Initiate the pipeline:
 mkdir working_directory
 cd /path/to/working_directory
 
-## Define the path to ensemblux.pip
-Ensemblux_HOME=/path/to/ensemblux.pip
+## Define the path to ensemblex.pip
+ensemblex_HOME=/path/to/ensemblex.pip
 
 ## Define the path to the working directory
-Ensemblux_PWD=/path/to/working_directory
+ensemblex_PWD=/path/to/working_directory
 
 ## Initiate the pipeline for demultiplexing with prior genotype information
-bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step init-GT
+bash $ensemblex_HOME/launch_ensemblex.sh -d $ensemblex_PWD --step init-GT
 ```
 
 ### Demultiplexing pooled cells _without_ prior genotype information
@@ -93,14 +93,14 @@ Initiate the pipeline:
 mkdir working_directory
 cd /path/to/working_directory
 
-## Define the path to ensemblux.pip
-Ensemblux_HOME=/path/to/ensemblux.pip
+## Define the path to ensemblex.pip
+ensemblex_HOME=/path/to/ensemblex.pip
 
 ## Define the path to the working directory
-Ensemblux_PWD=/path/to/working_directory
+ensemblex_PWD=/path/to/working_directory
 
 ## Initiate the pipeline for demultiplexing without prior genotype information
-bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step init-noGT
+bash $ensemblex_HOME/launch_ensemblex.sh -d $ensemblex_PWD --step init-noGT
 ```
 
 ---
@@ -132,16 +132,16 @@ REFERENCE_FASTA=/path/to/genome.fa
 REFERENCE_FASTA_INDEX=/path/to/genome.fa.fai
 
 ## Define the path to the working directory
-Ensemblux_PWD=/path/to/working_directory
+ensemblex_PWD=/path/to/working_directory
 
 ## Copy the files to the input_files directory in the working directory
-cp $BAM  $Ensemblux_PWD/input_files/pooled_bam.bam
-cp $BAM_INDEX  $Ensemblux_PWD/input_files/pooled_bam.bam.bai
-cp $BARCODES  $Ensemblux_PWD/input_files/pooled_barcodes.tsv
-cp $SAMPLE_VCF  $Ensemblux_PWD/input_files/pooled_samples.vcf
-cp $REFERENCE_VCF  $Ensemblux_PWD/input_files/reference.vcf
-cp $REFERENCE_FASTA  $Ensemblux_PWD/input_files/reference.fa
-cp $REFERENCE_FASTA_INDEX  $Ensemblux_PWD/input_files/reference.fa.fai
+cp $BAM  $ensemblex_PWD/input_files/pooled_bam.bam
+cp $BAM_INDEX  $ensemblex_PWD/input_files/pooled_bam.bam.bai
+cp $BARCODES  $ensemblex_PWD/input_files/pooled_barcodes.tsv
+cp $SAMPLE_VCF  $ensemblex_PWD/input_files/pooled_samples.vcf
+cp $REFERENCE_VCF  $ensemblex_PWD/input_files/reference.vcf
+cp $REFERENCE_FASTA  $ensemblex_PWD/input_files/reference.fa
+cp $REFERENCE_FASTA_INDEX  $ensemblex_PWD/input_files/reference.fa.fai
 ```
 
 ### Demultiplexing pooled cells _without_ prior genotype information
@@ -169,15 +169,15 @@ REFERENCE_FASTA=/path/to/genome.fa
 REFERENCE_FASTA_INDEX=/path/to/genome.fa.fai
 
 ## Define the path to the working directory
-Ensemblux_PWD=/path/to/working_directory
+ensemblex_PWD=/path/to/working_directory
 
 ## Copy the files to the input_files directory in the working directory
-cp $BAM  $Ensemblux_PWD/input_files/pooled_bam.bam
-cp $BAM_INDEX  $Ensemblux_PWD/input_files/pooled_bam.bam.bai
-cp $BARCODES  $Ensemblux_PWD/input_files/pooled_barcodes.tsv
-cp $REFERENCE_VCF  $Ensemblux_PWD/input_files/reference.vcf
-cp $REFERENCE_FASTA  $Ensemblux_PWD/input_files/reference.fa
-cp $REFERENCE_FASTA_INDEX  $Ensemblux_PWD/input_files/reference.fa.fai
+cp $BAM  $ensemblex_PWD/input_files/pooled_bam.bam
+cp $BAM_INDEX  $ensemblex_PWD/input_files/pooled_bam.bam.bai
+cp $BARCODES  $ensemblex_PWD/input_files/pooled_barcodes.tsv
+cp $REFERENCE_VCF  $ensemblex_PWD/input_files/reference.vcf
+cp $REFERENCE_FASTA  $ensemblex_PWD/input_files/reference.fa
+cp $REFERENCE_FASTA_INDEX  $ensemblex_PWD/input_files/reference.fa.fai
 ```
 
 ---
@@ -187,20 +187,20 @@ cp $REFERENCE_FASTA_INDEX  $Ensemblux_PWD/input_files/reference.fa.fai
 Demultiplex the pooled cells with each of Ensemblex's constituent tools:
 ```
 ## Define the paths to Ensemblex and the working directory 
-Ensemblux_HOME=/path/to/ensemblux.pip
-Ensemblux_PWD=/path/to/working_directory
+ensemblex_HOME=/path/to/ensemblex.pip
+ensemblex_PWD=/path/to/working_directory
 
 ## Demuxalot
-bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step demuxalot
+bash $ensemblex_HOME/launch_ensemblex.sh -d $ensemblex_PWD --step demuxalot
 
 ## Demuxlet
-bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step demuxlet
+bash $ensemblex_HOME/launch_ensemblex.sh -d $ensemblex_PWD --step demuxlet
 
 ## Souporcell
-bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step souporcell
+bash $ensemblex_HOME/launch_ensemblex.sh -d $ensemblex_PWD --step souporcell
 
 ## Vireo
-bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step vireo
+bash $ensemblex_HOME/launch_ensemblex.sh -d $ensemblex_PWD --step vireo
 
 ```
 
@@ -209,20 +209,20 @@ bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step vireo
 Demultiplex the pooled cells with each of Ensemblex's constituent tools:
 ```
 ## Define the paths to Ensemblex and the working directory 
-Ensemblux_HOME=/path/to/ensemblux.pip
-Ensemblux_PWD=/path/to/working_directory
+ensemblex_HOME=/path/to/ensemblex.pip
+ensemblex_PWD=/path/to/working_directory
 
 ## Freemuxlet
-bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step freemuxlet
+bash $ensemblex_HOME/launch_ensemblex.sh -d $ensemblex_PWD --step freemuxlet
 
 ## Souporcell
-bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step souporcell
+bash $ensemblex_HOME/launch_ensemblex.sh -d $ensemblex_PWD --step souporcell
 
 ## Vireo
-bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step vireo
+bash $ensemblex_HOME/launch_ensemblex.sh -d $ensemblex_PWD --step vireo
 
 ## Demuxalot
-bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step demuxalot
+bash $ensemblex_HOME/launch_ensemblex.sh -d $ensemblex_PWD --step demuxalot
 ```
 
 ---
@@ -231,28 +231,28 @@ bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step demuxalot
 ### Demultiplexing pooled cells _with_ prior genotype information
 ```
 ## Define the paths to Ensemblex and the working directory 
-Ensemblux_HOME=/path/to/ensemblux.pip
-Ensemblux_PWD=/path/to/working_directory
+ensemblex_HOME=/path/to/ensemblex.pip
+ensemblex_PWD=/path/to/working_directory
 
 ## Compute ensemble classification
-bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step ensembluxing
+bash $ensemblex_HOME/launch_ensemblex.sh -d $ensemblex_PWD --step ensemblexing
 ```
 ### Demultiplexing pooled cells _without_ prior genotype information
 ```
 ## Define the paths to Ensemblex and the working directory 
-Ensemblux_HOME=/path/to/ensemblux.pip
-Ensemblux_PWD=/path/to/working_directory
+ensemblex_HOME=/path/to/ensemblex.pip
+ensemblex_PWD=/path/to/working_directory
 
 ## Compute ensemble classification
-bash $Ensemblux_HOME/launch_ensemblux.sh -d $Ensemblux_PWD --step ensembluxing
+bash $ensemblex_HOME/launch_ensemblex.sh -d $ensemblex_PWD --step ensemblexing
 ```
 
 ---
 #### Contributing
-Any contributions or suggestions for improving the scRNAbox pipeline are welcomed and appreciated. If you encounter any issues, please open an issue in the [GitHub repository](https://github.com/neurobioinfo/ensemblux). Alternatively, you are welcomed to email the developers directly; for any questions please contact Michael Fiorini: michael.fiorini@mail.mcgill.ca
+Any contributions or suggestions for improving the scRNAbox pipeline are welcomed and appreciated. If you encounter any issues, please open an issue in the [GitHub repository](https://github.com/neurobioinfo/ensemblex). Alternatively, you are welcomed to email the developers directly; for any questions please contact Michael Fiorini: michael.fiorini@mail.mcgill.ca
 
 #### Changelog
-Every release is documented on the [GitHub Releases page](https://github.com/neurobioinfo/ensemblux/releases).
+Every release is documented on the [GitHub Releases page](https://github.com/neurobioinfo/ensemblex/releases).
 
 #### License
 This project is licensed under the MIT License.
