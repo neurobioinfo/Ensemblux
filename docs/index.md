@@ -1,4 +1,4 @@
-# Welcome to the ensemblex documentation!
+# Welcome to the Ensemblex documentation!
 ensemblex is an accuracy-weighted ensemble framework for genetic demultiplexing of pooled single-cell RNA seqeuncing (scRNAseq) data. By addressing the limitiations of individual genetic demultiplexing tools, we demonstrated that ensemblex:
 
 - Achieves higher demultiplexing accuracy
