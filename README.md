@@ -249,7 +249,7 @@ bash $ensemblex_HOME/launch_ensemblex.sh -d $ensemblex_PWD --step ensemblexing
 
 ---
 #### Contributing
-Any contributions or suggestions for improving the scRNAbox pipeline are welcomed and appreciated. If you encounter any issues, please open an issue in the [GitHub repository](https://github.com/neurobioinfo/ensemblex). Alternatively, you are welcomed to email the developers directly; for any questions please contact Michael Fiorini: michael.fiorini@mail.mcgill.ca
+Any contributions or suggestions for improving the Ensemblex pipeline are welcomed and appreciated. If you encounter any issues, please open an issue in the [GitHub repository](https://github.com/neurobioinfo/ensemblex). Alternatively, you are welcomed to email the developers directly; for any questions please contact Michael Fiorini: michael.fiorini@mail.mcgill.ca
 
 #### Changelog
 Every release is documented on the [GitHub Releases page](https://github.com/neurobioinfo/ensemblex/releases).
@@ -258,6 +258,8 @@ Every release is documented on the [GitHub Releases page](https://github.com/neu
 This project is licensed under the MIT License.
 
 #### Acknowledgement
-The Ensemblex pipeline was produced for projects funded by the Canadian Institute of Health Research and Michael J. Fox Foundation. It is written by [Michael Fiorini](https://github.com/fiorini9) and [Saeid Amiri](https://github.com/saeidamiri1) with supervision from [Rhalena Thomas](https://github.com/RhalenaThomas) and Sali Farhan at the Montreal Neurological Institute-Hospital. Copyright belongs [MNI BIOINFO CORE](https://github.com/neurobioinfo). 
+The Ensemblex pipeline was produced for projects funded by the Canadian Institute of Health Research and Michael J. Fox Foundation Parkinson's Progression Markers Initiative (MJFF PPMI) in collaboration with The Neuro's Early Drug Discovery Unit (EDDU), McGill University. It is written by [Michael Fiorini](https://github.com/fiorini9) and [Saeid Amiri](https://github.com/saeidamiri1) with supervision from [Rhalena Thomas](https://github.com/RhalenaThomas) and Sali Farhan at the Montreal Neurological Institute-Hospital. Copyright belongs MNI BIOINFO CORE.
+
+
 
 **[⬆ back to top](#contents)**
