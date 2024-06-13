@@ -1,0 +1,12 @@
+
+# Ensembleux pipeline 
+Ensemblex is an accuracy-weighted ensemble framework for genetic demultiplexing of pooled single-cell RNA seqeuncing (scRNAseq) data. Ensemblex can be used to demultiplex pools **with** or **without** prior genotype information. It is compatible with Linux workstations. The detail of installing and running this pipeline can be found in tutorial in [ensembleux](https://neurobioinfo.github.io/ensembleux/site/). 
+
+## Contributing
+Any contributions or suggestions for improving the Ensemblex pipeline are welcomed and appreciated. If you encounter any issues, please open an issue in the [GitHub repository](https://github.com/neurobioinfo/ensemblex). Alternatively, you are welcomed to email the developers directly; for any questions please contact Michael Fiorini: michael.fiorini@mail.mcgill.ca
+
+## License
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/neurobioinfo/ensembleux/blob/main/LICENSE) file for details
+
+## Acknowledgement
+The Ensemblex pipeline was produced for projects funded by the Canadian Institute of Health Research and Michael J. Fox Foundation Parkinson's Progression Markers Initiative (MJFF PPMI) in collaboration with The Neuro's Early Drug Discovery Unit (EDDU), McGill University. It is written by [Michael Fiorini](https://github.com/fiorini9) and [Saeid Amiri](https://github.com/saeidamiri1) with supervision from [Rhalena Thomas](https://github.com/RhalenaThomas) and Sali Farhan at the Montreal Neurological Institute-Hospital. Copyright belongs MNI BIOINFO CORE.

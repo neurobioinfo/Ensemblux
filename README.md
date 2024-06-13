@@ -1,5 +1,8 @@
 # Ensemblex: an accuracy-weighted ensemble genetic demultiplexing framework for single-cell RNA sequencing
 
+[![](https://img.shields.io/badge/Documentation-scrnabox-blue)](https://neurobioinfo.github.io/ensemblex/site/) 
+<!-- [![biorxiv](https://img.shields.io/badge/biorxiv-manuscript-blue)](https://www.biorxiv.org/content/biorxiv/early/2023/11/15/2023.11.13.566851.full.pdf)  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7768427.svg)](https://doi.org/10.5281/zenodo.7768427)  -->
+
 -------------
 ## Contents
 - [Introduction](#introduction)
