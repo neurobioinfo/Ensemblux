@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://neurobioinfo.github.io/overview/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Ensemblex algorithm overview - Ensemblex</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Ensemblex algorithm overview";
+        var mkdocs_page_input_path = "overview.md";
+        var mkdocs_page_url = "/overview/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Ensemblex
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">The Ensemblex algorithm</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Ensemblex algorithm overview</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#workflow">Workflow</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-1-accuracy-weighted-probabilistic-ensemble">Step 1: Accuracy-weighted probabilistic ensemble</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-2-graph-based-doublet-detection">Step 2: Graph-based doublet detection</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-3-ensemble-independent-doublet-detection">Step 3: Ensemble-independent doublet detection</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#contribution-of-each-step-to-overall-demultiplexing-accuracy">Contribution of each step to overall demultiplexing accuracy</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">The Ensemblex Pipeline</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../overview_pipeline/">Ensemblex pipeline overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Step0/">Step 1: Set up</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Step1/">Step 2: Preparation of input files</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Step2/">Step 3: Genetic demultiplexing by constituent tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Step3/">Step 4: Application of Ensemblex</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/">Execution parameters</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../outputs/">Ensemblex outputs</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tutorial</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../midbrain_download/">Downloading data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Dataset1/">Ensemblex with prior genotype information</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">About</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../contributing/">Help and Feedback</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Acknowledgement/">Acknowledgement</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../LICENSE/">License</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Ensemblex</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+          <li>The Ensemblex algorithm &raquo;</li>
+      <li class="breadcrumb-item active">Ensemblex algorithm overview</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ensemblex-algorithm-overview">Ensemblex algorithm overview</h1>
+<ul>
+<li><a href="#workflow">Workflow</a></li>
+<li><a href="#step-1-accuracy-weighted-probabilistic-ensemble">Step 1: Accuracy-weighted probabilistic ensemble</a></li>
+<li><a href="#step-2-graph-based-doublet-detection">Step 2: Graph-based doublet detection</a></li>
+<li><a href="#step-3-ensemble-independent-doublet-detection">Step 3: Ensemble-independent doublet detection</a></li>
+<li><a href="#contribution-of-each-step-to-overall-demultiplexing-accuracy">Contribution of each step to overall demultiplexing accuracy</a></li>
+</ul>
+<hr />
+<h3 id="workflow">Workflow</h3>
+<p>The Ensemblex workflow begins by demultiplexing pooled cells with each of its constituent tools: Demuxalot, Demuxlet, Souporcell and Vireo-GT if using prior genotype information or Demuxalot, Freemuxlet, Souporcell and Vireo if prior genotype information is not available.</p>
+<p align="center">
+ <img src="https://github.com/neurobioinfo/ensemblex/assets/97498007/e1ddc937-4f9e-4982-9873-066a71f70a1c" width="650" height="100">
+ </p>
+
+<p><strong>Figure 1. Input into the Ensemblex framework.</strong>  The Ensemblex workflow begins with demultiplexing pooled samples by each of the constituent tools. The outputs from each individual demultiplexing tool are then used as input into the Ensemblex framework. </p>
+<p>Upon demultiplexing pools with each individual constituent genetic demultiplexing tool, Ensemblex processes the outputs in a three-step pipeline:</p>
+<ul>
+<li><a href="#step-1-accuracy-weighted-probabilistic-ensemble">Step 1: Accuracy-weighted probabilistic-weighted ensemble</a></li>
+<li><a href="#step-2-graph-based-doublet-detection">Step 2: Graph-based doublet detection</a></li>
+<li><a href="#step-3-ensemble-independent-doublet-detection">Step 3: Ensemble-independent doublet detection</a></li>
+</ul>
+<p align="center">
+ <img src="https://github.com/neurobioinfo/ensemblex/assets/97498007/f7c20bc9-95cf-46d4-8694-e90e3801b8fc" width="650" height="100">
+ </p>
+
+<p><strong>Figure 2. Overview of the three-step Ensemblex framework.</strong>  The Ensemblex framework comprises three distinct steps that are assembled into a pipeline: 1) accuracy-weighted probabilistic ensemble, 2) graph-based doublet detection, and 3) ensemble-independent doublet detection.</p>
+<p>For demonstration purposes throughout this section, we leveraged simulated pools with known ground-truth sample labels that were generated with 80 independetly-sequenced induced pluripotent stem cell (iPSC) lines from individuals with Parkinson's disease and neurologically healthy controls. The lines were differentiated towards a dopaminergic cell fate as part of the Foundational Data Initiative for Parkinson's disease (FOUNDIN-PD; <a href="https://www.cell.com/cell-genomics/pdf/S2666-979X(23)00017-4.pdf">Bressan et al.</a>)</p>
+<hr />
+<h3 id="step-1-accuracy-weighted-probabilistic-ensemble">Step 1: Accuracy-weighted probabilistic ensemble</h3>
+<p>The accuracy-weighted probabilistic ensemble component of the Ensemblex  utilizes an unsupervised weighting model to identify the most probable sample label for each cell. Ensemblex weighs each constituent tool’s assignment probability distribution by its estimated balanced accuracy for the dataset in a framework that was largely inspired by the work of <a href="https://link.springer.com/article/10.1007/s10618-019-00638-y">Large et al.</a>. To estimate the balanced accuracy of a particular constituent tool (e.g. Demuxalot) for real-word datasets lacking ground-truth labels, Ensemblex leverages the cells with a consensus assignment across the three remaining tools (e.g. Demuxlet, Souporcell, and Vireo-GT) as a proxy for ground-truth. The weighted assignment probabilities across all four constituent tools are then used to inform the most probable sample label for each cell.</p>
+<p align="center">
+ <img src="https://github.com/neurobioinfo/ensemblex/assets/97498007/d55ae325-02f0-4e48-91ee-924933646f47" width="350" height="100">
+ </p>
+
+<p><strong>Figure 3. Graphical representation of the accuracy-weighted probabilistic ensemble component of the Ensemblex framework.</strong>  </p>
+<hr />
+<h3 id="step-2-graph-based-doublet-detection">Step 2: Graph-based doublet detection</h3>
+<p>The graph-based doublet detection component of the Ensemblex framework was implemented to identify doublets that are incorrectly labeled as singlets by the accuracy-weighted probablistic ensemble component (Step 1). To demonstrate Step 2 of the Ensemblex framework we leveraged a simulated pool comprising 24 pooled samples, 17,384 cells, and a 15% doublet rate.</p>
+<p align="center">
+ <img src="https://github.com/neurobioinfo/ensemblex/assets/97498007/05fa2241-8bdf-4b16-a892-7617af39a43a" width="350" height="100">
+ </p>
+
+<p><strong>Figure 4. Graphical representation of the graph-based doublet detection component of the Ensemblex framework.</strong>  </p>
+<p>The graph-based doublet detection component begins by leveraging select variables returned from each constituent tool:</p>
+<ol>
+<li>Demuxalot: doublet probability;</li>
+<li>Demuxlet/Freemuxlet: singlet log likelihood – doublet log likelihood;</li>
+<li>Demuxlet/Freemuxlet: number of single nucleotide polymorphisms (SNP) per cell;</li>
+<li>Demuxlet/Freemuxlet: number of reads per cell;</li>
+<li>Souporcell: doublet log probability;</li>
+<li>Vireo: doublet probability;</li>
+<li>Vireo: doublet log likelihood ratio </li>
+</ol>
+<p align="center">
+ <img src="https://github.com/neurobioinfo/ensemblex/assets/97498007/0704e70e-3766-4f7e-8e87-58a2f626db57" width="500" height="100">
+ </p>
+
+<p><strong>Figure 5. Select variables returned by the constituent genetic demultiplexing tools used for graph-based doubet detection.</strong></p>
+<p>Using these variables, Ensemblex screens each pooled cell to identify the <em>n</em> most confident doublets in the pool and performs a principal component analysis (PCA).</p>
+<p align="center">
+ <img src="https://github.com/neurobioinfo/ensemblex/assets/97498007/cd275145-a28e-4fda-950b-376fd786b406" width="500" height="100">
+ </p>
+
+<p><strong>Figure 6. PCA of pooled cells using select variables returned by the constituent genetic demultiplexing tools.</strong> <strong>A)</strong> PCA highlighting ground truth cell labels: singlet or doublet. <strong>B)</strong> PCA highlighting the <em>n</em> most confident doublets identified by Ensemblex.</p>
+<p>The PCA embedding is then converted into a Euclidean distance matrix and each cell is assigned a percentile rank based on their distance to each confident doublet. After performing an automated parameter sweep, Ensemblex identifies the droplets that appear most frequently amongst the nearest neighbours of confident doublets as doublets.</p>
+<p align="center">
+ <img src="https://github.com/neurobioinfo/ensemblex/assets/97498007/da90357e-6c75-4317-bf17-27be034a490c" width="650" height="100">
+ </p>
+
+<p><strong>Figure 7. PCA of pooled cells labeled according to Ensemblex labels prior to and after graph-based doublet detection.</strong> <strong>A)</strong> PCA highlighting ground truth cell labels: singlet or doublet. <strong>B)</strong> PCA highlighting  Ensemblex's labels prior to graph-based doublet detection. <strong>C)</strong> PCA highlighting  Ensemblex's labels after graph-based doublet detection. </p>
+<hr />
+<h3 id="step-3-ensemble-independent-doublet-detection">Step 3: Ensemble-independent doublet detection</h3>
+<p>The ensemble-independent doublet detection component of the Ensemblex framework was implemented to further improve Ensemblex's ability to identify doublets. Benchmarking on simulated pools with known ground-truth sample labels revealed that certain genetic demultiplexing tools, namely Demuxalot and Vireo, showed high doublet detection specificity.</p>
+<p align="center">
+ <img src="https://github.com/neurobioinfo/ensemblex/assets/97498007/670124b7-78ae-4e68-b82b-71552349d9de" width="350" height="100">
+ </p>
+
+<p><strong>Figure 8. Constituent genetic demultiplexing tool doublet specificity on computationally multiplexed pools with ground truth sample labels.</strong> Doublet specificity was evaluated on pools ranging in size from 4 to 80 multiplexed samples. </p>
+<p>However, Steps 1 and 2 of the Ensemblex workflow failed to correctly label a subset of doublet calls by these tools. To mitigate this issue and maximize the rate of doublet identification, Ensemblex labels the cells that are identified as doublets by Vireo or Demuxalot as doublets, by default; however, users can nominate different tools for the ensemble-independent doublet detection component depending on the desired doublet detection stringency. </p>
+<p align="center">
+ <img src="https://github.com/neurobioinfo/ensemblex/assets/97498007/47067260-f22f-48e3-a5eb-a2ac4859b855" width="250" height="100">
+ </p>
+
+<p><strong>Figure 9. Graphical representation of the ensemble-independent doublet detection component of the Ensemblex framework.</strong>  </p>
+<hr />
+<h3 id="contribution-of-each-step-to-overall-demultiplexing-accuracy">Contribution of each step to overall demultiplexing accuracy</h3>
+<p>We sequentially applied each step of the Ensemblex framework to 96 computationally multiplexed pools with known ground truth sample labels ranging in size from 4 to 80 samples. The proportion of correctly classified singlets and doublets identified by Ensemblex after each step of the framework is shown in Figure 10. </p>
+<p align="center">
+ <img src="https://github.com/neurobioinfo/ensemblex/assets/97498007/7f117346-cfa2-451e-8ab6-388f2d07f0fb" width="750" height="100">
+ </p>
+
+<p><strong>Figure 10. Contribution of each component of the Ensemblex framework to demultiplexing accuracy.</strong> The average proportion of correctly classified <strong>A)</strong> singlets and <strong>B)</strong> doublets across replicates at a given pool size is shown after sequentially applying each step of the Ensemblex framework. The right panels show the average proportion of correct classifications across all 96 pools. The blue points show the proportion of cells that were correctly classified by at least one tool: Demuxalot, Demuxlet, Souporcell, or Vireo.   </p>
+<hr />
+<p>For detailed methodology please see our <strong>pre-print manuscript</strong>.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../overview_pipeline/" class="btn btn-neutral float-right" title="Ensemblex pipeline overview">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../overview_pipeline/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
