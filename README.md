@@ -77,7 +77,7 @@ unzip ensemblex.pip.zip
 ## Load Apptainer
 module load apptainer/1.2.4
 ```
-o test if the Ensemblex container is installed properly, run the following code:
+To test if the Ensemblex container is installed properly, run the following code:
 ```
 ## Define the path to ensemblex.pip
 ensemblex_HOME=/path/to/ensemblex.pip
