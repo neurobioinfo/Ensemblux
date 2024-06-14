@@ -66,8 +66,43 @@ In the Ensemblex documentation, we outline each step of the Ensemblex pipeline, 
 ---
 ## Installation
 
-[To be completed.]
+Install the Enseblex container and load [Apptainer](https://apptainer.org/):
+```
+## Download the Ensemblex container
+curl "https://zenodo.org/records/11639103/files/ensemblex.pip.zip?download=1" --output ensemblex.pip.zip
 
+## Unzip the Ensemblex container
+unzip ensemblex.pip.zip
+
+## Load Apptainer
+module load apptainer/1.2.4
+```
+o test if the Ensemblex container is installed properly, run the following code:
+```
+## Define the path to ensemblex.pip
+ensemblex_HOME=/path/to/ensemblex.pip
+
+## Print help message
+bash $ensemblex_HOME/launch_ensemblex.sh -h
+```
+Which should return the following help message:
+```
+------------------- 
+Usage:  /home/fiorini9/scratch/ensemblex.pip/launch_ensemblex.sh [arguments]
+        mandatory arguments:
+                -d  (--dir)  = Working directory (where all the outputs will be printed) (give full path)
+                --steps  =  Specify the steps to execute. Begin by selecting either init-GT or init-noGT to establish the working directory. 
+                       For GT: vireo, demuxalot, demuxlet, souporcell, ensemblexing 
+                       For noGT: vireo, demuxalot, freemuxlet, souporcell, ensemblexing 
+
+        optional arguments:
+                -h  (--help)  = See helps regarding the pipeline arguments 
+                --vcf  = The path of vcf file 
+                --bam  = The path of bam file 
+                --sortout  = The path snd nsme of vcf generated using sort  
+ ------------------- 
+ For a comprehensive help, visit  https://neurobioinfo.github.io/ensemblex/site/ for documentation. 
+```
 ---
 ## Step 1: Set up
 ### Demultiplexing pooled cells _with_ prior genotype information
